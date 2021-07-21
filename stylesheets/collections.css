@@ -209,26 +209,25 @@ input {
   cursor: pointer;
 }
 
-.filterOptions > button > input[type="radio"]::after{
-  font-family: "Font Awesome 5 Free";
+.filterOptions > button > input[type='radio']::after {
+  font-family: 'Font Awesome 5 Free';
   font-weight: bold;
   font-size: 10px;
-  content: "\f00c";
+  content: '\f00c';
   display: none;
 }
 
-.filterOptions > button > input[type="radio"]:hover{
+.filterOptions > button > input[type='radio']:hover {
   background-color: var(--grayText);
 }
 
-.filterOptions > button > input[type="radio"]:checked{
+.filterOptions > button > input[type='radio']:checked {
   background-color: #ffd344;
 }
 
-.filterOptions > button > input[type="radio"]:checked:after{
+.filterOptions > button > input[type='radio']:checked:after {
   display: flex;
 }
-
 
 #mainContent > hr {
   color: var(--grayText);
@@ -341,7 +340,7 @@ input {
 .productNamePrice > .productName {
   flex: 1 1 62.5%;
   max-width: 62.5%;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   height: 4.5rem;
   margin-bottom: 0.4rem;

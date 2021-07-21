@@ -542,6 +542,128 @@ let foodItems = {
       veg_nonVeg: 'veg',
     },
   ],
+  'Rice Bowls': [
+    {
+      name: 'Royal Veg Rice Bowl (Serves 1)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624451654181_Royal%20Veg%20Rice%20Bowl%20%28Serves%201%29123.jpg',
+      price: 294,
+      rating: 4.5,
+      boughtTimes: '0.5k',
+      description:
+        'Faasos fnest threesome of zesty chole, spiced paneer tikka and corn salsa served on a bed of favorful masala rice. A pure delight for vegetarians',
+      tags: ['Amazon Recommended', 'ct_amz_North Indian'],
+      veg_nonVeg: 'veg',
+    },
+    {
+      name: 'Veg Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624451773972_Veg%20Rice%20Bowl%20%28Mini%29.jpg',
+      price: 163,
+      rating: 4.4,
+      boughtTimes: '3.2k',
+      description:
+        'A mini meal of aromatic spiced rice. Top it up with tangy chole or spicy paneer tikka and enjoy this quintessential North-Indian delicacy.',
+      tags: ['home-style-meal', 'ct_amz_Meals'],
+      veg_nonVeg: 'veg',
+    },
+    {
+      name: 'Veg Rice Bowl (Serves 1)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1603894509903_Veg%20Rice%20Bowl%20%28Jumbo%29.jpg',
+      price: 231,
+      rating: 4.3,
+      boughtTimes: '2.5k',
+      description:
+        'A regular-sized wholesome meal of aromatic spiced rice, for those strong hunger pangs. Top it up with tangy chole or spicy paneer tikka and enjoy this quintessential North-Indian delicacy.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'veg',
+    },
+    {
+      name: 'Paneer Signature Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624451852231_Paneer%20Signature%20Rice%20Bowl%2045.jpg',
+      price: 189,
+      rating: 4.5,
+      boughtTimes: '4.9k',
+      description:
+        'Flavorful paneer tikka chunks cooked to perfection in spiced onion-tomato gravy and served on a bed of aromatic spiced rice.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'veg',
+    },
+    {
+      name: 'Rajma Masala Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624451924471_Rajma%20Masala%20Rice%20Bowl%202021.jpg',
+      price: 152,
+      rating: 4.5,
+      boughtTimes: '1.6k',
+      description:
+        'A mini bowl of aromatic spiced rice with your all-time favorite rajma slow-cooked in a mildly spiced onion-tomato gravy.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'veg',
+    },
+    {
+      name: 'Mutton Bhuna Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624452059438_Mutton%20Bhuna%20Rice%20Bowl%20456.jpg',
+      price: 257,
+      rating: 4.5,
+      boughtTimes: '1.5k',
+      description:
+        'A mini bowl of dum-style flavorful rice with melt-in-your-mouth boneless pieces of bhuna mutton cooked in a spiced Indian gravy.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'nonVeg',
+    },
+    {
+      name: 'Chicken Signature Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624452153077_Chicken%20Signature%20Rice%20Bowl%20789.jpg',
+      price: 210,
+      rating: 4.4,
+      boughtTimes: '3.2k',
+      description:
+        '[100% Safely Cooked Chicken] Succulent chicken pieces cooked in a mildly spiced onion gravy served on a bed of flavorful rice.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'nonVeg',
+    },
+    {
+      name: 'Smoked Butter Chicken Rice Bowl (Serves 1)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1599488773715_Smoked%20Butter%20Chicken%20Rice%20Bowl%20%28Serves%201%29%20%281%29.jpg',
+      price: 263,
+      rating: 4.4,
+      boughtTimes: '4.0k',
+      description:
+        '[100% Safely Cooked Chicken]Faasos Finest - A regular-sized bowl of aromatic and flavorful basmati rice mixed with the awesome butter chicken. How can things get better!',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'nonVeg',
+    },
+    {
+      name: 'Royal Chicken Rice Bowl (Serves 1)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1599488820094_Royal%20Chicken%20Rice%20Bowl%20%28Serves%201%29%20%281%29.jpg',
+      price: 331,
+      rating: 4.4,
+      boughtTimes: '2.5k',
+      description:
+        'Breaking out of the norm doesnt get more delicious! Succulent chicken with roasted Indian spices, chicken tikka & chicken meatballs served on a bed of flavorful rice & topped with a fluffy omelette.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'nonVeg',
+    },
+    {
+      name: 'Egg Rice Bowl (Mini)',
+      img_src:
+        'https://product-assets.faasos.io/production/product/image_1624452409591_Egg%20Rice%20Bowl%201254.jpg',
+      price: 131,
+      rating: 4.4,
+      boughtTimes: '3.7k',
+      description:
+        'A mini bowl of flavorful biryani rice and mildly-spiced onion tomato gravy, topped with golden-fried omelette. This is how God said, let there be comfort.',
+      tags: ['ct_amz_Meals', 'home-style-meal'],
+      veg_nonVeg: 'nonVeg',
+    },
+  ],
   'Sides And Beverages': [
     {
       name: 'Potato Wedges (Medium)',
@@ -644,7 +766,7 @@ let foodItems = {
       veg_nonVeg: 'veg',
     },
   ],
-  Desserts: [
+  "Desserts": [
     {
       name: 'Hazelnut Brownie',
       img_src:
