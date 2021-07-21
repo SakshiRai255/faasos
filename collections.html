@@ -83,11 +83,18 @@
                 name="veg_nonVeg"
                 value="nonVeg"
                 id="nonVeg"
+                onclick="handleVegNonVeg(this)"
               />
               <label for="nonVeg">Non-Veg Only</label>
             </button>
             <button>
-              <input type="radio" name="veg_nonVeg" value="nonVeg" id="veg" />
+              <input
+                type="radio"
+                name="veg_nonVeg"
+                value="veg"
+                id="veg"
+                onclick="handleVegNonVeg(this)"
+              />
               <label for="veg">Veg Only</label>
             </button>
           </div>
@@ -95,36 +102,8 @@
         <hr />
         <div id="mainProducts">
           <div id="productCategory">
-            <ul>
-              <li>
-                <a href="#dailyValueWrap" class="active"
-                  >Daily Value Wrap Combos (Save Upto 40% Extra)</a
-                >
-              </li>
-              <li>
-                <a href="#combosForOne">Combos for 1 (Save upto 15% Extra)</a>
-              </li>
-              <li>
-                <a href="#combosForTwo">Combos for 2 (Save upto 20% Extra)</a>
-              </li>
-              <li>
-                <a href="#combosForFour">Combos for 4 (Save upto 25% Extra)</a>
-              </li>
-              <li>
-                <a href="#signatureWraps">Signature Wraps</a>
-              </li>
-              <li>
-                <a href="#classicWraps">Classic Wraps</a>
-              </li>
-              <li>
-                <a href="#riceBowls">Rice Bowls</a>
-              </li>
-              <li>
-                <a href="#sidesAndBeverages">Sides And Beverages</a>
-              </li>
-              <li>
-                <a href="#desserts">Desserts</a>
-              </li>
+            <ul id="productCategoryList">
+               <!-- JS will load li with a tag for food category -->
             </ul>
           </div>
           <div id="productArea"></div>
@@ -211,4 +190,6 @@
   ></script>
   <script src="./scripts/foodItems.js"></script>
   <script src="./scripts/loadItems.js"></script>
+  <script src="./scripts/checkFilters.js"></script>
+  <script src="./scripts/highlightCategory.js"></script>
 </html>

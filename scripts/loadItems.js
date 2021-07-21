@@ -45,10 +45,13 @@ function createFoodItem(food) {
   return card;
 }
 
-function displayFood() {
-  for (foodCategory in foodItems) {
-    console.log(foodCategory);
+function displayFood(category) {
+  console.log('category:', category);
 
+  let productArea = document.getElementById('productArea');
+  productArea.innerHTML = null; // clearing out all food items
+
+  for (foodCategory in foodItems) {
     let categoryDiv = document.createElement('div');
     switch (foodCategory) {
       case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
@@ -93,15 +96,68 @@ function displayFood() {
     dailyValue.id = 'dailyValue';
 
     for (let i = 0; i < foodItems[foodCategory].length; i++) {
-      dailyValue.append(createFoodItem(foodItems[foodCategory][i]));
+      let dish = foodItems[foodCategory][i];
+      // if both - then show
+      // else should match category
+      if (category == 'both' || dish['veg_nonVeg'] == category) {
+        dailyValue.append(createFoodItem(dish));
+      }
     }
 
     allProducts.append(dailyValue);
     categoryDiv.append(allProducts);
-
-    let productArea = document.getElementById('productArea');
     productArea.append(categoryDiv);
   }
 }
 
-displayFood();
+// Product Category List Loaded
+function displayCategories() {
+  let productCategoryList = document.getElementById('productCategoryList');
+
+  for (foodCategory in foodItems) {
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+
+    a.classList.add('categoryAnchor');
+    switch (foodCategory) {
+      case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
+        a.href = '#dailyValueWrap';
+        a.classList.add('active');
+        break;
+      case 'Combos for 1 (Save upto 15% Extra)':
+        a.href = '#combosForOne';
+        break;
+      case 'Combos for 2 (Save upto 20% Extra)':
+        a.href = '#combosForTwo';
+        break;
+      case 'Combos for 4 (Save upto 25% Extra)':
+        a.href = '#combosForFour';
+        break;
+      case 'Signature Wraps':
+        a.href = '#signatureWraps';
+        break;
+      case 'Classic Wraps':
+        a.href = '#classicWraps';
+        break;
+      case 'Rice Bowls':
+        a.href = '#riceBowls';
+        break;
+      case 'Sides And Beverages':
+        a.href = '#sidesAndBeverages';
+        break;
+      case 'Desserts':
+        a.href = '#desserts';
+        break;
+      default:
+        break;
+    }
+
+    a.innerText = foodCategory;
+
+    li.append(a);
+    productCategoryList.append(li);
+  }
+}
+
+displayCategories();
+displayFood('both');
