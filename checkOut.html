@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+
+          @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+        
+         @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,900;1,600;1,800&display=swap');
+
+
+     #flex{
+         display: flex;
+     }     
+             #navi{
+            height: 100px;
+                        background-color: white;
+
+            margin: 1%;
+            
+        }
+        .user{
+            background-color: white;
+            padding: 0.2%;
+            color: #333333;
+            margin: 1%;
+            border-radius: 7px;
+            display : flex;
+            /* float: left; */
+            font-family: 'Mulish', sans-serif;
+
+
+        } 
+        #sec{
+           width: 39%;
+            margin: 1%;
+            padding: 0.5%;
+           /* border: solid black; */
+           background-color:white;
+            font-family: 'Mulish', sans-serif;
+
+           
+
+        }
+        #preuser{
+              background-color: blanchedalmond;
+            padding: 0.2%;
+            color: #333333;
+            margin: 1%; 
+        }
+        #order{
+           height: 300px;
+           background-color: white;
+            color: #333333;
+            /* border:solid black; */
+
+
+        }
+        .coupon{
+            height: 50px;
+            width: 97%;
+            color: #333333;
+            border :dashed rgb(75, 73, 73,0.2);
+            padding: 2%; 
+            margin: 2%;
+           font-family: 'Mulish', sans-serif;
+
+            /* float: left; */
+
+        }
+        #body{
+            /* background-color: rgb(230, 216, 216,0.5); */
+                background-color: #F5F5F5;
+            font-family: 'Mulish', sans-serif;
+
+        }
+        #orderinner{
+          background-color: #F5F5F5;
+
+            height: 140px;
+            margin: 1%;
+            padding: 1%;
+        }
+        #view{
+            color:  #57409A;
+            font-family: 'Mulish', sans-serif;
+
+        }
+        #orderinner > div{
+             margin: 0.5%;
+              /* border: solid black; */
+              padding: 0.4%;
+              display: flex; 
+              justify-content: space-between;
+        }
+        #text{
+            padding: 0.5%;
+            margin: 1%;
+        }
+                
+    .gola{
+            width: 35px;
+            height: 35px;
+              /* background-color: aquamarine; */
+              border-radius: 50px;
+              border: solid rgb(138, 132, 132,0.3);
+              /* padding: 2%; */
+              /* margin: auto; */
+              /* text-align: center; */
+              margin-top: 2.4%;
+        }
+        #apply{
+            font-family: 'Mulish', sans-serif;
+
+        }
+        #grand{
+            /* font-family: 'Mulish', sans-serif; */
+        
+            font-family: 'Mulish', sans-serif;
+            font-size: large;
+            
+        }
+        #dote{
+            color: white;
+        }
+
+    </style>
+</head>
+
+
+<body id="body">
+    <div id = "navi"></div>
+     
+    <div id = "flex">
+    <div style="width: 60%;"> 
+        <div>
+            <div class="user">
+                <div class="gola"><h5 style="text-align: center;">1</h5></div>
+                <h1> Logged in<br></h1>
+                
+                
+               <!-- <div>hey</div> -->
+            </div>
+        
+            <div class="user"> <div class="gola"><h5 style="text-align: center;">2</h5></div>
+        
+                <h1> Delivery Address<br></h1>
+                <div></div>
+            </div>
+        
+            <div class="user"><div class="gola"><h5 style="text-align: center;">3</h5></div>
+                <h1> Payment<br></h1>
+                <div></div>
+            </div>       
+        </div>
+    </div>
+
+
+    <div id="sec">
+
+
+        <!-- right side of page-->
+    <div> 
+        <h3>order summery<br></h3>
+        <div></div>   
+    </div>
+
+    <div>
+        <h1>3. Payment<br></h1>
+        <div></div>
+    </div>
+    <div>
+        <h1>3. Payment<br></h1>
+        <div></div>
+    </div>
+<div>
+    <h1>3. Payment<br></h1>
+    <div></div>
+</div>
+
+    
+    <!-- </div> -->
+   
+    
+
+    
+    
+
+      <div id = "order">
+          <h6 id="text">You can either apply coupon or cradits</h6>
+        <div>
+            <div class="coupon">
+                <p style="display: flex; justify-content: space-between;">
+                    <span>FFSOS CREDITS</span>
+                    <span id="view"><button>.</button></span>
+                    
+
+        
+                </p>
+        
+            </div>
+
+            <div>
+              <div class="coupon">
+            <p style="display: flex; justify-content: space-between;">
+                <span class="glyphicon">&#xe042;<span id="apply"><span id="dote">.</span>ApplyCoupen</span></span> 
+                <span id="view">View All Coupons ></span>
+
+            </p>
+            
+            </div>
+
+           
+            
+            </div>
+            <div id="orderinner">
+                <div>
+                    <span>Cart Amount</span>
+                    <span>279</span>
+                </div>
+                <div>
+                    <span>Tax</span>
+                    <span>14</span>
+
+                </div>
+
+                <div>
+                        <span>Delivery</span>
+                        <span>25</span>
+                </div>
+                       <div style="background-color: black;"></div>
+                <div>
+                    <span id="grand"><b>Grand Total</span>
+                    <span>500</span>
+                </div>
+                <hr>
+
+            </div>
+              
+        
+      </div>  
+
+
+</div>
+</div>
+</div>
+
+
+<!-- <div>hey</div> -->
+    <!-- <div id="navi"></div> -->
+
+
+    
+</body>
+
+
+<!-- border area -->
+
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+
+<head>
+    <style>
+        :root {
+            --bodyBack: white;
+            --yellow: rgb(255, 211, 68);
+            --primaryColorLight: #6a55cc;
+            --primaryColorRegular: #57409a;
+            --primaryColorDark: #190b46;
+            --blackText: #333333;
+        }
+
+        body {
+            font-family: "Mulish", sans-serif;
+            background-color: var(--bodyBack);
+            margin: 0px;
+            width: 100%;
+        }
+
+        .footer {
+            background-color: var(--primaryColorDark);
+            height: 550px;
+            padding: 50px 150px;
+        }
+
+        .footer1 {
+            float: left;
+            width: 21%;
+            padding: 1% 2%;
+        }
+
+        .footer2 {
+            width: 46%;
+            padding: 2%;
+        }
+
+        .footer3 {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .footer3 img {
+            margin: 0px 6px;
+        }
+
+        .footer1>span,
+        p~span {
+            font-size: 15px;
+            line-height: 25px;
+            font-weight: 700;
+            color: rgb(255, 255, 255);
+        }
+
+        .footer p {
+            font-size: 20px;
+            line-height: 0px;
+            color: rgb(196, 196, 196);
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .floatL {
+            float: left;
+        }
+
+        .floatR {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="footer clear">
+        <div style="margin: auto;">
+            <div>
+                <p>Cities we deliver to</p>
+                <div>
+                    <div class="footer1">
+                        <span>Pune</span><br />
+                        <span>Gurgaon</span><br />
+                        <span>Indore</span><br />
+                        <span>Ghaziabad</span><br />
+                        <span>Bhopal</span><br />
+                        <span>Pondicherry</span><br />
+                        <span>Mohali</span><br />
+                        <span>Zirakpur</span><br />
+                        <span>Tirupati</span><br />
+                    </div>
+                    <div class="footer1">
+                        <span>Mumbai</span><br />
+                        <span>New Delhi</span><br />
+                        <span>Nagpur</span><br />
+                        <span>Coimbatore</span><br />
+                        <span>Kolkata</span><br />
+                        <span>Nashik</span><br />
+                        <span>Chandigarh</span><br />
+                        <span>Lucknow</span><br />
+                        <span>Tiruppur</span><br />
+                    </div>
+                    <div class="footer1">
+                        <span>Bangalore</span><br />
+                        <span>Hyderabad</span><br />
+                        <span>Faridabad</span><br />
+                        <span>Dubai</span><br />
+                        <span>Surat</span><br />
+                        <span>Jaipur</span><br />
+                        <span>Vijaywada</span><br />
+                        <span>Kochi</span><br />
+                        <span>Kota</span><br />
+                    </div>
+                    <div class="footer1">
+                        <span>Noida</span><br />
+                        <span>Chennai</span><br />
+                        <span>Ahmedabad</span><br />
+                        <span>Vadodra</span><br />
+                        <span>Mysore</span><br />
+                        <span>Panchukla</span><br />
+                        <span>Vellore</span><br />
+                        <span>Vizag</span><br />
+                        <span>Many more...</span><br />
+                    </div>
+                </div>
+                <div class="clear">
+                    <div class="footer2 floatL">
+                        <p>Legal</p>
+                        <span>Terms & Conditions</span><br />
+                        <span>Privacy Policy</span>
+                    </div>
+                    <div class="footer2 floatR">
+                        <p>Contact</p>
+                        <img style="height: 30px; width: 20px; margin-right: 10px;" sr="images/mail.svg"><span>
+                            crm@faasos.com</span>
+                    </div>
+                </div>
+                <div class="clear" style="margin-bottom: 50px;"></div>
+                <div style="border: 1px solid var(--primaryColorRegular)"></div>
+                <div class="footer3">
+                    <p>2020 @ Faasos. All rights reverved</p>
+                    <div style="display: flex;  flex-direction: row;">
+                        <p style="margin-right: 20px;">Follow us on </p><img sr="images/fb.svg"><img
+                            sr="images/tw.svg"><img sr="images/insta.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="checkOut.js"></script>
