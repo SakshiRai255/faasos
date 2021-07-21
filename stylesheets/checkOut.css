@@ -1,0 +1,63 @@
+            :root {
+                --bodyBack: white;
+                --yellow: rgb(255, 211, 68);
+                --primaryColorLight: #6a55cc;
+                --primaryColorRegular: #57409a;
+                --primaryColorDark: #190b46;
+                --blackText: #333333;
+            }
+            body {
+                font-family: "Mulish", sans-serif;
+                background-color: var(--bodyBack);
+                margin: 0px;
+                width: 100%;
+            }
+        
+
+            
+/* ------------------------------------------ Navbar Area ---------------------------------------------- */
+
+nav {
+  background-color: var(--whiteLight);
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 4%) 0px 4px 8px 0px;
+}
+
+#navContainer {
+  max-width: 1170px;
+  margin: 0px auto;
+  padding: 1.6rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+#navLeft > img {
+  width: 68px;
+  height: 40px;
+}
+
+#navLeft,
+#navRight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navLeft > *,
+#navRight > * {
+  margin-right: 20px;
+}
+
+#navLocation > p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+nav #userName,
+nav .hamburger {
+  color: var(--primaryColorRegular);
+}
