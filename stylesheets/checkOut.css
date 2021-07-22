@@ -135,7 +135,7 @@ nav .hamburger {
   color: #23a112;
 }
 
-.Account_right {
+#Account_right {
   font-size: 2rem;
   color: rgb(51, 51, 51);
   font-weight: 800;
@@ -146,12 +146,12 @@ nav .hamburger {
   font-weight: 800;
 }
 
-.Account_right > h3,
-.Account_right > p {
+#Account_right > h3,
+#Account_right > p {
   margin-bottom: 1rem;
 }
 
-.Account_right > P {
+#Account_right > P {
   font-size: 1.1rem;
   color: gray;
   font-weight: 100;
@@ -183,7 +183,7 @@ nav .hamburger {
   text-transform: initial;
 }
 
-.Account_right > #userDetails {
+#Account_right > #userDetails {
   font-size: 1.5rem;
   color: rgb(51, 51, 51);
   font-weight: 800;
@@ -418,6 +418,11 @@ nav .hamburger {
   font-size: 1.3rem;
   text-align: left;
   color: var(--grayText);
+}
+
+.disableOption{
+  color: var(--grayText);
+  align-self: center;
 }
 
 /* CheckoutItems Details */
