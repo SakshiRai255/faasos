@@ -77,7 +77,6 @@ function checkCart() {
     totalItems.id = 'totalItems';
     totalItems.innerHTML = `${cart.length} item`;
     h2.append(totalItems);
-    console.log(h2);
 
     let cardList = document.createElement('ul');
     cardList.id = 'cardList';
