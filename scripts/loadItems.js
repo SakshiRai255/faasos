@@ -14,7 +14,7 @@ function createFoodItem(food) {
 	  </h3>
 	  <p class="productPrice">
 		<img
-		  src="./images/${food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'}"
+		  src="../images/${food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'}"
 		  alt=""
 		  class="veg_nonVeg"
 		/>
