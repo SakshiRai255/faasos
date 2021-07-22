@@ -18,13 +18,15 @@ function closePopUp() {
 }
 
 function isLoggedUser() {
-  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  let credentialButtons = document.getElementById('credentialButtons');
-  if (loggedUser) {
-    credentialButtons.innerHTML = `<button id="logout" onclick="logout()">Logout</button>`;
-  } else {
-    credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
-    <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
+  if (window.location.pathname == '/pages/landingPage.html') {
+    let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    let credentialButtons = document.getElementById('credentialButtons');
+    if (loggedUser) {
+      credentialButtons.innerHTML = `<button id="logout" onclick="logout()">Logout</button>`;
+    } else {
+      credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
+      <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
+    }
   }
 }
 
@@ -64,7 +66,7 @@ function signUp() {
   }
   allUsers.push(user);
 
-  localStorage.setItem('users', JSON.stringify(user));
+  localStorage.setItem('users', JSON.stringify(allUsers));
   localStorage.setItem('loggedUser', JSON.stringify(user));
   closePopUp();
   isLoggedUser();
