@@ -460,6 +460,7 @@ nav .hamburger {
   font-size: 1.8rem;
   border-radius: 1rem 0 0 1rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .activePaymentOption {
