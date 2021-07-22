@@ -72,40 +72,6 @@ function onclickoutside(e) {
 }
 window.addEventListener('click', onclickoutside);
 
-// function popUpSignup() {
-//     let login = document.getElementById('loginPopup');
-//     login.style.display = "flex";
-
-//     let loginPage = document.getElementById('signUpPopUp');
-
-    
-//     login.append(loginPage);
-// }
-
-// var numberInputS = document.getElementById('phoneNumberS');
-
-// numberInputS.addEventListener('input', function () {
-//     let numberLengthS = numberInputS.value.length;
-//     let popUp = document.getElementById('alertNumberS');
-//     let button = document.getElementById('continueButtonS');
-    
-    
-//     if (numberLengthS <= 9) {
-//         popUp.style.display = 'flex';
-//         numberInputS.style.backgroundImage = 'unset';
-//         button.style.backgroundColor = '#d3d3d6';
-//     } else if (numberLengthS == 10) {
-//         popUp.style.display = 'none';
-//         numberInputS.style.backgroundImage = 'url(../images/greenTick.jpg)';
-//         button.style.backgroundColor = 'rgb(255, 211, 68)';
-//     }
-
-// });
-
-
-
-
-
 
 function goToCollection() {
     window.location.href = '../pages/collections.html'

@@ -25,12 +25,11 @@ function addToCart(id) {
     food.quantity = 1;
     let cartItems = JSON.parse(localStorage.getItem('cart'));
     if (cartItems) {
-      cartItems.push(food); 
+      cartItems.push(food);
     } else {
       cartItems = [food];
     }
     localStorage.setItem('cart', JSON.stringify(cartItems));
-
   } else console.log('Not found');
   checkCart();
 }
@@ -197,6 +196,11 @@ function displayCategories() {
     li.append(a);
     productCategoryList.append(li);
   }
+}
+
+let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+if (!loggedUser) {
+  window.location.href = './landingPage.html';
 }
 
 displayCategories();
