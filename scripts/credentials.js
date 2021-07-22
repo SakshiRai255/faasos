@@ -2,7 +2,8 @@ function findUser(number) {
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) return null;
   for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers.number == number) return allUsers[i];
+    console.log(allUsers[i].number);
+    if (allUsers[i].number == number) return allUsers[i];
   }
   return null;
 }
@@ -16,16 +17,26 @@ function closePopUp() {
   button.style.backgroundColor = '#d3d3d6';
 }
 
+function isLoggedUser() {
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  let credentialButtons = document.getElementById('credentialButtons');
+  if (loggedUser) {
+    credentialButtons.innerHTML = `<button id="logout" onclick="logout()">Logout</button>`;
+  } else {
+    credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
+    <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
+  }
+}
+
 function signIn() {
   let data = document.getElementById('signInForm');
   let allUsers = JSON.parse(localStorage.getItem('users'));
 
-  let user = findUser(data.phoneNumber.value);
+  let number = Number(data.phoneNumber.value);
+  let user = findUser(number);
   if (!user) {
     popUp.style.display = 'flex';
     popUp.textContent = `Not a registered user`;
-
-    let phoneNumber = document.getElementById('phoneNumber');
 
     setTimeout(function () {
       popUp.textContent = `Phone should contain minimum 10 digits`;
@@ -34,6 +45,7 @@ function signIn() {
   } else {
     localStorage.setItem('loggedUser', JSON.stringify(user));
     closePopUp();
+    isLoggedUser();
   }
 }
 
@@ -48,12 +60,19 @@ function signUp() {
 
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) {
-    allUsers = [user];
-  } else {
-    allUsers.push(user);
+    allUsers = [];
   }
+  allUsers.push(user);
 
   localStorage.setItem('users', JSON.stringify(user));
   localStorage.setItem('loggedUser', JSON.stringify(user));
   closePopUp();
+  isLoggedUser();
 }
+
+function logout() {
+  localStorage.removeItem('loggedUser');
+  isLoggedUser();
+}
+
+isLoggedUser();
