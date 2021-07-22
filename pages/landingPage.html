@@ -61,7 +61,12 @@
             <img src="../images/loginLogo.svg" alt="" id="loginLogoSign" />
           </div>
           <form id="signUpForm">
-            <input disabled type="text" id="countryCodeSignUp" placeholder="+91" />
+            <input
+              disabled
+              type="text"
+              id="countryCodeSignUp"
+              placeholder="+91"
+            />
             <input
               type="text"
               pattern="[0-9]{10}"
@@ -83,7 +88,9 @@
               placeholder="Email Address"
             />
           </form>
-          <button id="continueButtonSign" onclick="signUp()">CREATE ACCOUNT</button>
+          <button id="continueButtonSign" onclick="signUp()">
+            CREATE ACCOUNT
+          </button>
           <p style="margin-left: 13px">
             By creating an account, I accept the <span>Terms & Conditions</span>
           </p>
@@ -108,9 +115,10 @@
               style="height: 72px"
               src="https://assets.faasos.io/faasos_v2/faasosLogoBrand.svg"
             />
-            <div>
+            <div id="credentialButtons">
               <button id="login" onclick="popUpLogin()">Login</button>
               <button id="signUp" onclick="popUpSignup()">Sign Up</button>
+              <!-- <button id="logout" onclick="logout()">Logout</button> -->
             </div>
           </div>
           <h1 class="clear h1">Surprises under wraps</h1>
@@ -204,7 +212,7 @@
             <span>✔</span>
             <p>No Artifical Colours or Flavours</p>
           </div>
-          <div style="border-right: 0px solid rgb(255, 255, 255, 0.3) ;">
+          <div style="border-right: 0px solid rgb(255, 255, 255, 0.3)">
             <span>✔</span>
             <p>Double Sealed Packaging</p>
           </div>
