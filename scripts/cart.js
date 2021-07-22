@@ -111,4 +111,4 @@ function checkCart() {
   }
 }
 
-checkCart();
+// checkCart();

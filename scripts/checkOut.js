@@ -16,28 +16,59 @@ function disablePayment() {
   paymentSerial.classList.add('disableOption');
 }
 
-function checkDelivery() {
+function deliverHere() {
   let deliveryRight = document.getElementById('DeliveryRight');
   let deliverySerial = document.getElementById('DeliverySerial');
 
+  deliverySerial.innerHTML = `<i class="fas fa-check"></i>`;
+
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  if (!loggedUser.address) {
-    deliveryRight.innerHTML = `<div class="addresses">
-          <div id="addNewAddress">
-            <h3>Add New Address</h3>
-            <button id="addNew" class="yellowBtn">Add New</button>
+
+  deliveryRight.innerHTML = `<h3>Delivery Address</h3>
+      <div id="FinalDeliveryAddress">
+      <strong>${loggedUser.address['addressType']}</strong>
+      <p> ${loggedUser.address['houseNo']}</p>
+      <p>
+        ${loggedUser.address['landmark']}
+      </p>
+    </div>
+  `;
+
+  addPayment();
+}
+
+function checkDelivery() {
+  let deliveryRight = document.getElementById('DeliveryRight');
+
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+
+  if (loggedUser.address) {
+    deliveryRight.innerHTML = `<h3>Delivery Address</h3>
+      <div class="addresses">
+        <div id="addNewAddress">
+          <h3>Add New Address</h3>
+          <button id="addNew" class="yellowBtn" onclick="addAddress()">Add New</button>
+        </div>
+        <div class="AddressCard">
+          <div class="AddressCardType">
+            <h3>Others</h3>
+            <p>
+              ${loggedUser.address['houseNo']} ${loggedUser.address['landmark']}
+            </p>
           </div>
-          <div class="AddressCard">
-            <div class="AddressCardType">
-              <h3>Others</h3>
-              <p>
-                ${loggedUser.address}
-              </p>
-            </div>
-            <button id="addNew" class="yellowBtn">Deliver Here</button>
-          </div>
-        </div> `;
+          <button id="addNew" class="yellowBtn" onclick="deliverHere()">Deliver Here</button>
+        </div>
+      </div>`;
+  } else {
+    deliveryRight.innerHTML = `<h3>Delivery Address</h3>
+    <div class="addresses">
+      <div id="addNewAddress">
+        <h3>Add New Address</h3>
+        <button id="addNew" class="yellowBtn" onclick="addAddress()">Add New</button>
+      </div>
+    </div>`;
   }
+  disablePayment(); // enable payment option
 }
 
 function checkAccount() {
@@ -61,10 +92,8 @@ function checkAccount() {
                             Sign Up
                         </button>
                     </div> `;
-                    
-                    checkDelivery();
-       
-//     disableDelivery(); // disable delivery option
+
+    disableDelivery(); // disable delivery option
     disablePayment(); // enable payment option
   } else {
     let AccountSerial = document.getElementById('AccountSerial');
@@ -75,8 +104,194 @@ function checkAccount() {
        ${loggedUser.name} &nbsp; | &nbsp; ${loggedUser.number}
      </h4>`;
 
-     // checkDelivery();
-}
+    checkDelivery();
+  }
 }
 
 checkAccount();
+
+function addAddress() {
+  let checkoutMain = document.getElementById('checkoutMain');
+  let openMapPopUp = document.createElement('div');
+  openMapPopUp.id = 'openMapPopUp';
+  openMapPopUp.innerHTML = `
+  <div id="popUpMapContainer">
+    <div id="popUpMapModal">
+      <img src="../images/leftArrow.svg" alt="" id="backButton" />
+      <img src="../images/map.PNG" alt="" class="mapImage">
+    </div>
+    <form>
+      <div id="locationDiv">
+        <div>
+          <img src="../images/location.svg" alt=" ">
+          <h3>Gandhi Market Mirdard Road Area</h3>
+        </div>
+      </div>
+      <input type="text" id="houseNo" placeholder="House / Flat no." />
+      <input type="text" id="landmark" placeholder="Landmark" />
+      <ul class="typeOfAddress">
+        <input type="radio" name="addressType" id="home" value="Home">
+        <label for="home"> <img src="../images/home.svg" alt=""> Home</label>
+        <input type="radio" name="addressType" id="work" value="Work">
+        <label for="work"> <img src="../images/work.svg" alt=""> Work</label>
+        <input type="radio" name="addressType" id="others" value="Others">
+        <label for="others"> <img src="../images/location.svg" alt=""> Others</label>
+      </ul>
+    </form>
+    <button id="saveButton" onclick="addUserAddress()">Save</button>
+  </div>`;
+
+  checkoutMain.append(openMapPopUp);
+}
+
+function addUserAddress() {
+  let addressType = document.querySelector(`input[type="radio"]:checked`).value;
+  let houseNo = document.getElementById(`houseNo`).value;
+  let landmark = document.getElementById(`landmark`).value;
+
+  let address = { addressType, houseNo, landmark };
+
+  let allUsers = JSON.parse(localStorage.getItem('users'));
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].number == loggedUser.number) {
+      allUsers[i].address = address;
+      loggedUser = allUsers[i];
+      break;
+    }
+  }
+
+  localStorage.setItem('users', JSON.stringify(allUsers));
+  localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+
+  let openMapPopUp = document.getElementById('openMapPopUp');
+  openMapPopUp.remove();
+  checkDelivery();
+}
+
+// Add Payment Area
+
+function addPayment() {
+  let paymentRight = document.getElementById('PaymentRight');
+  let paymentSerial = document.getElementById('PaymentSerial');
+
+  paymentRight.classList.remove('disableOption');
+  paymentSerial.classList.remove('disableOption');
+
+  let totalAmount = JSON.parse(localStorage.getItem('totalCartAmount'));
+  let deliveryFees = 97;
+
+  let PaymentRight = document.getElementById('PaymentRight');
+  PaymentRight.innerHTML = `<h3>Payment</h3>
+  <div id="PaymentDetails">
+    <ul id="PaymentOptions">
+      <li>
+          <img
+            class="paymentLogo"
+            src="../images/paymentLogo.svg"
+            alt="" />UPI
+      </li>
+      <li class="activePaymentOption">
+        <img
+          class="paymentLogo"
+          src="../images/paymentLogo.svg"
+          alt=""
+        />COD
+      </li>
+    </ul>
+    <div id="PaymentMode">
+      <div id="COD">
+          <div id="CODInfo">
+            <img src="https://assets.faasos.io/faasos_v2/COD.svg" alt="">
+            <h3>Cash On Delivery</h3>
+            <p>Online payment recommended for better hand hygiene</p>
+          </div>
+          <button id="payButton">Pay ₹ ${totalAmount + deliveryFees}</button>
+        </div>
+      </div>
+  </div>
+`;
+}
+
+function orderSummaryItems() {
+  let totalCartAmount = 0;
+  let cartList = JSON.parse(localStorage.getItem('cart'));
+
+  if (!cartList || cartList.length <= 0) {
+    window.location.href = '../pages/collections.html';
+  }
+
+  let displayCartList = document.getElementById('cartList');
+  displayCartList.innerHTML = null;
+
+  for (let i = 0; i < cartList.length; i++) {
+    displayCartList.append(createCartItem(cartList[i]));
+    totalCartAmount += cartList[i].price * cartList[i].quantity;
+  }
+
+  let cartTotal = document.getElementById('cartTotal');
+  cartTotal.innerHTML = `₹ ${totalCartAmount}`;
+
+  let finalAmount = document.getElementById('finalAmount');
+  finalAmount.innerHTML = `₹ ${totalCartAmount + 97}`;
+
+  localStorage.setItem('totalCartAmount', JSON.stringify(totalCartAmount));
+
+  addPayment();
+}
+
+orderSummaryItems();
+
+// Dummy
+
+function removeCartItem(id) {
+  let cartItems = JSON.parse(localStorage.getItem('cart'));
+  let newCartItems = [];
+  for (let i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].id == id && cartItems[i].quantity <= 1) continue;
+    else if (cartItems[i].id == id) cartItems[i].quantity--;
+    newCartItems.push(cartItems[i]);
+  }
+  localStorage.setItem('cart', JSON.stringify(newCartItems));
+  orderSummaryItems();
+}
+
+function addCartItem(id) {
+  let cartItems = JSON.parse(localStorage.getItem('cart'));
+  for (let i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].id == id) cartItems[i].quantity++;
+  }
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  orderSummaryItems();
+}
+
+function createCartItem(food) {
+  let li = document.createElement('li');
+  li.innerHTML = `
+		<div class="cartItem">
+		  <div class="cartItemDetails">
+			<span class="category"
+			  ><img src="../images/${
+          food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
+        }" alt=""
+			/></span>
+			<div>
+			  <p class="cartItemName">${food.name}</p>
+			  <p class="cartItemAddon">
+				Mexican Potato Salsa Wrap (Default Option),Mexican
+				Potato Salsa Wrap (Default Option),
+			  </p>
+			</div>
+		  </div>
+		  <div class="cartItemCount">
+			<button id="decrease" onclick="removeCartItem(${food.id})">-</button>
+			<span>${food.quantity}</span>
+			<button id="increase" onclick="addCartItem(${food.id})">+</button>
+		  </div>
+		  <div class="cartItemAmount">
+			<span>₹ ${food.price * food.quantity}</span>
+		  </div>
+		</div>
+	  `;
+  return li;
+}
