@@ -130,7 +130,7 @@ function addAddress() {
       <input type="text" id="houseNo" placeholder="House / Flat no." />
       <input type="text" id="landmark" placeholder="Landmark" />
       <ul class="typeOfAddress">
-        <input type="radio" name="addressType" id="home" value="Home">
+        <input type="radio" name="addressType" id="home" value="Home" checked>
         <label for="home"> <img src="../images/home.svg" alt=""> Home</label>
         <input type="radio" name="addressType" id="work" value="Work">
         <label for="work"> <img src="../images/work.svg" alt=""> Work</label>
@@ -185,13 +185,13 @@ function addPayment() {
   PaymentRight.innerHTML = `<h3>Payment</h3>
   <div id="PaymentDetails">
     <ul id="PaymentOptions">
-      <li>
+      <li id="selectGPay">
           <img
             class="paymentLogo"
             src="../images/paymentLogo.svg"
             alt="" />UPI
       </li>
-      <li class="activePaymentOption">
+      <li id="selectCOD" class="activePaymentOption">
         <img
           class="paymentLogo"
           src="../images/paymentLogo.svg"
@@ -294,4 +294,45 @@ function createCartItem(food) {
 		</div>
 	  `;
   return li;
+}
+
+function switchPaymentOption() {
+  let totalCartAmount = JSON.parse(localStorage.getItem("totalCartAmount"));
+
+  for (let i = 0; i < PaymentOptions.length; i++) {
+    PaymentOptions[i].classList.remove('activePaymentOption');
+  }
+  this.classList.add('activePaymentOption');
+  let PaymentMode = document.getElementById('PaymentMode');
+  console.log(this);
+  if (this.id == 'selectGPay') {
+    PaymentMode.innerHTML = `<div id="GPay">
+                    <div id="GPayImage">
+                      <img
+                        src="https://assets.faasos.io/faasos_v2/gpayLogo.png"
+                        alt="google pay"
+                      />
+                      <span><i class="fas fa-check-circle"></i></span>
+                    </div>
+                    <form>
+                      <input type="text" id="gpayNumber" value="9643011147" />
+                      <label for="gpayNumber">Phone Number</label>
+                    </form>
+                    <button id="payButton">Pay ₹ ${totalCartAmount + 97}</button>
+                  </div>`;
+  } else if (this.id == 'selectCOD') {
+    PaymentMode.innerHTML = `<div id="COD">
+    <div id="CODInfo">
+      <img src="https://assets.faasos.io/faasos_v2/COD.svg" alt="">
+      <h3>Cash On Delivery</h3>
+      <p>Online payment recommended for better hand hygiene</p>
+    </div>
+    <button id="payButton">Pay ₹ 319</button>
+  </div>`;
+  }
+}
+
+let PaymentOptions = document.getElementById('PaymentOptions').children;
+for (let i = 0; i < PaymentOptions.length; i++) {
+  PaymentOptions[i].addEventListener('click', switchPaymentOption);
 }

@@ -155,13 +155,15 @@ function displayCategories() {
 
   for (foodCategory in foodItems) {
     let li = document.createElement('li');
+    if (foodCategory == 'Daily Value Wrap Combos (Save Upto 40% Extra)') {
+      li.classList.add('active');
+    }
     let a = document.createElement('a');
 
     a.classList.add('categoryAnchor');
     switch (foodCategory) {
       case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
         a.href = '#dailyValueWrap';
-        a.classList.add('active');
         break;
       case 'Combos for 1 (Save upto 15% Extra)':
         a.href = '#combosForOne';
@@ -195,6 +197,17 @@ function displayCategories() {
 
     li.append(a);
     productCategoryList.append(li);
+  }
+
+  // Adding event listener to scroll to specific section
+  let lis = productCategoryList.children;
+  for (let i = 0; i < lis.length; i++) {
+    lis[i].addEventListener('click', function () {
+      for (let j = 0; j < lis.length; j++) {
+        lis[j].classList.remove('active');
+      }
+      lis[i].classList.add('active');
+    });
   }
 }
 
