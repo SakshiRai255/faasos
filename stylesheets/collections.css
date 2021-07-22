@@ -95,6 +95,7 @@ nav .hamburger {
   position: relative;
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  margin-left: -1000px;
   height: 25rem;
   will-change: transform, transition;
 }
@@ -127,14 +128,23 @@ nav .hamburger {
   transform: translateY(-50%);
 }
 
-.leftArrow {
+#leftArrow {
   left: calc(4% + 1px);
 }
 
-.rightArrow {
+.slideLeft{
+  transform: translate(-400px, 0);
+  transition: transform .5s linear;
+}
+
+#rightArrow {
   right: calc(4% + 1px);
 }
 
+.slideRight{
+  transform: translate(400px, 0);
+  transition: transform .5s linear;
+}
 /* ------------------------------------------ Main Content Area ---------------------------------------------- */
 
 main {

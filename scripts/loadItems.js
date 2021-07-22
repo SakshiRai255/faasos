@@ -1,6 +1,44 @@
-function createFoodItem(food) {
+// Adding items to cart
+function addToCart(id) {
+  // let selectedFood = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+  // let selectedFoodPath = e["path"][5];
+  // console.log(selectedFoodPath);
+
+  let findId = 0;
+  let food = null;
+  for (productCategory in foodItems) {
+    let found = false;
+    let list = foodItems[productCategory];
+    for (let i = 0; i < list.length; i++) {
+      if (findId == id) {
+        food = { ...list[i] };
+        found = true;
+        break;
+      }
+      findId++;
+    }
+    if (found) break;
+  }
+
+  if (food) {
+    food.id = id;
+    food.quantity = 1;
+    let cartItems = JSON.parse(localStorage.getItem('cart'));
+    if (cartItems) {
+      cartItems.push(food); 
+    } else {
+      cartItems = [food];
+    }
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+  } else console.log('Not found');
+  checkCart();
+}
+
+function createFoodItem(food, id) {
   const card = document.createElement('div');
   card.classList.add('card');
+  card.id = id;
   card.innerHTML = `<div class="cardImage">
 	<img
 	  src="${food.img_src}"
@@ -36,7 +74,7 @@ function createFoodItem(food) {
 	  </div>
 	  <div class="productWrapper">
 		<div class="addProduct">
-		  <button>Add</button>
+		  <button onclick="addToCart(${id})">Add</button>
 		</div>
 		<div class="productCustomisable">Customisable</div>
 	  </div>
@@ -51,6 +89,7 @@ function displayFood(category) {
   let productArea = document.getElementById('productArea');
   productArea.innerHTML = null; // clearing out all food items
 
+  let ids = 0; // keeping id for each card
   for (foodCategory in foodItems) {
     let categoryDiv = document.createElement('div');
     switch (foodCategory) {
@@ -100,8 +139,9 @@ function displayFood(category) {
       // if both - then show
       // else should match category
       if (category == 'both' || dish['veg_nonVeg'] == category) {
-        dailyValue.append(createFoodItem(dish));
+        dailyValue.append(createFoodItem(dish, ids));
       }
+      ids++;
     }
 
     allProducts.append(dailyValue);

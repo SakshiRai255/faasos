@@ -34,34 +34,65 @@
       <ul id="menuSlider">
         <li class="menuItem">
           <div>
-            <img src="../images/slider1.jpg" alt="food1" />
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280934986_Faasos%20Combo_3%20May_Signature%20Wraps%20%281%29%20%281%29.jpg"
+              alt="food1"
+            />
           </div>
         </li>
         <li class="menuItem">
           <div>
-            <img src="../images/slider2.jpg" alt="food2" />
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280380694_Banner%201%20%281%29.jpg"
+              alt="food2"
+            />
           </div>
         </li>
         <li class="menuItem">
           <div>
-            <img src="../images/slider5.jpg" alt="food4" />
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756805684_faasos_combo_meal_Serves3.jpg"
+              alt="food4"
+            />
           </div>
         </li>
         <li class="menuItem">
           <div>
-            <img src="../images/slider3.jpg" alt="food3" />
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756516330_faasos_combo_meal_Serves2.jpg"
+              alt="food3"
+            />
           </div>
         </li>
         <li class="menuItem">
           <div>
-            <img src="../images/slider4.jpg" alt="food4" />
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756072234_faasos_combo_meal_Serves1.jpg"
+              alt="food4"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1625660386878_Faasos-SS-%20Web%20banner%208th%20-%2010%20july.jpg"
+              alt="food5"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280991048_Faasos%20Combo_3%20May_Classic%20Wraps%20%281%29.jpg"
+              alt="food5"
+            />
           </div>
         </li>
       </ul>
-      <button class="sliderArrow leftArrow">
+      <button id="leftArrow" class="sliderArrow">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <button class="sliderArrow rightArrow">
+      <button id="rightArrow" class="sliderArrow">
         <i class="fas fa-chevron-right"></i>
       </button>
     </section>
@@ -101,12 +132,16 @@
         </div>
         <hr />
         <div id="mainProducts">
+          <!-- This area is for all product categories -->
           <div id="productCategory">
             <ul id="productCategoryList">
-               <!-- JS will load li with a tag for food category -->
+              <!-- JS will load li with a tag for food category -->
             </ul>
           </div>
+
+          <!-- This area is for all products -->
           <div id="productArea"></div>
+
           <div id="checkout">
             <!-- <h2>Empty Cart</h2>
             <div class="emptyCart">
@@ -117,7 +152,7 @@
               />
               <p>Empty Cart is a sign of an empty stomach.</p>
             </div> -->
-            <div id="allCartItems">
+            <!-- <div id="allCartItems">
               <h2>Cart <span id="totalItems">1 item</span></h2>
               <ul id="cartList">
                 <li>
@@ -177,7 +212,7 @@
                 <div id="subtotalPrice">₹ 289</div>
               </div>
               <button id="subtotalButton">Checkout</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -190,6 +225,8 @@
   ></script>
   <script src="../scripts/foodItems.js"></script>
   <script src="../scripts/loadItems.js"></script>
+  <script src="../scripts/carousel.js"></script>
   <script src="../scripts/checkFilters.js"></script>
   <script src="../scripts/highlightCategory.js"></script>
+  <script src="../scripts/cart.js"></script>
 </html>
