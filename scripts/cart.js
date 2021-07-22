@@ -1,29 +1,29 @@
 let checkOutDiv = document.getElementById('checkout');
 
 function removeCartItem(id) {
-	let cartItems = JSON.parse(localStorage.getItem("cart"));
-	let newCartItems = [];
-	for (let i = 0; i < cartItems.length; i++){
-		if (cartItems[i].id == id && cartItems[i].quantity <= 1) continue;
-		else if (cartItems[i].id == id) cartItems[i].quantity--;
-		newCartItems.push(cartItems[i]);
-	}
-	localStorage.setItem("cart", JSON.stringify(newCartItems));
-	checkCart();
+  let cartItems = JSON.parse(localStorage.getItem('cart'));
+  let newCartItems = [];
+  for (let i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].id == id && cartItems[i].quantity <= 1) continue;
+    else if (cartItems[i].id == id) cartItems[i].quantity--;
+    newCartItems.push(cartItems[i]);
+  }
+  localStorage.setItem('cart', JSON.stringify(newCartItems));
+  checkCart();
 }
 
 function addCartItem(id) {
-	let cartItems = JSON.parse(localStorage.getItem("cart"));
-	for (let i = 0; i < cartItems.length; i++){
-		if (cartItems[i].id == id) cartItems[i].quantity++;
-	}
-	localStorage.setItem("cart", JSON.stringify(cartItems));
-	checkCart();
+  let cartItems = JSON.parse(localStorage.getItem('cart'));
+  for (let i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].id == id) cartItems[i].quantity++;
+  }
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  checkCart();
 }
 
 function createCartItem(food) {
-	let li = document.createElement("li");
-   li.innerHTML = `
+  let li = document.createElement('li');
+  li.innerHTML = `
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
@@ -84,7 +84,7 @@ function checkCart() {
 
     for (let i = 0; i < cart.length; i++) {
       let li = createCartItem(cart[i]);
-      totalCartAmount += (cart[i].price * cart[i].quantity);
+      totalCartAmount += cart[i].price * cart[i].quantity;
       cardList.append(li);
     }
 
@@ -100,6 +100,9 @@ function checkCart() {
     let subtotalButton = document.createElement('button');
     subtotalButton.id = 'subtotalButton';
     subtotalButton.innerText = 'Checkout';
+    subtotalButton.onclick = function () {
+      window.location.href = '../pages/checkOut.html';
+    };
 
     allCartItems.append(h2, cardList, subTotal, subtotalButton);
     checkOutDiv.appendChild(allCartItems);

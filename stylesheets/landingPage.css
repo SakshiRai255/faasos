@@ -1,0 +1,503 @@
+:root {
+  --yellow: rgb(255, 211, 68);
+  --primaryColorLight: #6a55cc;
+  --primaryColorRegular: #57409a;
+  --primaryColorDark: #190b46;
+  --blackText: #333333;
+  font-size: 62.5%;
+}
+body {
+  font-family: "Mulish", sans-serif;
+  background-color: var(--bodyBack);
+  margin: 0px;
+  width: 100%;
+}
+.clear {
+  clear: both;
+}
+.floatL {
+  float: left;
+}
+.floatR {
+  float: right;
+}
+
+/* ----------------------------------------------------Login Popup-------------------------------------------------------------- */
+
+#popUp {
+  display: none;
+  font-size: 1.8rem;
+  font-family: "Mulish", sans-serif;
+  list-style: none;
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+#openPopUp {
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  overflow: hidden auto;
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#popUpContainer {
+  width: 50%;
+  max-width: 500px;
+  min-height: 83vh;
+  max-height: 100%;
+  border-radius: 4px;
+  background-color: white;
+  margin: 4rem auto;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+#popUpModal {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+#popUpModal > p,
+#popUpContainer > p {
+  font-size: 1.3rem;
+  color: var(--blackText);
+  width: 100%;
+  white-space: normal;
+  font-weight: 400;
+  margin: auto;
+}
+
+#backButton {
+  width: 1.4rem;
+  display: inline-block;
+  position: absolute;
+  left: -1.5rem;
+  top: -0.4rem;
+  padding: 1rem;
+}
+
+#popUpModal > h3 {
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: rgb(51, 51, 51);
+  margin: 0px 0px 0px 2.5rem !important;
+  display: flex;
+}
+
+#loginLogo {
+  width: 6rem;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#popUpContainer > form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#popUpContainer > form > input {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: left;
+  padding: 1rem 1rem;
+  height: 4rem;
+  text-align: left;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: rgb(51, 51, 51);
+  font-weight: 700;
+  cursor: text;
+  margin: 1rem;
+  flex: 1 1 auto;
+  outline: none;
+}
+#alertNumber {
+  display: none;
+  font-size: 11px !important;
+  color: red !important;
+  margin-left: 125px !important;
+}
+#countryCode {
+  max-width: 7rem;
+  text-align: center !important;
+}
+#phoneNumber {
+  background-image: unset;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 340px;
+}
+
+#continueButton {
+  margin: 1rem;
+  background-color: #d3d3d6;
+  border: none;
+  outline: none;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
+  width: -webkit-fill-available;
+  font-size: 1.6rem;
+  padding: 1.4rem;
+  z-index: 1;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0.4rem;
+}
+
+.loginSignupSwitch {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  text-align: center;
+  padding: 1rem;
+  background-color: #d3d3d6;
+  font-size: 1.3rem;
+  color: #7e7e7e;
+}
+#openSignUp {
+  color: #57409a;
+}
+
+/* ----------------------------------------------------Login Popup-------------------------------------------------------------- */
+
+#signUpPopUp {
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  overflow: hidden auto;
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#signContainer {
+  width: 50%;
+  max-width: 500px;
+  min-height: 83vh;
+  max-height: 100%;
+  border-radius: 4px;
+  background-color: white;
+  margin: 4rem auto;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+#signUpModal {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+#signUpModal > p,
+#signContainer > p {
+  font-size: 1.3rem;
+  color: var(--blackText);
+  width: 100%;
+  white-space: normal;
+  font-weight: 400;
+  margin: auto;
+}
+#signContainer > p > span {
+  font-size: 1.3rem;
+  color: rgb(8, 8, 167);
+}
+#backButtonSign {
+  width: 1.4rem;
+  display: inline-block;
+  position: absolute;
+  left: -1.5rem;
+  top: -0.4rem;
+  padding: 1rem;
+}
+#loginLogoSign {
+  width: 6rem;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#signUpModal > h3 {
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: rgb(51, 51, 51);
+  margin: 0px 0px 0px 2.5rem !important;
+  display: flex;
+}
+#signContainer > div:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#signContainer > div:nth-of-type(2) > input {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: left;
+  padding: 1rem 1rem;
+  height: 4rem;
+  text-align: left;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: rgb(51, 51, 51);
+  font-weight: 700;
+  cursor: text;
+  margin: 1rem;
+  flex: 1 1 auto;
+  outline: none;
+}
+#aNumber {
+  display: none;
+  font-size: 11px !important;
+  color: red !important;
+  margin: 0px 0px 0px 125px !important;
+}
+#phoneNumberSign {
+  background-image: unset;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 340px;
+}
+#continueButtonSign {
+  margin: 1rem;
+  background-color: #d3d3d6;
+  border: none;
+  outline: none;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
+  width: -webkit-fill-available;
+  font-size: 1.6rem;
+  padding: 1.4rem;
+  z-index: 1;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0.4rem;
+}
+#openLoginUp {
+  color: #57409a;
+}
+/* ----------------------------------------------------Head Part------------------------------------------------------------------- */
+
+#left {
+  background-image: url("https://assets.faasos.io/faasos_v2/brandPattern.png");
+  height: 400px;
+  width: 47%;
+  float: left;
+  padding: 5% 5% 5% 8%;
+}
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main button {
+  cursor: pointer;
+  font-family: "Mulish", sans-serif;
+  background: transparent;
+  color: var(--yellow);
+  font-weight: 900;
+  border: 1px solid var(--yellow);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+#login {
+  border: 1px solid transparent !important;
+}
+#right {
+  float: right;
+  width: 40%;
+  height: 580px;
+}
+.h1 {
+  max-width: 59rem;
+  color: white;
+  font-weight: 900;
+  margin: 50px 0px 50px;
+  display: block;
+  font-size: calc(28px + 11 * ((100vw - 300px) / 1100));
+}
+#location {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 280px;
+  left: 110px;
+  cursor: pointer;
+}
+#location p {
+  font-size: 15px;
+  color: var(--blackText);
+}
+#location input {
+  width: 550px;
+  height: 59px;
+  margin-top: 15px;
+  background: white;
+  padding: 0px;
+  border-radius: 5px 0px 0px 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+  padding-left: 20px;
+  cursor: text;
+  box-shadow: none;
+  outline: none;
+}
+
+/* ----------------------------------------------------center Part 1------------------------------------------------------------------- */
+
+.center1 {
+  height: 450px;
+  text-align: center;
+  padding-top: 100px;
+}
+#center11 {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  height: 350px;
+}
+#center12 {
+  display: grid;
+  grid-template-columns: 15% 75%;
+  grid-template-rows: 54px 54px 54px;
+  gap: 20px 0px;
+}
+.center1 p {
+  font-size: 15px;
+  color: var(--blackText);
+}
+
+/* ----------------------------------------------------Center Part 2------------------------------------------------------------------- */
+
+#center2 {
+  background-color: var(--primaryColorRegular);
+  height: 220px;
+  padding-top: 70px;
+  text-align: center;
+}
+#center21 {
+  width: 85%;
+  margin-left: 95px;
+  background-color: var(--primaryColorLight);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 15% 13% 17% 15% 15% 15%;
+  padding: 10px 0%;
+  justify-content: center;
+  position: absolute;
+  top: 1080px;
+}
+#center21 img {
+  max-width: 200px;
+  height: 45px;
+}
+#center21 > div {
+  border-right: 1px solid rgb(255, 255, 255, 0.3);
+}
+#center21 span {
+  color: var(--primaryColorLight);
+  height: 12px;
+  width: 12px;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 10px;
+  padding: 0px 3px;
+}
+#center21 p {
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 0px 20px;
+}
+#center21 > button {
+  width: auto;
+  height: 35px;
+  background-color: white;
+  color: var(--primaryColorLight);
+  font-weight: 700;
+  cursor: pointer !important;
+  border: 1px solid transparent;
+  margin-top: 18px;
+  margin-left: 20px;
+}
+#center22 {
+  display: grid;
+  grid-template-columns: 17% 17% 17% 17% 17%;
+  padding: 0% 5%;
+  grid-gap: 3%;
+}
+#center22 p {
+  font-size: 13px;
+  color: white;
+  font-weight: 600;
+}
+#center22 img {
+  height: 80px;
+  width: 50px;
+}
+
+/* ----------------------------------------------------Footer------------------------------------------------------------------- */
+
+.footer {
+  background-color: var(--primaryColorDark);
+  height: 550px;
+  padding: 50px 150px;
+}
+.footer1 {
+  float: left;
+  width: 21%;
+  padding: 1% 2%;
+}
+.footer2 {
+  width: 46%;
+  padding: 2%;
+}
+.footer3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.footer3 img {
+  margin: 0px 6px;
+  cursor: pointer;
+}
+.footer1 > span,
+p ~ span {
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+}
+.footer p {
+  font-size: 20px;
+  line-height: 0px;
+  color: rgb(196, 196, 196);
+}
+p ~ span {
+  cursor: pointer;
+}
+p > span {
+  font-weight: 900;
+  font-size: 17px;
+}
