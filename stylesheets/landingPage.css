@@ -132,7 +132,7 @@ body {
   color: red !important;
   margin-left: 125px !important;
 }
-#countryCode {
+#countryCode, #countryCodeSignUp {
   max-width: 7rem;
   text-align: center !important;
 }
@@ -240,12 +240,12 @@ body {
   margin: 0px 0px 0px 2.5rem !important;
   display: flex;
 }
-#signContainer > div:nth-of-type(2) {
+#signContainer > form {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
-#signContainer > div:nth-of-type(2) > input {
+#signContainer > form > input {
   display: flex;
   flex-direction: row;
   -webkit-box-align: center;
