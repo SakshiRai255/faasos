@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Food Online from Faasos in Rajnagar FC, Ghaziabad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/collections.css" />
+  </head>
+  <body>
+    <nav>
+      <div id="navContainer">
+        <div id="navLeft">
+          <img src="../images/faasosLogoPurple.svg" alt="faasos logo" />
+          <div id="navLocation">
+            <p>Ghaziabad</p>
+            <p>Ghaziabad Uttar Pradesh</p>
+          </div>
+        </div>
+        <div id="navRight">
+          <p id="userName">Hi Chiranjeev Thapliyal</p>
+          <p class="hamburger"><i class="fas fa-bars"></i></p>
+        </div>
+      </div>
+    </nav>
+
+    <section id="sliderSection">
+      <ul id="menuSlider">
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280934986_Faasos%20Combo_3%20May_Signature%20Wraps%20%281%29%20%281%29.jpg"
+              alt="food1"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280380694_Banner%201%20%281%29.jpg"
+              alt="food2"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756805684_faasos_combo_meal_Serves3.jpg"
+              alt="food4"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756516330_faasos_combo_meal_Serves2.jpg"
+              alt="food3"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1614756072234_faasos_combo_meal_Serves1.jpg"
+              alt="food4"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1625660386878_Faasos-SS-%20Web%20banner%208th%20-%2010%20july.jpg"
+              alt="food5"
+            />
+          </div>
+        </li>
+        <li class="menuItem">
+          <div>
+            <img
+              src="https://product-assets.faasos.io/production/product/image_1620280991048_Faasos%20Combo_3%20May_Classic%20Wraps%20%281%29.jpg"
+              alt="food5"
+            />
+          </div>
+        </li>
+      </ul>
+      <button id="leftArrow" class="sliderArrow">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="rightArrow" class="sliderArrow">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </section>
+
+    <main>
+      <div id="mainContent" class="container">
+        <div id="mainContentHeading">
+          <h1 class="heading">
+            Order Food Online in <span id="headingLocation">Rajnagar FC</span>
+          </h1>
+          <div class="filterOptions">
+            <button>
+              <img src="../images/searchIcon.svg" alt="" />
+              <span>Search for wraps</span>
+            </button>
+            <button>
+              <input
+                type="radio"
+                name="veg_nonVeg"
+                value="nonVeg"
+                id="nonVeg"
+                onclick="handleVegNonVeg(this)"
+              />
+              <label for="nonVeg">Non-Veg Only</label>
+            </button>
+            <button>
+              <input
+                type="radio"
+                name="veg_nonVeg"
+                value="veg"
+                id="veg"
+                onclick="handleVegNonVeg(this)"
+              />
+              <label for="veg">Veg Only</label>
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div id="mainProducts">
+          <!-- This area is for all product categories -->
+          <div id="productCategory">
+            <ul id="productCategoryList">
+              <!-- JS will load li with a tag for food category -->
+            </ul>
+          </div>
+
+          <!-- This area is for all products -->
+          <div id="productArea"></div>
+
+          <div id="checkout">
+            <!-- <h2>Empty Cart</h2>
+            <div class="emptyCart">
+              <img
+                id="emptyCartImage"
+                src="../images/emptyCart.svg"
+                alt="empty cart"
+              />
+              <p>Empty Cart is a sign of an empty stomach.</p>
+            </div> -->
+            <!-- <div id="allCartItems">
+              <h2>Cart <span id="totalItems">1 item</span></h2>
+              <ul id="cartList">
+                <li>
+                  <div class="cartItem">
+                    <div class="cartItemDetails">
+                      <span class="category"
+                        ><img src="../images/vegLogo.svg" alt=""
+                      /></span>
+                      <div>
+                        <p class="cartItemName">2 Signature Veg Wraps at 289</p>
+                        <p class="cartItemAddon">
+                          Mexican Potato Salsa Wrap (Default Option),Mexican
+                          Potato Salsa Wrap (Default Option),
+                        </p>
+                      </div>
+                    </div>
+                    <div class="cartItemCount">
+                      <button id="decrease">-</button>
+                      <span>1</span>
+                      <button id="increase">+</button>
+                    </div>
+                    <div class="cartItemAmount">
+                      <span>₹ 289</span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="cartItem">
+                    <div class="cartItemDetails">
+                      <span class="category"
+                        ><img src="../images/vegLogo.svg" alt=""
+                      /></span>
+                      <div>
+                        <p class="cartItemName">2 Signature Veg Wraps at 289</p>
+                        <p class="cartItemAddon">
+                          Mexican Potato Salsa Wrap (Default Option),Mexican
+                          Potato Salsa Wrap (Default Option),
+                        </p>
+                      </div>
+                    </div>
+                    <div class="cartItemCount">
+                      <button id="decrease">-</button>
+                      <span>1</span>
+                      <button id="increase">+</button>
+                    </div>
+                    <div class="cartItemAmount">
+                      <span>₹ 289</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div id="subtotal">
+                <div class="subtotalTitle">
+                  <h3>SubTotal</h3>
+                  <p>Extra charges may apply</p>
+                </div>
+                <div id="subtotalPrice">₹ 289</div>
+              </div>
+              <button id="subtotalButton">Checkout</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script
+    src="https://kit.fontawesome.com/7fc87d8fcc.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../scripts/foodItems.js"></script>
+  <script src="../scripts/loadItems.js"></script>
+  <script src="../scripts/carousel.js"></script>
+  <script src="../scripts/checkFilters.js"></script>
+  <script src="../scripts/highlightCategory.js"></script>
+  <script src="../scripts/cart.js"></script>
+</html>
