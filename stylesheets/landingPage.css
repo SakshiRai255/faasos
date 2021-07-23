@@ -460,7 +460,6 @@ body {
 
 #left {
   background-image: url('https://assets.faasos.io/faasos_v2/brandPattern.png');
-
   flex-basis: 90%;
   height: 57rem;
   padding: 5rem 0 0 0;
@@ -470,6 +469,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
 #main button {
   cursor: pointer;
   font-family: 'Mulish', sans-serif;
@@ -536,24 +536,24 @@ body {
 }
 #location input {
   font-weight: bold;
-    padding: 1rem;
-    min-height: 4.8rem;
-    width: 550px;
-    /* height: 59px; */
-    /* margin-top: 15px; */
-    background: white;
-    /* padding: 0px 0px 0px 20px; */
-    border-radius: 5px 0px 0px 5px;
-    border: none;
-    /* font-size: 15px; */
-    font-weight: 400;
-    cursor: text;
-    box-shadow: none;
-    outline: none;
-    font-size: 1.7rem;
+  padding: 1rem;
+  min-height: 4.8rem;
+  width: 550px;
+  /* height: 59px; */
+  /* margin-top: 15px; */
+  background: white;
+  /* padding: 0px 0px 0px 20px; */
+  border-radius: 5px 0px 0px 5px;
+  border: none;
+  /* font-size: 15px; */
+  font-weight: 400;
+  cursor: text;
+  box-shadow: none;
+  outline: none;
+  font-size: 1.7rem;
 }
 
-#location > p:nth-last-child(2){
+#location > p:nth-last-child(2) {
   background: white;
   padding: 17px;
   margin: 0;
@@ -562,7 +562,7 @@ body {
   align-items: center;
 }
 
-#location > p:nth-last-child(1){
+#location > p:nth-last-child(1) {
   background: rgb(255, 211, 68);
   /* padding: 15px; */
   border-radius: 0px 5px 5px 0px;
@@ -579,8 +579,6 @@ body {
   align-items: center;
 }
 
-
-
 /* ----------------------------------------------------center Part 1------------------------------------------------------------------- */
 
 .center1 {
@@ -588,6 +586,11 @@ body {
   text-align: center;
   padding-top: 100px;
 }
+
+.center1 > h1 {
+  font-size: 3.3rem;
+}
+
 #center11 {
   /* width: 70%;
   margin: auto;
@@ -599,6 +602,9 @@ body {
   padding: 0px;
   margin: auto;
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #center12 {
   display: grid;
@@ -623,15 +629,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 #center21 {
   width: 85%;
   margin-left: 95px;
   background-color: var(--primaryColorLight);
   border-radius: 20px;
-  display: grid;
-  grid-template-columns: 15% 13% 17% 15% 15% 15%;
+  /* display: grid; */
+  /* grid-template-columns: 15% 13% 17% 15% 15% 15%; */
   padding: 10px 0%;
   justify-content: center;
   position: absolute;
@@ -643,6 +648,9 @@ body {
   transform: translate(0px, -10px);
   margin: 0 auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 #center21 img {
   max-width: 200px;
@@ -668,14 +676,14 @@ body {
 }
 #center21 > button {
   width: fit-content;
-  height: 35px;
+  height: fit-content;
   background-color: white;
   color: var(--primaryColorLight);
   font-weight: 700;
   cursor: pointer !important;
   border: 1px solid transparent;
-  margin-top: 18px;
-  margin-left: 20px;
+  /* margin-top: 18px;
+  margin-left: 20px; */
   box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
   padding: 7px;
   color: rgb(73, 69, 190);
@@ -741,4 +749,134 @@ p ~ span {
 p > span {
   font-weight: 900;
   font-size: 17px;
+}
+
+/* Media Queries for medium size screens */
+
+@media (max-width: 1440px) {
+  #left {
+    flex-basis: 70%;
+    height: 47rem;
+  }
+
+  #right > img {
+    width: 56rem;
+    height: 58rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  #left > #main,
+  #left > h1 {
+    margin: 3rem;
+  }
+
+  #location {
+    left: 3rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .center1 {
+    height: auto;
+  }
+
+  #center11 {
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 7rem;
+    max-width: 96rem;
+    padding: 0px;
+  }
+
+  #center11 > div:nth-child(2) {
+    align-self: center;
+  }
+}
+
+/* Media Query For Smaller Screen Sizes */
+@media (max-width: 960px) {
+  #left {
+    flex-basis: 100%;
+    height: 61rem;
+  }
+
+  #right {
+    display: none;
+  }
+
+  #location {
+    width: 90%;
+  }
+
+  #location > p {
+    padding: 1rem 1.8rem;
+  }
+
+  .center1 > h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(51, 51, 51);
+    font-weight: 800;
+    margin: 0px;
+  }
+
+  #center12 > p > span > p {
+    font-size: 1.3rem;
+    color: rgb(126, 126, 126);
+    width: 100%;
+    white-space: normal;
+    font-weight: 400;
+  }
+
+  #center12 > p > span {
+    color: var(--blackText);
+  }
+
+  #center2 {
+    height: fit-content;
+  }
+
+  #center21 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #center21 > div {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer{
+    height: fit-content;
+    padding: 1rem;
+  }
+
+  .footer p{
+    line-height: unset;
+  }
+
+}
+
+@media (max-width: 720px) {
+  #center11 > div {
+    text-align: left;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 580px) {
+  #location > p {
+    font-size: 1rem;
+  }
+
+  #center22 {
+    display: flex;
+    flex-direction: column;
+  }
 }
