@@ -18,6 +18,50 @@
     <link rel="stylesheet" href="../stylesheets/collections.css" />
   </head>
   <body onload="checkCart()">
+    <div id="searchFoodPopUp">
+      <div id="productSearchDiv">
+        <div id="productSearchContainer">
+          <div id="productSearchInputDiv">
+            <span class="backButton" onclick="closeSearchFoodPopUp()" ><i class="fas fa-chevron-left"></i></span>
+            <input
+              type="text"
+              id="productSearchInput"
+              placeholder="Search for Dishes"
+            />
+          </div>
+          <div id="productSearchResults">
+            <div id="displayFilterItems">
+              <!-- <div class="searchFoodCard">
+                <img
+                  class="searchFoodCardImage"
+                  src="https://product-assets.faasos.io/production/product/image_1622813195694_image_es_1618555841315_2%20Signature%20Veg%20Wraps%20%40279.jpg"
+                  alt=""
+                />
+                <div class="searchFoodDetails">
+                  <div class="searchFoodUpper">
+                    <a href="">2 Signature Veg Wraps at 289</a>
+                    <span
+                      ><img src="../images/vegLogo.svg" alt="" /><span
+                        class="searchFoodPrice"
+                        >₹ 289</span
+                      ></span
+                    >
+                  </div>
+                  <div class="searchFoodDescription">
+                    <p>Amazing wraps and savings! What else can... </p>
+                    <span>Read more</span>
+                  </div>
+                  <div class="searchFoodAddButton">
+                    <button>Add</button>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <nav>
       <div id="navContainer">
         <div id="navLeft">
@@ -110,7 +154,7 @@
             Order Food Online in <span id="headingLocation">Rajnagar FC</span>
           </h1>
           <div class="filterOptions">
-            <button>
+            <button onclick="openSearchFoodMenu()">
               <img src="../images/searchIcon.svg" alt="" />
               <span>Search for wraps</span>
             </button>
@@ -317,4 +361,5 @@
   <script src="../scripts/checkFilters.js"></script>
   <script src="../scripts/highlightCategory.js"></script>
   <script src="../scripts/cart.js"></script>
+  <script src="../scripts/searchFood.js"></script>
 </html>
