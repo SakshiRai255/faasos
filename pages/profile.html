@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Food Online from Faasos | Zero Contact Delivery</title>
     <link
       rel="shortcut icon"
@@ -12,52 +15,88 @@
       href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
       rel="stylesheet"
     />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../stylesheets/order.css" />
+    <link rel="stylesheet" href="../stylesheets/profile.css" />
   </head>
   <body>
     <nav>
       <div id="navContainer">
         <div id="navLeft">
-          <img src="../images/faasosLogoPurple.svg" alt="faasos logo" />
+          <img src="../images/logofasa.svg" alt="faasos logo" />
           <div id="navLocation">
             <p>Ghaziabad</p>
             <p>Ghaziabad Uttar Pradesh</p>
           </div>
         </div>
         <div id="navRight">
-          <p id="userName">Hi Chiranjeev Thapliyal</p>
+          <p id="userName"></p>
           <p class="hamburger"><i class="fas fa-bars"></i></p>
         </div>
       </div>
     </nav>
-
-    <!------------------------------------- final order------------------------------------------------------>
-
-    <div id="orderPlaced">
-      <div id="order_img">
-        <img
-          src="https://5.imimg.com/data5/RU/EG/IK/SELLER-64708915/delivery-boy-job-500x500.png"
-          alt=""
-        />
-        <span id="faasosLogo">
-          <img src="../images/faasosLogoPurple.svg" alt="faasos logo" />
-        </span>
+    <div id="mainhead">
+      <div id="logoBox">
+        <img class="logo" src="../images/logoicon.svg" />
       </div>
-      <h2>
-        <span class="outer"
-          ><i class="fas fa-certificate"
-            ><span class="inner"><i class="fas fa-check"></i></span></i
-        ></span>
-        Your Order Has Been Placed, we will deliver soon.
-      </h2>
-      <button id="checkOrders" onclick="goToProfile()">Track Your Order</button>
+      <div>
+        <h2 id="theName">Shantanu</h2>
+        <p id="theNumber">7447556344</p>
+        <p id="theEmail">shantanu@gmail.com</p>
+      </div>
     </div>
-
-    <!------------------------------------- footer area------------------------------------------------------>
-
+    <div id="profileDetail">
+      <div id="navBar">
+        <div id="bar1" onclick="showProfile()">Profile</div>
+        <div id="bar2" onclick="showOrders()">Orders</div>
+        <div id="bar3" onclick="showPayments()">Payments</div>
+        <div id="bar4" onclick="showAddresses()">Addresses</div>
+      </div>
+      <div id="showBar">
+        <div id="profile">
+          <h2>Manage Profile</h2>
+          <div id="profileLogo">
+            <img src="../images/logoicon.svg" />
+          </div>
+          <div id="userDetail">
+            <div class="userBox">
+              <p>Title</p>
+              <h2 id="name"></h2>
+            </div>
+            <div class="userBox">
+              <p>Phone No.</p>
+              <h2 id="number"></h2>
+            </div>
+            <div class="userBox">
+              <p>Email</p>
+              <h2 id="email"></h2>
+            </div>
+          </div>
+        </div>
+        <div id="order">
+          <img src="../images/orderLogo.svg" />
+          <h2>Looks bland, add some deliciousness</h2>
+          <button onclick="goToCollections()">ORDER NOW</button>
+        </div>
+        <div id="payment">
+          <img src="../images/orderPaymentLogo.svg" />
+          <h2>No linked payments</h2>
+        </div>
+        <div id="address">
+          <h2>Manage Addresses</h2>
+          <div id="add">
+            <div id="box1">
+              <h3>ADD NEW ADDRESS</h3>
+              <button onclick="addAddress()">ADD NEW</button>
+            </div>
+            <div id="box2">
+              <h2 id="addressType">Home</h2>
+              <p id="addAddress">Ahmedabad, Gujarat - 380028</p>
+              <button onclick="addAddress()">EDIT</button
+              ><button onclick="deleteAddress(event)">DELETE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="footer clear">
       <div style="margin: auto">
         <div>
@@ -138,9 +177,5 @@
     </div>
   </body>
 </html>
-<script
-  src="https://kit.fontawesome.com/7fc87d8fcc.js"
-  crossorigin="anonymous"
-></script>
-<script src="../scripts/order.js"></script>
 <script src="../scripts/navbar.js"></script>
+<script src="../scripts/profile.js"></script>
