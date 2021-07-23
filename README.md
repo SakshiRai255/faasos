@@ -1,7 +1,7 @@
 #Faasos Website Clone
 
  - Content  
-	- [ ] Landing Page
+	- [x] Landing Page
 	- [x] Collections Page
-	- [ ] Checkout Page
-	- [ ] Profile Page
+	- [x] Checkout Page
+	- [x] Profile Page
