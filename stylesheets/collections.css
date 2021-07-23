@@ -7,6 +7,7 @@
 }
 
 :root {
+  --yellow: rgb(255, 211, 68);
   --primaryColorLight: #6a55cc;
   --primaryColorRegular: #57409a;
   --primaryColorDark: #190b46;
@@ -194,6 +195,7 @@ main {
   justify-content: flex-start;
   align-items: center;
   margin: 0 0.6rem;
+  cursor: pointer;
 }
 
 .filterOptions > button:not(:nth-child(1)) {
@@ -719,3 +721,204 @@ p > span {
     margin: 1rem auto;
   }
 }
+
+/* Demo feature, in progress below this */
+
+#searchFoodPopUp {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #000000bf;
+  top: 0;
+  left: 0;
+  z-index: 1111;
+  display: none;
+}
+
+#productSearchDiv {
+  background: rgb(245, 245, 246);
+  padding: 4rem 0px;
+  height: 80%;
+}
+
+#productSearchContainer {
+  padding: 0px 1.6rem;
+  max-width: 108rem;
+  margin: 0px auto;
+  height: 100%;
+}
+
+#productSearchInputDiv {
+  position: relative;
+}
+
+#productSearchInputDiv > .backButton {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#productSearchInput {
+  font-size: 1.6rem;
+  min-height: 6rem;
+  color: var(--blackText);
+  border-radius: 0.4rem;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 8%);
+
+  padding: 1rem 1rem !important;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#productSearchResults {
+  padding: 1.6rem 2rem 0;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+#displayFilterItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.searchFoodCard {
+  flex: 1 1 49%;
+  max-width: 49%;
+  display: flex;
+  border: 1px solid gainsboro;
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-bottom: 1rem;
+}
+
+.searchFoodCardImage {
+  flex: 0 0 120px;
+  overflow: hidden;
+  max-width: 120px;
+  object-fit: cover;
+  border-radius: 0.4rem;
+}
+
+.searchFoodDetails {
+  flex: 0 0 calc(100% - 120px);
+  padding-left: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.searchFoodUpper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.searchFoodUpper > a {
+  flex: 1 1 70%;
+  max-width: 70%;
+  color: var(--blackText);
+  font-weight: 900;
+}
+
+.searchFoodUpper > span {
+  flex: 1 1 30%;
+  max-width: 30%;
+}
+
+.searchFoodUpper > span > img {
+  width: 10px;
+  height: 10px;
+  margin-right: 1rem;
+}
+
+.searchFoodDescription {
+  font-size: 1.1rem;
+}
+
+.searchFoodDescription > p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.searchFoodDescription > span {
+  color: var(--grayText);
+  font-weight: 700;
+  margin: 0;
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.searchFoodAddButton {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchFoodAddButton > button {
+  background-color: var(--yellow);
+  border: none;
+  color: var(--blackText);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.4rem;
+  width: 30%;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .searchFoodCard {
+    width: 100%;
+    flex: unset;
+    max-width: unset;
+  }
+}
+
+@media (min-width: 440px) {
+  #productSearchInputDiv > input#productSearchInput {
+    width: 100%;
+    padding: 1rem 4rem !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .searchFoodCard {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .searchFoodUpper {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .searchFoodUpper > a {
+    margin-bottom: 1rem;
+  }
+
+  .searchFoodDescription {
+    text-align: center;
+  }
+
+  .searchFoodAddButton {
+    justify-content: center;
+  }
+}
+
+/* Demo feature, in progress  above this*/
