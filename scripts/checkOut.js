@@ -185,7 +185,7 @@ function addPayment() {
   PaymentRight.innerHTML = `<h3>Payment</h3>
   <div id="PaymentDetails">
     <ul id="PaymentOptions">
-      <li id="selectGPay">
+      <li id="selectGPay" >
           <img
             class="paymentLogo"
             src="../images/paymentLogo.svg"
@@ -206,11 +206,14 @@ function addPayment() {
             <h3>Cash On Delivery</h3>
             <p>Online payment recommended for better hand hygiene</p>
           </div>
-          <button id="payButton">Pay ₹ ${totalAmount + deliveryFees}</button>
+          <button id="payButton" onclick="orderFood()">Pay ₹ ${
+            totalAmount + deliveryFees
+          }</button>
         </div>
       </div>
   </div>
 `;
+  chooseOption();
 }
 
 function orderSummaryItems() {
@@ -237,7 +240,10 @@ function orderSummaryItems() {
 
   localStorage.setItem('totalCartAmount', JSON.stringify(totalCartAmount));
 
-  addPayment();
+  let paymentRight = document.getElementById('PaymentRight');
+  if (!paymentRight.classList.contains('disableOption')) {
+    addPayment();
+  }
 }
 
 orderSummaryItems();
@@ -297,14 +303,15 @@ function createCartItem(food) {
 }
 
 function switchPaymentOption() {
-  let totalCartAmount = JSON.parse(localStorage.getItem("totalCartAmount"));
+  let PaymentOptions = document.getElementById('PaymentOptions').children;
+
+  let totalCartAmount = JSON.parse(localStorage.getItem('totalCartAmount'));
 
   for (let i = 0; i < PaymentOptions.length; i++) {
     PaymentOptions[i].classList.remove('activePaymentOption');
   }
   this.classList.add('activePaymentOption');
   let PaymentMode = document.getElementById('PaymentMode');
-  console.log(this);
   if (this.id == 'selectGPay') {
     PaymentMode.innerHTML = `<div id="GPay">
                     <div id="GPayImage">
@@ -318,7 +325,9 @@ function switchPaymentOption() {
                       <input type="text" id="gpayNumber" value="9643011147" />
                       <label for="gpayNumber">Phone Number</label>
                     </form>
-                    <button id="payButton">Pay ₹ ${totalCartAmount + 97}</button>
+                    <button id="payButton"  onclick="orderFood()">Pay ₹ ${
+                      totalCartAmount + 97
+                    }</button>
                   </div>`;
   } else if (this.id == 'selectCOD') {
     PaymentMode.innerHTML = `<div id="COD">
@@ -327,12 +336,20 @@ function switchPaymentOption() {
       <h3>Cash On Delivery</h3>
       <p>Online payment recommended for better hand hygiene</p>
     </div>
-    <button id="payButton">Pay ₹ 319</button>
+    <button id="payButton" onclick="orderFood()">Pay ₹ ${
+      totalCartAmount + 97
+    }</button>
   </div>`;
   }
 }
 
-let PaymentOptions = document.getElementById('PaymentOptions').children;
-for (let i = 0; i < PaymentOptions.length; i++) {
-  PaymentOptions[i].addEventListener('click', switchPaymentOption);
+function chooseOption() {
+  let PaymentOptions = document.getElementById('PaymentOptions').children;
+  for (let i = 0; i < PaymentOptions.length; i++) {
+    PaymentOptions[i].addEventListener('click', switchPaymentOption);
+  }
+}
+
+function orderFood() {
+  console.log('Wohoooo! Order Placed');
 }
