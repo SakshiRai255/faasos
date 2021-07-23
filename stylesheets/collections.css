@@ -50,7 +50,7 @@ nav {
   justify-content: space-between;
 }
 
-#navLeft > img {
+#navLeft > a > img {
   width: 68px;
   height: 40px;
 }

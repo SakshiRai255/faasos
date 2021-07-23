@@ -52,7 +52,7 @@ nav {
   justify-content: space-between;
 }
 
-#navLeft > img {
+#navLeft > a > img {
   width: 68px;
   height: 40px;
 }
@@ -102,10 +102,24 @@ nav .hamburger {
   align-items: center;
   width: fit-content;
   margin-right: 1rem;
+  animation: successfull 3s;
+  animation-iteration-count: infinite;
 }
 
 .outer > .fa-certificate {
   font-size: 2rem;
+}
+
+@keyframes successfull {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.5);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
 
 .inner > i.fa-check {
@@ -214,11 +228,20 @@ p > span {
     font-size: 1.4rem;
   }
 
+  #order_img > img{
+    width: 95%;
+  }
+
   .footer1 {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 2rem auto;
   }
+
+  .footer1 > span{
+    margin-right: 1rem;
+  }
+
 }

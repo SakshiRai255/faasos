@@ -50,7 +50,7 @@ nav {
   justify-content: space-between;
 }
 
-#navLeft > img {
+#navLeft > a > img {
   width: 68px;
   height: 40px;
 }
@@ -86,6 +86,7 @@ nav .hamburger {
   justify-content: center;
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
 }
 #logoBox {
   background-color: white;
@@ -115,6 +116,7 @@ nav .hamburger {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
 }
 #bar1,
 #bar2,
@@ -127,7 +129,7 @@ nav .hamburger {
   cursor: pointer;
 }
 #profile {
-  margin: 20px 120px;
+  margin: 2rem;
   display: none;
 }
 
@@ -145,10 +147,10 @@ nav .hamburger {
 }
 
 .userBox {
-  width: 800px;
+  /* width: 800px; */
   background-color: white;
   border-radius: 5px;
-  margin: 20px 0px 0px 10px;
+  margin: 20px 0px 0px 0px;
   padding: 30px;
 }
 .userBox > p {
@@ -314,8 +316,57 @@ p > span {
   float: right;
 }
 
+/* Media Queries for small screen sizes */
+@media (max-width: 960px) {
+  .footer {
+    height: fit-content;
+    padding: 1rem;
+  }
 
+  .footer p {
+    line-height: unset;
+  }
+}
 
+@media (max-width: 560px) {
+  #orderPlaced > h2 {
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+  }
+
+  #order_img > img{
+    width: 95%;
+  }
+
+  .footer1 {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+  }
+
+  .footer1 > span{
+    margin-right: 1rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+  #mainhead{
+    height: auto;
+  }
+
+  .userBox{
+    padding: 1rem;
+  }
+
+  .userBox > h2, .userBox > p{
+    font-size: 1.2rem;
+
+  }
+
+}
 
 /* Add New Address Pop Up Start Here*/
 
