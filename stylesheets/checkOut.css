@@ -54,7 +54,7 @@ nav {
   justify-content: space-between;
 }
 
-#navLeft > img {
+#navLeft > a > img {
   width: 68px;
   height: 40px;
 }
@@ -84,7 +84,7 @@ nav .hamburger {
 /* ------------------------------------------------Checkout area ---------------------------------------------------- */
 
 #checkoutMain {
-  margin: 2rem auto;
+  /* margin: 2rem auto; */
   background-color: var(--whiteRegular);
   width: 100%;
 }
@@ -752,6 +752,25 @@ p ~ span {
   float: right;
 }
 
+/* Media queries for medium screen sizes */
+@media (max-width: 1280px) {
+  #checkoutMainContainer {
+    flex-wrap: wrap;
+    min-width: 58rem;
+  }
+
+  #checkoutDetails {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  #checkout {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 /* Media Queries for small screen sizes */
 @media (max-width: 960px) {
   .footer {
@@ -761,5 +780,47 @@ p ~ span {
 
   .footer p {
     line-height: unset;
+  }
+}
+
+@media (max-width: 720px) {
+  #checkoutMainContainer {
+    min-width: unset;
+    width: unset;
+  }
+
+  #checkoutDetails > div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .addresses {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #addNewAddress,
+  .AddressCard,
+  #grandTotalDiv,
+  #allCartItems {
+    width: unset;
+  }
+
+  #PaymentDetails {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #PaymentOptions {
+    width: unset;
+    margin-bottom: 1rem;
+  }
+
+  #addNew {
+    margin: 0 auto;
   }
 }

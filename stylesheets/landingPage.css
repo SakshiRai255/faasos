@@ -878,13 +878,44 @@ p > span {
     text-align: left;
     width: 90%;
     margin: 1rem auto;
-    padding: 0 3rem;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 580px) {
+  #location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  #location > input {
+    width: unset;
+  }
+
   #location > p {
     font-size: 1rem;
+    margin-top: 1rem!important;
+  }
+
+  #center11 > div:nth-last-child(1) {
+    width: unset!important;
+  }
+
+  #center12 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #center12 > p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   #center22 {
