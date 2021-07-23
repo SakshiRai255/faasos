@@ -3,10 +3,10 @@
   text-decoration: none;
   list-style: none;
   padding: 0;
+  font-family: 'Mulish', sans-serif;
 }
 
 :root {
-  
   --bodyBack: white;
   --yellow: rgb(255, 211, 68);
   --primaryColorLight: #6a55cc;
@@ -80,7 +80,7 @@ nav .hamburger {
 }
 /* ------------------------------------------ final order ---------------------------------------------- */
 
-#orderPlaced{
+#orderPlaced {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -89,27 +89,26 @@ nav .hamburger {
   margin: 2rem auto;
 }
 
-#orderPlaced > h2{
+#orderPlaced > h2 {
   color: var(--primaryColorLight);
   display: flex;
   text-transform: capitalize;
 }
 
-.outer{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    margin-right: 1rem;
+.outer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin-right: 1rem;
 }
 
-.outer > .fa-certificate{
+.outer > .fa-certificate {
   font-size: 2rem;
 }
 
-
-.inner > i.fa-check{
+.inner > i.fa-check {
   color: white;
   position: absolute;
   top: 50%;
@@ -118,32 +117,30 @@ nav .hamburger {
   font-size: 1rem;
 }
 
-#order_img{
-  
+#order_img {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: fit-content;
   margin: 2rem auto;
-
 }
 
-#order_img > #faasosLogo{
+#order_img > #faasosLogo {
   width: 60px;
-    display: flex;
-    height: 60px;
-    position: absolute;
-    left: 26%;
-    top: 42%;
+  display: flex;
+  height: 60px;
+  position: absolute;
+  left: 26%;
+  top: 42%;
 }
 
-#order_img > #faasosLogo > img{
+#order_img > #faasosLogo > img {
   width: 100%;
   height: 100%;
 }
 
-#checkOrders{
+#checkOrders {
   padding: 1.6rem 2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -211,14 +208,13 @@ p > span {
   }
 }
 
-
 @media (max-width: 560px) {
-  #orderPlaced > h2{
+  #orderPlaced > h2 {
     flex-wrap: wrap;
     font-size: 1.4rem;
-  } 
+  }
 
-  .footer1{
+  .footer1 {
     width: 100%;
     display: flex;
     justify-content: space-around;

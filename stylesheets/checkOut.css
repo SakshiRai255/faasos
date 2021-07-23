@@ -4,6 +4,7 @@
   text-decoration: none;
   list-style: none;
   padding: 0;
+  font-family: 'Mulish', sans-serif;
 }
 
 :root {
@@ -131,7 +132,9 @@ nav .hamburger {
   margin-right: 1rem;
 }
 
-#AccountSerial > i, #DeliverySerial > i, #PaymentSerial > i {
+#AccountSerial > i,
+#DeliverySerial > i,
+#PaymentSerial > i {
   color: #23a112;
 }
 

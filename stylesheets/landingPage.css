@@ -1,3 +1,7 @@
+* {
+  font-family: 'Mulish', sans-serif;
+}
+
 :root {
   --yellow: rgb(255, 211, 68);
   --primaryColorLight: #6a55cc;
@@ -449,11 +453,11 @@ body {
   border-radius: 0.4rem;
 }
 
-button{
+button {
   color: white;
 }
 
-button[disabled]{
+button[disabled] {
   filter: grayscale(1);
 }
 
@@ -859,15 +863,14 @@ p > span {
     align-items: center;
   }
 
-  .footer{
+  .footer {
     height: fit-content;
     padding: 1rem;
   }
 
-  .footer p{
+  .footer p {
     line-height: unset;
   }
-
 }
 
 @media (max-width: 720px) {
