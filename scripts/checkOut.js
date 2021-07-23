@@ -351,5 +351,5 @@ function chooseOption() {
 }
 
 function orderFood() {
-  console.log('Wohoooo! Order Placed');
+  window.location.href = './order.html';
 }
