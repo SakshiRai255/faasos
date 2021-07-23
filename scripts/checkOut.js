@@ -351,5 +351,25 @@ function chooseOption() {
 }
 
 function orderFood() {
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  let currentCart = JSON.parse(localStorage.getItem('cart'));
+  if (!loggedUser.orders) {
+    loggedUser.orders = [];
+  }
+  loggedUser.orders = [...currentCart, ...loggedUser.orders];
+  console.log('currentOrder:', loggedUser.orders);
+
+  let allUsers = JSON.parse(localStorage.getItem('users'));
+  for (let i = 0; i < allUsers.length; i++) {
+    if (loggedUser.number == allUsers[i].number) {
+      allUsers[i] = loggedUser;
+      break;
+    }
+  }
+
+  localStorage.setItem('users', JSON.stringify(allUsers));
+  localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  localStorage.setItem('cart', null);
+
   window.location.href = './order.html';
 }
