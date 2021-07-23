@@ -174,6 +174,9 @@ function onclickoutside(e) {
 window.addEventListener('click', onclickoutside);
 
 function goToCollection() {
+  
+  let locationInput = document.getElementById("locationInput").value;
+  localStorage.setItem("location", locationInput);
   window.location.href = '../pages/collections.html';
 }
 

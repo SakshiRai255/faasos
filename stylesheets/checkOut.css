@@ -544,6 +544,7 @@ nav .hamburger {
   margin-top: 1rem;
   border-radius: 0.5rem;
   box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
+  cursor: pointer;
 }
 
 #CODInfo {
@@ -697,7 +698,7 @@ nav .hamburger {
 
 .footer {
   background-color: var(--primaryColorDark);
-  height: 550px;
+  /* height: 550px; */
   padding: 50px 150px;
 }
 
@@ -732,7 +733,7 @@ p ~ span {
 
 .footer p {
   font-size: 20px;
-  line-height: 0px;
+  /* line-height: 0px; */
   color: rgb(196, 196, 196);
 }
 
@@ -746,4 +747,16 @@ p ~ span {
 
 .floatR {
   float: right;
+}
+
+/* Media Queries for small screen sizes */
+@media (max-width: 960px) {
+  .footer {
+    height: fit-content;
+    padding: 1rem;
+  }
+
+  .footer p {
+    line-height: unset;
+  }
 }
