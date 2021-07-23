@@ -7,7 +7,7 @@
   font-size: 62.5%;
 }
 body {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   background-color: var(--bodyBack);
   margin: 0px;
   width: 100%;
@@ -27,7 +27,7 @@ body {
 #popUp {
   display: none;
   font-size: 1.8rem;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   list-style: none;
   text-decoration: none;
   margin: 0px;
@@ -132,7 +132,8 @@ body {
   color: red !important;
   margin-left: 125px !important;
 }
-#countryCode, #countryCodeSignUp {
+#countryCode,
+#countryCodeSignUp {
   max-width: 7rem;
   text-align: center !important;
 }
@@ -173,8 +174,144 @@ body {
 #openSignUp {
   color: #57409a;
 }
+/* ----------------------------------------------------OTP Verify Popup-------------------------------------------------------------- */
 
-/* ----------------------------------------------------Login Popup-------------------------------------------------------------- */
+#otpVeriy {
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  overflow: hidden auto;
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#otpContainer {
+  width: 50%;
+  max-width: 500px;
+  min-height: 83vh;
+  max-height: 100%;
+  border-radius: 4px;
+  background-color: white;
+  margin: 4rem auto;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+#otpModal {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+#otpModal > p,
+#otpContainer > p {
+  font-size: 1.3rem;
+  color: var(--blackText);
+  width: 100%;
+  white-space: normal;
+  font-weight: 400;
+  margin: auto;
+}
+
+#backButtonOTP {
+  width: 1.4rem;
+  display: inline-block;
+  position: absolute;
+  left: -1.5rem;
+  top: -0.4rem;
+  padding: 1rem;
+}
+
+#otpModal > h3 {
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: rgb(51, 51, 51);
+  margin: 0px 0px 0px 2.5rem !important;
+  display: flex;
+}
+
+#loginLogoOTP {
+  width: 6rem;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#otpContainer > form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#otpContainer > form > input {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: left;
+  padding: 1rem 1rem;
+  height: 4rem;
+  text-align: left;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: rgb(51, 51, 51);
+  font-weight: 700;
+  cursor: text;
+  margin: 1rem;
+  flex: 1 1 auto;
+  outline: none;
+}
+#alertOTP {
+  display: none;
+  font-size: 11px !important;
+  color: red !important;
+  margin-left: 15px !important;
+}
+#sendOTP {
+  display: flex;
+  font-size: 11px !important;
+  color: rgb(2, 92, 2) !important;
+  margin-left: 15px !important;
+}
+#resend {
+  display: flex;
+  font-size: 12px !important;
+  color: rgb(8, 8, 167) !important;
+  margin: 5px 5px 5px 420px !important;
+  cursor: pointer;
+}
+#OTP {
+  background-image: unset;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 450px;
+}
+
+#verifyButton {
+  margin: 1rem;
+  background-color: #d3d3d6;
+  border: none;
+  outline: none;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
+  width: -webkit-fill-available;
+  font-size: 1.6rem;
+  padding: 1.4rem;
+  z-index: 1;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0.4rem;
+}
+
+/* ----------------------------------------------------Sign Up Popup-------------------------------------------------------------- */
 
 #signUpPopUp {
   position: fixed;
@@ -277,6 +414,25 @@ body {
   background-repeat: no-repeat;
   background-position: 340px;
 }
+#userName {
+  background-image: unset;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 452px;
+}
+#email {
+  background-image: unset;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 452px;
+  min-width: 400px;
+}
+#checkEmail {
+  display: none;
+  font-size: 11px !important;
+  color: red !important;
+  margin: 0px 0px 0px 10px !important;
+}
 #continueButtonSign {
   margin: 1rem;
   background-color: #d3d3d6;
@@ -297,20 +453,26 @@ body {
 }
 /* ----------------------------------------------------Head Part------------------------------------------------------------------- */
 
-#left {
-  background-image: url("https://assets.faasos.io/faasos_v2/brandPattern.png");
-  height: 400px;
-  width: 47%;
-  float: left;
-  padding: 5% 5% 5% 8%;
+.head {
+  display: flex;
+  flex-direction: row;
 }
+
+#left {
+  background-image: url('https://assets.faasos.io/faasos_v2/brandPattern.png');
+
+  flex-basis: 90%;
+  height: 57rem;
+  padding: 5rem 0 0 0;
+}
+
 #main {
   display: flex;
   justify-content: space-between;
 }
 #main button {
   cursor: pointer;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   background: transparent;
   color: var(--yellow);
   font-weight: 900;
@@ -320,16 +482,33 @@ body {
   font-size: 20px;
   margin-top: 10px;
 }
+
+#left > #main,
+#left > h1 {
+  margin-left: 11.3rem;
+  margin-right: 4.7rem;
+}
+
 #login {
   border: 1px solid transparent !important;
 }
 #right {
-  float: right;
-  width: 40%;
-  height: 580px;
+  display: block;
+  margin-top: 0px;
+  flex-basis: 30%;
 }
 
-#credentialButtons > #logout{
+#right > img {
+  width: 660px;
+  height: 680px;
+  border-radius: 0 0 0 5rem;
+}
+
+#credentialButtons > button {
+  font-size: 1.6rem;
+}
+
+#credentialButtons > #logout {
   border: none;
 }
 
@@ -348,26 +527,59 @@ body {
   top: 280px;
   left: 110px;
   cursor: pointer;
+  font-size: 1.8rem;
 }
 #location p {
   font-size: 15px;
   color: var(--blackText);
+  margin: 0;
 }
 #location input {
-  width: 550px;
-  height: 59px;
-  margin-top: 15px;
-  background: white;
-  padding: 0px;
-  border-radius: 5px 0px 0px 5px;
-  border: none;
-  font-size: 15px;
-  font-weight: 400;
-  padding-left: 20px;
-  cursor: text;
-  box-shadow: none;
-  outline: none;
+  font-weight: bold;
+    padding: 1rem;
+    min-height: 4.8rem;
+    width: 550px;
+    /* height: 59px; */
+    /* margin-top: 15px; */
+    background: white;
+    /* padding: 0px 0px 0px 20px; */
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+    /* font-size: 15px; */
+    font-weight: 400;
+    cursor: text;
+    box-shadow: none;
+    outline: none;
+    font-size: 1.7rem;
 }
+
+#location > p:nth-last-child(2){
+  background: white;
+  padding: 17px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#location > p:nth-last-child(1){
+  background: rgb(255, 211, 68);
+  /* padding: 15px; */
+  border-radius: 0px 5px 5px 0px;
+  font-weight: 900;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 4.8rem;
+  font-size: 1.6rem;
+  padding: 1rem 3.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 /* ----------------------------------------------------center Part 1------------------------------------------------------------------- */
 
@@ -377,10 +589,16 @@ body {
   padding-top: 100px;
 }
 #center11 {
-  width: 70%;
+  /* width: 70%;
   margin: auto;
   margin-top: 50px;
   height: 350px;
+   */
+  margin-bottom: 7rem;
+  max-width: 96rem;
+  padding: 0px;
+  margin: auto;
+  margin-top: 50px;
 }
 #center12 {
   display: grid;
@@ -400,6 +618,12 @@ body {
   height: 220px;
   padding-top: 70px;
   text-align: center;
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
 }
 #center21 {
   width: 85%;
@@ -411,7 +635,14 @@ body {
   padding: 10px 0%;
   justify-content: center;
   position: absolute;
-  top: 1080px;
+  top: -16%;
+
+  padding: 1.8rem 2.4rem;
+  max-width: 117rem;
+  margin-bottom: 0px;
+  transform: translate(0px, -10px);
+  margin: 0 auto;
+
 }
 #center21 img {
   max-width: 200px;
@@ -436,7 +667,7 @@ body {
   padding: 0px 20px;
 }
 #center21 > button {
-  width: auto;
+  width: fit-content;
   height: 35px;
   background-color: white;
   color: var(--primaryColorLight);
@@ -445,6 +676,11 @@ body {
   border: 1px solid transparent;
   margin-top: 18px;
   margin-left: 20px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 8px 0px;
+  padding: 7px;
+  color: rgb(73, 69, 190);
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
 #center22 {
   display: grid;

@@ -30,24 +30,25 @@ function isLoggedUser() {
   }
 }
 
-function signIn() {
-  let data = document.getElementById('signInForm');
+function signIn(phoneNumber) {
+  localStorage.removeItem('unverifiedNumber');
   let allUsers = JSON.parse(localStorage.getItem('users'));
 
-  let number = Number(data.phoneNumber.value);
+  let number = Number(phoneNumber);
   let user = findUser(number);
   if (!user) {
     popUp.style.display = 'flex';
     popUp.textContent = `Not a registered user`;
 
     setTimeout(function () {
-      popUp.textContent = `Phone should contain minimum 10 digits`;
-      popUp.style.display = 'none';
+      popUpSignup();
     }, 2000);
+    return false;
   } else {
     localStorage.setItem('loggedUser', JSON.stringify(user));
     closePopUp();
     isLoggedUser();
+    return true;
   }
 }
 
