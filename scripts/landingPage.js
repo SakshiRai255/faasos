@@ -26,6 +26,68 @@ numberInput.addEventListener('input', function () {
   }
 });
 
+/*-------------------------------------------Verify OTP Pop Function-----------------------------------------*/
+
+function goToVerifyOTP() {
+  let phoneNumber = document.getElementById('phoneNumber').value;
+  localStorage.setItem('unverifiedNumber', JSON.stringify(phoneNumber));
+
+  let allUsers = JSON.parse(localStorage.getItem('users'));
+  
+  let number = Number(phoneNumber);
+  let user = findUser(number);
+  if (!user) {
+    popUp.style.display = 'flex';
+    popUp.textContent = `Not a registered user`;
+
+    setTimeout(function () {
+      popUpSignup();
+    }, 2000);
+    return;
+  }
+
+  let login = document.getElementById('popUp');
+  login.style.display = 'flex';
+
+  var getNumber = numberInput.value;
+  var appendNumber = document.getElementById('detail');
+  appendNumber.innerText = `OTP sent to +91 ${getNumber}`;
+
+  let otp = document.getElementById('otpVeriy');
+  if (numberInput.value.length == 10) {
+    login.append(otp);
+  }
+}
+
+var otp = document.getElementById('OTP');
+var alertOTP = document.getElementById('alertOTP');
+var sendOTP = document.getElementById('sendOTP');
+var verfiyButton = document.getElementById('verifyButton');
+
+otp.addEventListener('input', function () {
+  let otpLength = otp.value.length;
+
+  if (otpLength < 4) {
+    alertOTP.style.display = 'flex';
+    sendOTP.style.display = 'none';
+    verfiyButton.style.backgroundColor = '#d3d3d6';
+    otp.style.backgroundImage = 'unset';
+  } else if (otpLength == 4) {
+    verfiyButton.style.backgroundColor = 'rgb(255, 211, 68)';
+    alertOTP.style.display = 'none';
+    sendOTP.style.display = 'none';
+    otp.style.backgroundImage = 'url(../images/greenTick.jpg)';
+  }
+});
+
+function verify() {
+  let login = document.getElementById('popUp');
+  login.style.display = 'none';
+
+  let phoneNumber = JSON.parse(localStorage.getItem('unverifiedNumber'));
+  signIn(phoneNumber);
+}
+
 /*-------------------------------------------SignUp Pop Function-----------------------------------------*/
 function popUpSignup() {
   let login = document.getElementById('popUp');
@@ -45,31 +107,74 @@ numberInputSign.addEventListener('input', function () {
   if (numberLength <= 9) {
     popSignUp.style.display = 'flex';
     numberInputSign.style.backgroundImage = 'unset';
-    buttonSign.style.backgroundColor = '#d3d3d6';
   } else if (numberLength == 10) {
     popSignUp.style.display = 'none';
     numberInputSign.style.backgroundImage = 'url(../images/greenTick.jpg)';
-    buttonSign.style.backgroundColor = 'rgb(255, 211, 68)';
+  }
+});
+
+var userName = document.getElementById('userName');
+
+userName.addEventListener('input', function () {
+  if (userName.value.length >= 1) {
+    userName.style.backgroundImage = 'url(../images/greenTick.jpg)';
+  } else if (userName.value.length === 0) {
+    userName.style.backgroundImage = 'unset';
+  }
+});
+
+var eMail = document.getElementById('email');
+var alertEmail = document.getElementById('checkEmail');
+var sumbitSignUp = document.getElementById('continueButtonSign');
+
+eMail.addEventListener('input', function () {
+  if (emailCheck(email.value) == 'yes') {
+    eMail.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    alertEmail.style.display = 'none';
+  } else {
+    eMail.style.backgroundImage = 'unset';
+    alertEmail.style.display = 'flex';
+  }
+  if (
+    numberInputSign.value.length >= 9 &&
+    userName.value.length >= 1 &&
+    emailCheck(email.value) == 'yes'
+  ) {
+    sumbitSignUp.style.backgroundColor = 'rgb(255, 211, 68)';
+  } else {
+    sumbitSignUp.style.backgroundColor = '#d3d3d6';
   }
 });
 
 function onclickoutside(e) {
-  if (e.target.id == 'openPopUp' || e.target.id == 'signUpPopUp') {
+  if (
+    e.target.id == 'openPopUp' ||
+    e.target.id == 'signUpPopUp' ||
+    e.target.id == 'otpVeriy'
+  ) {
     let login = document.getElementById('popUp');
     login.style.display = 'none';
     numberInput.value = null;
+    otp.value = null;
+    numberInputSign.value = null;
     popUp.style.display = 'none';
+    popSignUp.style.display = 'none';
     numberInput.style.backgroundImage = 'unset';
+    numberInputSign.style.backgroundImage = 'unset';
     button.style.backgroundColor = '#d3d3d6';
+    userName.value = null;
+    userName.style.backgroundImage = 'unset';
+    eMail.value = null;
+    eMail.style.backgroundImage = 'unset';
+    alertEmail.style.display = 'none';
+    sumbitSignUp.style.backgroundColor = '#d3d3d6';
   }
+  console.log(e.target.id);
 }
 window.addEventListener('click', onclickoutside);
 
 function goToCollection() {
-  let location = document.getElementById('deliveryLocation').value;
-  localStorage.setItem('location', JSON.stringify(location));
-
-    window.location.href = '../pages/collections.html';
+  window.location.href = '../pages/collections.html';
 }
 
 /* -----------------------------------------------Email Checker-------------------------------------------------------*/
@@ -81,7 +186,7 @@ var special = '_@-.';
 
 function emailCheck(email) {
   var newEmail = email.split('');
-  checkMailId(newEmail);
+  return checkMailId(newEmail);
 }
 
 function checkMailId(x) {
@@ -104,9 +209,9 @@ function checkMailId(x) {
     count3 == 0 ||
     count4 == 0
   ) {
-    console.log('No');
+    return 'no';
   } else {
-    console.log('Yes');
+    return 'yes';
   }
 }
 
@@ -150,8 +255,17 @@ function checkTld(x) {
   var b = a.split('.');
   var tld = b[b.length - 1];
   count4 = 0;
-  if (tld.length >= 2 && tld.length <= 3) {
+  if (tld.length >= 2 && tld.length <= 10) {
     count4 = 1;
   }
   return count4;
+}
+
+
+/* ------------------------------------ Enter Input Location ---------------------------- */
+
+function enterInputLocation() {
+  let locationInput = document.getElementById("locationInput");
+  locationInput.value = `Ghaziabad`;
+  locationInput.style.fontWeight = `bold`;
 }
