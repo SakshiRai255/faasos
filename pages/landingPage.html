@@ -39,7 +39,7 @@
             />
           </form>
           <p id="alertNumber">Phone should contain minimum 10 digits</p>
-          <button id="continueButton" onclick="signIn()">Continue</button>
+          <button id="continueButton" onclick="goToVerifyOTP()">Continue</button>
 
           <div class="loginSignupSwitch">
             Don’t have an account?
@@ -56,8 +56,8 @@
         <div id="signContainer">
           <div id="signUpModal">
             <img src="../images/leftArrow.svg" alt="" id="backButtonSign" />
-            <h3>Login</h3>
-            <p>Enter your phone number to continue</p>
+            <h3>Sign Up</h3>
+            <p>Create a account with new phone number</p>
             <img src="../images/loginLogo.svg" alt="" id="loginLogoSign" />
           </div>
           <form id="signUpForm">
@@ -86,7 +86,8 @@
               type="text"
               id="email"
               placeholder="Email Address"
-            />
+            /><br/>
+            <p id="checkEmail">Please enter a valid email</p>
           </form>
           <button id="continueButtonSign" onclick="signUp()">
             CREATE ACCOUNT
@@ -106,6 +107,23 @@
           </div>
         </div>
       </div>
+      <div id="otpVeriy">
+        <div id="otpContainer">
+          <div id="otpModal">
+            <img src="../images/leftArrow.svg" alt="" id="backButtonOTP" />
+            <h3>Verify Details</h3>
+            <p id="detail"></p>
+            <img src="../images/loginLogo.svg" alt="" id="loginLogoOTP" />
+          </div>
+          <form id="OTPForm">
+            <input type="text" pattern="[0-9]{4}" maxlength="4" id="OTP" placeholder="Enter OTP" />
+          </form>
+          <p id="sendOTP">OTP has been sent successfully</p>
+          <p id="alertOTP">Otp should contain minimum 4 digits</p>
+          <p id="resend">Resend OTP</p>
+          <button id="verifyButton" onclick="verify()">Continue</button>
+        </div>
+      </div>
     </div>
     <div id="parent">
       <div class="head">
@@ -113,25 +131,23 @@
           <div id="main">
             <img
               style="height: 72px"
-              src="https://assets.faasos.io/faasos_v2/faasosLogoBrand.svg"
-            />
+              src="https://assets.faasos.io/faasos_v2/faasosLogoBrand.svg"/>
             <div id="credentialButtons">
               <button id="login" onclick="popUpLogin()">Login</button>
               <button id="signUp" onclick="popUpSignup()">Sign Up</button>
-              <!-- <button id="logout" onclick="logout()">Logout</button> -->
+              <button id="logout" onclick="logOut()">Log Out</button>
             </div>
           </div>
           <h1 class="clear h1">Surprises under wraps</h1>
         </div>
         <div id="right">
           <img
-            style="width: 100%; height: 580px; border-radius: 0% 0% 0% 5%"
             src="https://assets.faasos.io/faasos_v2/hero-banner.jpg"
           />
         </div>
         <div id="location">
-          <input type="text" id="deliveryLocation" placeholder="Enter your deliery location" />
-          <p style="background: white; padding: 20px">
+          <input type="text" placeholder="Enter your deliery location" id="locationInput"/>
+          <p style="background: white; padding: 20px" onclick="enterInputLocation()">
             <img
               style="margin-right: 5px"
               class="floatL"
@@ -143,7 +159,6 @@
             onclick="goToCollection()"
             style="
               background: rgb(255, 211, 68);
-              padding: 20px;
               border-radius: 0px 5px 5px 0px;
               font-weight: 900;
             "
@@ -216,7 +231,7 @@
             <span>✔</span>
             <p>Double Sealed Packaging</p>
           </div>
-          <button>KONW MORE</button>
+          <button>KNOW MORE</button>
         </div>
         <p style="color: var(--yellow); font-size: 15px; font-weight: 600">
           Here are some additional measures which our kitchen teams are
@@ -329,5 +344,5 @@
     </div>
   </body>
 </html>
-<script src="../scripts/landingPage.js"></script>
 <script src="../scripts/credentials.js"></script>
+<script src="../scripts/landingPage.js"></script>
