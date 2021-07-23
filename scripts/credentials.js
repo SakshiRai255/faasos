@@ -46,6 +46,11 @@ function signIn(phoneNumber) {
     return false;
   } else {
     localStorage.setItem('loggedUser', JSON.stringify(user));
+    if (user.cart) {
+      localStorage.setItem('cart', JSON.stringify(user.cart));
+    } else {
+      localStorage.setItem('cart', JSON.stringify([]));
+    }
     closePopUp();
     isLoggedUser();
     return true;
@@ -65,15 +70,35 @@ function signUp() {
   if (!allUsers) {
     allUsers = [];
   }
-  allUsers.push(user);
+  if (findUser(user.number)) {
+    signIn(user.number);
+  } else {
+    allUsers.push(user);
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
-  localStorage.setItem('loggedUser', JSON.stringify(user));
-  closePopUp();
-  isLoggedUser();
+    localStorage.setItem('users', JSON.stringify(allUsers));
+    localStorage.setItem('cart', JSON.stringify([]));
+    localStorage.setItem('loggedUser', JSON.stringify(user));
+    closePopUp();
+    isLoggedUser();
+  }
 }
 
 function logout() {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  let allUsers = JSON.parse(localStorage.getItem('users'));
+
+  loggedUser.cart = cart;
+  for (let i = 0; i < allUsers.length; i++) {
+    if (loggedUser.number == allUsers[i].number) {
+      allUsers[i] = loggedUser;
+      break;
+    }
+  }
+
+  localStorage.setItem('users', JSON.stringify(allUsers));
+  localStorage.removeItem('cart');
+
   localStorage.removeItem('loggedUser');
   isLoggedUser();
 }
