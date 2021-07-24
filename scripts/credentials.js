@@ -29,7 +29,9 @@ function isLoggedUser() {
       credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
         <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
     } else {
-      window.location.href = '/pages/landingPage.html';
+      if (window.location.pathname != '/pages/landingPage.html') {
+        window.location.href = '/pages/landingPage.html';
+      }
     }
   }
 }
@@ -63,6 +65,14 @@ function signIn(phoneNumber) {
 
 function signUp() {
   let data = document.getElementById('signUpForm');
+
+  if (
+    data.userName.value == '' ||
+    data.phoneNumberSign.value.length < 10 ||
+    data.email.value == ''
+  ) {
+    return;
+  }
 
   let user = {
     name: data.userName.value,
