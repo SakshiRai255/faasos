@@ -357,7 +357,7 @@ function orderFood() {
     loggedUser.orders = [];
   }
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
-  console.log('currentOrder:', loggedUser.orders);
+  // console.log('currentOrder:', loggedUser.orders);
 
   let allUsers = JSON.parse(localStorage.getItem('users'));
   for (let i = 0; i < allUsers.length; i++) {

@@ -2,7 +2,7 @@ function findUser(number) {
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) return null;
   for (let i = 0; i < allUsers.length; i++) {
-    console.log(allUsers[i].number);
+    // console.log(allUsers[i].number);
     if (allUsers[i].number == number) return allUsers[i];
   }
   return null;

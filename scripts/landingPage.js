@@ -169,7 +169,7 @@ function onclickoutside(e) {
     alertEmail.style.display = 'none';
     sumbitSignUp.style.backgroundColor = '#d3d3d6';
   }
-  console.log(e.target.id);
+  // console.log(e.target.id);
 }
 window.addEventListener('click', onclickoutside);
 
