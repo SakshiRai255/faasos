@@ -127,7 +127,7 @@ var eMail = document.getElementById('email');
 var alertEmail = document.getElementById('checkEmail');
 var sumbitSignUp = document.getElementById('continueButtonSign');
 
-eMail.addEventListener('input', function () {
+eMail.addEventListener("input", function () {
   if (emailCheck(email.value) == 'yes') {
     eMail.style.backgroundImage = 'url(../images/greenTick.jpg)';
     alertEmail.style.display = 'none';
