@@ -83,7 +83,7 @@ function createFoodItem(food, id) {
 }
 
 function displayFood(category) {
-  console.log('category:', category);
+  // console.log('category:', category);
 
   let productArea = document.getElementById('productArea');
   productArea.innerHTML = null; // clearing out all food items
