@@ -18,14 +18,18 @@ function closePopUp() {
 }
 
 function isLoggedUser() {
-  if (window.location.pathname == '/pages/landingPage.html') {
-    let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    let credentialButtons = document.getElementById('credentialButtons');
-    if (loggedUser) {
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  if (loggedUser) {
+    if (window.location.pathname == '/pages/landingPage.html') {
+      let credentialButtons = document.getElementById('credentialButtons');
       credentialButtons.innerHTML = `<button id="logout" onclick="logout()">Logout</button>`;
-    } else {
+    }
+  } else {
+    if (window.location.pathname == '/pages/landingPage.html') {
       credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
-      <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
+        <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
+    } else {
+      window.location.href = '/pages/landingPage.html';
     }
   }
 }
