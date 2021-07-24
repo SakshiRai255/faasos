@@ -11,7 +11,7 @@ function showProfile() {
   document.getElementById('address').style.display = 'none';
 
   let user = JSON.parse(localStorage.getItem('loggedUser'));
-  console.log('user:', user);
+  // console.log('user:', user);
 
   let name = document.getElementById('theName');
   name.innerText = user.name;
