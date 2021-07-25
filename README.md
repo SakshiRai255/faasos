@@ -57,3 +57,8 @@
     - Orders
     - Payment options linked
     - Address `(Add/Update Address)`
+
+## Team Members
+  - [Mukul Kumar](https://github.com/mukul0000)
+  - [Shahnawaz Malek](https://github.com/Malek1117)
+  - [Shantanu Pathak](https://github.com/Wingsrt)
