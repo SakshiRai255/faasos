@@ -33,7 +33,7 @@ function goToVerifyOTP() {
   localStorage.setItem('unverifiedNumber', JSON.stringify(phoneNumber));
 
   let allUsers = JSON.parse(localStorage.getItem('users'));
-  
+
   let number = Number(phoneNumber);
   let user = findUser(number);
   if (!user) {
@@ -127,7 +127,7 @@ var eMail = document.getElementById('email');
 var alertEmail = document.getElementById('checkEmail');
 var sumbitSignUp = document.getElementById('continueButtonSign');
 
-eMail.addEventListener("input", function () {
+eMail.addEventListener('input', function () {
   if (emailCheck(email.value) == 'yes') {
     eMail.style.backgroundImage = 'url(../images/greenTick.jpg)';
     alertEmail.style.display = 'none';
@@ -174,10 +174,11 @@ function onclickoutside(e) {
 window.addEventListener('click', onclickoutside);
 
 function goToCollection() {
-  
-  let locationInput = document.getElementById("locationInput").value;
-  localStorage.setItem("location", locationInput);
-  window.location.href = '../pages/collections.html';
+  let locationInput = document.getElementById('locationInput').value;
+  if (locationInput.length > 0) {
+    localStorage.setItem('location', locationInput);
+    window.location.href = '../pages/collections.html';
+  }
 }
 
 /* -----------------------------------------------Email Checker-------------------------------------------------------*/
@@ -264,11 +265,10 @@ function checkTld(x) {
   return count4;
 }
 
-
 /* ------------------------------------ Enter Input Location ---------------------------- */
 
 function enterInputLocation() {
-  let locationInput = document.getElementById("locationInput");
+  let locationInput = document.getElementById('locationInput');
   locationInput.value = `Ghaziabad`;
   locationInput.style.fontWeight = `bold`;
 }
