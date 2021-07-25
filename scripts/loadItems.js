@@ -24,17 +24,37 @@ function addToCart(id) {
     food.id = id;
     food.quantity = 1;
     let cartItems = JSON.parse(localStorage.getItem('cart'));
-    if (cartItems) {
-      cartItems.push(food);
-    } else {
+    if (!cartItems || cartItems.length <= 0) {
       cartItems = [food];
+      console.log('not found');
+    } else {
+      let flag = false;
+      for (let i = 0; i < cartItems.length; i++) {
+        if (cartItems[i].name == food.name) {
+          cartItems[i].quantity++;
+          flag = true;
+          break;
+        }
+      }
+      if (!flag) {
+        cartItems.push(food);
+      }
+      console.log('found');
     }
     localStorage.setItem('cart', JSON.stringify(cartItems));
   } else console.log('Not found');
   checkCart();
 }
 
+function showWholeProduct(food, id) {
+  let item = food;
+  item.id = id;
+  localStorage.setItem('LiveProduct', JSON.stringify(item));
+  window.location.href = '/pages/product.html';
+}
+
 function createFoodItem(food, id) {
+  let innerFood = food;
   const card = document.createElement('div');
   card.classList.add('card');
   card.id = id;
@@ -79,6 +99,9 @@ function createFoodItem(food, id) {
 	  </div>
 	</div>
   </div>`;
+  card.children[0].onclick = function () {
+    showWholeProduct(food, id);
+  };
   return card;
 }
 
