@@ -40,6 +40,9 @@
       - Add To Cart
       - Quantity `(Increase/Decrease)`
       - Live Total Price Update
+    - Product Page
+      - Show Dynamically Product Details
+      - Add to cart from here also
     - Checkout Page
       - Address
         - Add new address
@@ -54,3 +57,8 @@
     - Orders
     - Payment options linked
     - Address `(Add/Update Address)`
+
+## Team Members
+  - [Mukul Kumar](https://github.com/mukul0000)
+  - [Shahnawaz Malek](https://github.com/Malek1117)
+  - [Shantanu Pathak](https://github.com/Wingsrt)
