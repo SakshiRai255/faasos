@@ -164,86 +164,6 @@ nav .hamburger {
   cursor: pointer;
 }
 
-/* --------------------------------------- Sidebar CSS  ----------------------------------- */
-
-#sidebar {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  height: 100vh;
-  position: fixed;
-  z-index: 111;
-  top: 0;
-  left: 0;
-  display: none;
-
-}
-
-#sidebarMain {
-  height: 100%;
-  position: relative;
-  margin-right: -400px;
-  transition: transform 0.5s linear;
-}
-
-.activeSideBar {
-  transform: translateX(-400px)!important;
-}
-
-#sidebarList {
-  max-width: 400px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  background-color: var(--whiteLight);
-}
-
-#sidebarList > span {
-  position: absolute;
-  top: 1.5rem;
-  right: 2.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-}
-
-#sidebarNavList {
-  display: flex;
-  flex-direction: column;
-  padding-top: 6rem;
-}
-
-#sidebarNavList > li {
-  width: 100%;
-  cursor: pointer;
-}
-
-#sidebarNavList > li > a {
-  display: flex;
-  align-items: center;
-  padding: 2.1rem 4rem;
-  width: 100%;
-}
-
-#sidebarNavList > li > a > span {
-  flex: 1 1 12.5%;
-  max-width: 12.5%;
-}
-
-#sidebarNavList > li > a > span > img {
-  width: 30px;
-  height: 30px;
-}
-
-#sidebarNavList > li > a > p {
-  flex: 1 1 75%;
-  font-size: 2rem;
-  font-weight: 500;
-  color: rgb(126, 126, 126) !important;
-}
-
-
 /* --------------------------------------------- Menu Slider --------------------------------- */
 
 #sliderSection {
@@ -507,6 +427,7 @@ input {
   /* padding-bottom: 1.2rem; */
   background-color: var(--whiteLight);
   margin: 1rem;
+  cursor: pointer;
 }
 
 .cardImage {
@@ -702,6 +623,7 @@ input {
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .cartItemCount > #increase {
