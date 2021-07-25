@@ -40,6 +40,9 @@
       - Add To Cart
       - Quantity `(Increase/Decrease)`
       - Live Total Price Update
+    - Product Page
+      - Show Dynamically Product Details
+      - Add to cart from here also
     - Checkout Page
       - Address
         - Add new address
