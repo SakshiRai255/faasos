@@ -26,6 +26,16 @@ body {
   float: right;
 }
 
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 /* ----------------------------------------------------Login Popup-------------------------------------------------------------- */
 
 #popUp {
@@ -153,7 +163,6 @@ body {
   text-transform: uppercase;
   border-radius: 0.4rem;
 }
-
 
 .loginSignupSwitch {
   position: absolute;
@@ -342,7 +351,7 @@ body {
   font-size: 1.3rem;
   color: rgb(8, 8, 167);
 }
-.backButton{
+.backButton {
   width: 1.4rem;
   display: inline-block;
   position: absolute;
@@ -880,11 +889,11 @@ p > span {
 
   #location > p {
     font-size: 1rem;
-    margin-top: 1rem!important;
+    margin-top: 1rem !important;
   }
 
   #center11 > div:nth-last-child(1) {
-    width: unset!important;
+    width: unset !important;
   }
 
   #center12 {
