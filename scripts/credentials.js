@@ -85,7 +85,8 @@ function signUp() {
     allUsers = [];
   }
   if (findUser(user.number)) {
-    signIn(user.number);
+    popUpLogin();
+    // signIn(user.number);
   } else {
     allUsers.push(user);
 
