@@ -1,6 +1,6 @@
 #Faasos Website Clone
 
-#####This clone is made with pure HTML, CSS and JavaScript :) :v:
+#####This clone is made with pure HTML, CSS and JavaScript :smile: :v:
 
  - Main Pages  
 	- [x] Landing Page
