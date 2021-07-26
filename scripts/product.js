@@ -1,5 +1,8 @@
 function displayProduct() {
   let item = JSON.parse(localStorage.getItem('LiveProduct'));
+  if (!item) {
+    window.location.href = '/pages/collections.html';
+  }
   let productDetailContact = document.getElementById('productDetailContact');
 
   let first = `<div id="productDetailContainer">
