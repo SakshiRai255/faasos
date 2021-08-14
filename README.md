@@ -3,6 +3,16 @@
 ##### This clone is made with pure HTML, CSS and JavaScript :smile: :v:
 
 
+<hr>
+
+## Team Members
+
+- [Mukul Kumar](https://github.com/mukul0000)
+- [Shahnawaz Malek](https://github.com/Malek1117)
+- [Shantanu Pathak](https://github.com/Wingsrt)
+
+<hr>
+
 - Main Pages
 
   - [x] Landing Page
@@ -10,6 +20,7 @@
   - [x] Product Page
   - [x] Checkout Page
   - [x] Profile Page
+  
 
 - Main UI/UX Highlights:
 
@@ -61,12 +72,61 @@
     - Address `(Add/Update Address)`
 
 
-<hr>
+## Snapshots of website:
 
-## Team Members
+<table>
+    <tr>
+      <th>REAL ONE</th>
+      <th>Clone One</th>
+    </tr>
+    <tr>
+<tr>
+<td>
 
-- [Mukul Kumar](https://github.com/mukul0000)
-- [Shahnawaz Malek](https://github.com/Malek1117)
-- [Shantanu Pathak](https://github.com/Wingsrt)
+![realLandingPage.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627371813256/XjnA3Xz7A.png?auto=compress,format&format=webp)
 
-<hr>
+</td>
+<td>
+
+![landingPage.png](https://github.com/chiranjeev-thapliyal/faasos/blob/master/snapshots/landingPage.png?raw=true)
+</td>
+</tr>
+
+<tr>
+<td>
+
+![realCollectionsPage.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627372564076/R1AkAfYkN.png)
+
+</td>
+<td>
+
+![collectionsPage.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627372613397/GXC4ml4ad.png)
+</td>
+</tr>
+
+
+<tr>
+<td>
+
+![realSearch.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627372790626/MtxlUfsEq.png)
+</td>
+<td>
+
+![search.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627372800019/SBk9gcgcv.png)
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+![realSidebar.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627373013338/Y6iLMHHZ5z.png)
+</td>
+<td>
+
+![sidebar.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1627373022674/4--rXKrRj.png)
+
+</td>
+</tr>
+
+</table>
