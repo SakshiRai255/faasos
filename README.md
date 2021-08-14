@@ -2,6 +2,7 @@
 
 ##### This clone is made with pure HTML, CSS and JavaScript :smile: :v:
 
+
 - Main Pages
 
   - [x] Landing Page
@@ -59,8 +60,13 @@
     - Payment options linked
     - Address `(Add/Update Address)`
 
+
+<hr>
+
 ## Team Members
 
 - [Mukul Kumar](https://github.com/mukul0000)
 - [Shahnawaz Malek](https://github.com/Malek1117)
 - [Shantanu Pathak](https://github.com/Wingsrt)
+
+<hr>
