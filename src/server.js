@@ -2,6 +2,9 @@ const express = require("express");
 
 const connectDB = require("./configs/db");
 
+// Getting models
+const User = require('./models/user.model');
+
 const app = express();
 
 const PORT = 8080;
