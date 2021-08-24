@@ -2,11 +2,16 @@ const express = require("express");
 
 const connectDB = require("./configs/db");
 
-// Getting models
-const User = require('./models/user.model');
-const FoodItem = require("./models/foodItem.model")
+// Getting routes
+const userController = require("./controllers/user.controller");
+const foodItemController = require("./controllers/foodItem.controller")
 
 const app = express();
+app.use(express.json());
+
+app.use("/users", userController);
+app.use("/foodItems", foodItemController);
+
 
 const PORT = 8080;
 app.listen(PORT, async () => {
