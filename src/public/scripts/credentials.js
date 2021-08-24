@@ -118,4 +118,4 @@ function logout() {
   isLoggedUser();
 }
 
-isLoggedUser();
+// isLoggedUser();
