@@ -8,8 +8,8 @@ const userSchema = mongoose.Schema({
 	number: {
 		type: Number,
 		required: true,
-		minLength: 10,
-		maxLength: 10
+		min: 100000000,
+		max: 999999999
 	},
 	email: {
 		type: String,
@@ -50,6 +50,9 @@ const userSchema = mongoose.Schema({
 			default: 0
 		}
 	}]
+}, {
+	versionKey: false,
+	timestamps: true
 })
 
 const User = mongoose.model("user", userSchema);
