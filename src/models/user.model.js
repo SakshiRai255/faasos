@@ -8,8 +8,8 @@ const userSchema = mongoose.Schema({
 	number: {
 		type: Number,
 		required: true,
-		min: 100000000,
-		max: 999999999
+		min: 1000000000,
+		max: 9999999999
 	},
 	email: {
 		type: String,
@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema({
 	}],
 	cart: [
 		{
-			type: [mongoose.Schema.Types.ObjectId],
+			type: mongoose.Types.ObjectId,
 			ref: "foodItem",
 			quantity: {
 				type: Number,
@@ -42,7 +42,7 @@ const userSchema = mongoose.Schema({
 
 	],
 	orders: [{
-		type: [mongoose.Schema.Types.ObjectId],
+		type: mongoose.Types.ObjectId,
 		ref: "foodItem",
 		quantity: {
 			type: Number,

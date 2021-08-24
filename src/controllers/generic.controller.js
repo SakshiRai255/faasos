@@ -27,7 +27,7 @@ const post = (Model) => async (req, res) => {
 
 const updateOne = (Model) => async (req, res) => {
 	try {
-		const item = await Model.findByIdAndUpdate({ _id: req.params.id }, { new: true });
+		const item = await Model.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true });
 		return res.status(200).json({ item })
 	} catch (err) {
 		return res.status(400).json({ err })

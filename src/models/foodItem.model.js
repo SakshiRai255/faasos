@@ -32,6 +32,14 @@ const foodItemSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	category: {
+		type: mongoose.Types.ObjectId,
+		ref: "category",
+		required: true
+	}
+}, {
+	versionKey: false,
+	timestamps: true
 })
 
 const FoodItem = mongoose.model("foodItem", foodItemSchema);
