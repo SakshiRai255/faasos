@@ -1,14 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
 
-const connectDB = () => {
-	return mongoose.connect("mongodb://localhost:27017/faasos", {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false
-	});
-}
+const connectDB = require("./configs/db");
 
 const app = express();
 
