@@ -1,14 +1,14 @@
 function displayProduct() {
   let item = JSON.parse(localStorage.getItem('LiveProduct'));
   if (!item) {
-    window.location.href = '/pages/collections.html';
+    window.location.href = '/collections';
   }
   let productDetailContact = document.getElementById('productDetailContact');
 
   let first = `<div id="productDetailContainer">
 	<div id="productDetailBreadcrumb">
-	  <a href="/pages/landingPage.html">Home</a>
-	  <a href="/pages/collections.html">Collections</a>
+	  <a href="/landingPage">Home</a>
+	  <a href="/collections">Collections</a>
 	  <a href="#">${item.name}</a>
 	</div>
 	<div id="productDetails">
@@ -23,7 +23,7 @@ function displayProduct() {
 		<div id="productDetailContent1">
 		  <div>
 			<h2>${item.name}</h2>
-			<span><img src="../images/${
+			<span><img src="/images/${
         item.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
       }" alt="" /> ₹ ${item.price}</span>
 		  </div>
@@ -56,7 +56,7 @@ function displayProduct() {
 		</div>
 	  </div>
 	</div>
-	<a href="/pages/checkOut.html" id="proceedToCheckout">Proceed to checkout</a>
+	<a href="/checkOut" id="proceedToCheckout">Proceed to checkout</a>
   </div>`;
 
   productDetailContact.innerHTML = first + str + last;

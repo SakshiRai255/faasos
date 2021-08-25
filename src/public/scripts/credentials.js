@@ -20,17 +20,17 @@ function closePopUp() {
 function isLoggedUser() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   if (loggedUser) {
-    if (window.location.pathname == '/pages/landingPage.html') {
+    if (window.location.pathname == '/') {
       let credentialButtons = document.getElementById('credentialButtons');
       credentialButtons.innerHTML = `<button id="logout" onclick="logout()">Logout</button>`;
     }
   } else {
-    if (window.location.pathname == '/pages/landingPage.html') {
+    if (window.location.pathname == '/') {
       credentialButtons.innerHTML = `<button id="login" onclick="popUpLogin()">Login</button>
         <button id="signUp" onclick="popUpSignup()">Sign Up</button>`;
     } else {
-      if (window.location.pathname != '/pages/landingPage.html') {
-        window.location.href = '/pages/landingPage.html';
+      if (window.location.pathname != '/') {
+        window.location.href = '/';
       }
     }
   }
@@ -63,7 +63,7 @@ function signIn(phoneNumber) {
   }
 }
 
-function signUp() {
+async function signUp() {
   let data = document.getElementById('signUpForm');
 
   if (
@@ -118,4 +118,4 @@ function logout() {
   isLoggedUser();
 }
 
-// isLoggedUser();
+isLoggedUser();
