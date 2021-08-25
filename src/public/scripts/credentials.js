@@ -1,3 +1,9 @@
+const useAPI = async (url, options = {}) => {
+  const res = await fetch(url, options);
+  const data = await res.json();
+  return data;
+}
+
 function findUser(number) {
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) return null;
@@ -36,31 +42,21 @@ function isLoggedUser() {
   }
 }
 
-function signIn(phoneNumber) {
+async function signIn(phoneNumber) {
   localStorage.removeItem('unverifiedNumber');
-  let allUsers = JSON.parse(localStorage.getItem('users'));
 
-  let number = Number(phoneNumber);
-  let user = findUser(number);
-  if (!user) {
-    popUp.style.display = 'flex';
-    popUp.textContent = `Not a registered user`;
+  const number = Number(phoneNumber);
+  const user = await useAPI(`http://localhost:8080/users/${number}`);
 
-    setTimeout(function () {
-      popUpSignup();
-    }, 2000);
-    return false;
+  localStorage.setItem('loggedUser', JSON.stringify(user));
+  if (user.cart) {
+    localStorage.setItem('cart', JSON.stringify(user.cart));
   } else {
-    localStorage.setItem('loggedUser', JSON.stringify(user));
-    if (user.cart) {
-      localStorage.setItem('cart', JSON.stringify(user.cart));
-    } else {
-      localStorage.setItem('cart', JSON.stringify([]));
-    }
-    closePopUp();
-    isLoggedUser();
-    return true;
+    localStorage.setItem('cart', JSON.stringify([]));
   }
+  closePopUp();
+  isLoggedUser();
+  return true;
 }
 
 async function signUp() {
@@ -74,23 +70,29 @@ async function signUp() {
     return;
   }
 
-  let user = {
+  const user = {
     name: data.userName.value,
     number: data.phoneNumberSign.value,
     email: data.email.value,
   };
+  console.log('user:', user)
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  if (!allUsers) {
-    allUsers = [];
-  }
-  if (findUser(user.number)) {
+  const foundUser = await useAPI(`http://localhost:8080/users/${user.number}`);
+  console.log('foundUser:', foundUser)
+
+  if (foundUser) {
     popUpLogin();
-    // signIn(user.number);
   } else {
-    allUsers.push(user);
+    const newUser = await useAPI(`http://localhost:8080/users`, {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    console.log('newUser:', newUser)
 
-    localStorage.setItem('users', JSON.stringify(allUsers));
     localStorage.setItem('cart', JSON.stringify([]));
     localStorage.setItem('loggedUser', JSON.stringify(user));
     closePopUp();
@@ -98,23 +100,33 @@ async function signUp() {
   }
 }
 
-function logout() {
+async function logout() {
   let cart = JSON.parse(localStorage.getItem('cart'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  let allUsers = JSON.parse(localStorage.getItem('users'));
 
+  const allUsers = await useAPI(`http://localhost:8080/users`);
+
+  const number = loggedUser.number;
+  console.log('number:', number)
+  const user = await useAPI(`http://localhost:8080/users/${number}`);
+  console.log('user:', user)
   loggedUser.cart = cart;
-  for (let i = 0; i < allUsers.length; i++) {
-    if (loggedUser.number == allUsers[i].number) {
-      allUsers[i] = loggedUser;
-      break;
+  console.log("loggedUser", loggedUser)
+
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PATCH",
+    body: JSON.stringify({ loggedUser }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
-  }
+  })
+  console.log('updatedUser:', updatedUser)
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
+
   localStorage.removeItem('cart');
-
   localStorage.removeItem('loggedUser');
+
   isLoggedUser();
 }
 
