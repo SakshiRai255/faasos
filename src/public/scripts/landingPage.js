@@ -21,7 +21,7 @@ numberInput.addEventListener('input', function () {
     button.style.backgroundColor = '#d3d3d6';
   } else if (numberLength == 10) {
     popUp.style.display = 'none';
-    numberInput.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    numberInput.style.backgroundImage = 'url(/images/greenTick.jpg)';
     button.style.backgroundColor = 'rgb(255, 211, 68)';
   }
 });
@@ -76,7 +76,7 @@ otp.addEventListener('input', function () {
     verfiyButton.style.backgroundColor = 'rgb(255, 211, 68)';
     alertOTP.style.display = 'none';
     sendOTP.style.display = 'none';
-    otp.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    otp.style.backgroundImage = 'url(/images/greenTick.jpg)';
   }
 });
 
@@ -109,7 +109,7 @@ numberInputSign.addEventListener('input', function () {
     numberInputSign.style.backgroundImage = 'unset';
   } else if (numberLength == 10) {
     popSignUp.style.display = 'none';
-    numberInputSign.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    numberInputSign.style.backgroundImage = 'url(/images/greenTick.jpg)';
   }
 });
 
@@ -117,11 +117,11 @@ var userName = document.getElementById('userName');
 
 userName.addEventListener('input', function () {
   if (userName.value.length >= 1) {
-    userName.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    userName.style.backgroundImage = 'url(/images/greenTick.jpg)';
   } else if (userName.value.length === 0) {
     userName.style.backgroundImage = 'unset';
   }
-});
+}); 
 
 var eMail = document.getElementById('email');
 var alertEmail = document.getElementById('checkEmail');
@@ -129,7 +129,7 @@ var sumbitSignUp = document.getElementById('continueButtonSign');
 
 eMail.addEventListener('input', function () {
   if (emailCheck(email.value) == 'yes') {
-    eMail.style.backgroundImage = 'url(../images/greenTick.jpg)';
+    eMail.style.backgroundImage = 'url(/images/greenTick.jpg)';
     alertEmail.style.display = 'none';
   } else {
     eMail.style.backgroundImage = 'unset';
@@ -177,7 +177,7 @@ function goToCollection() {
   let locationInput = document.getElementById('locationInput').value;
   if (locationInput.length > 0) {
     localStorage.setItem('location', locationInput);
-    window.location.href = '../pages/collections.html';
+    window.location.href = 'collections';
   }
 }
 

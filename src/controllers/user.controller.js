@@ -9,13 +9,19 @@ const genericController = require("./generic.controller")
 
 router.get("/", genericController(User).getAll);
 
-router.get("/:id", async (req, res) => {
-	const item = await User.findById(req.params.id).populate("orders");
-	return res.status(200).json({ item });
+router.post("/", async (req, res) => {
+	try {
+		console.log(req.body);
+		const user = await User.create(req.body);
+		window.localStorage.setItem("loggedUser", user);
+		return res.status(200).render("landing");
+	} catch (err) {
+		return res.status(400).json({err: err.message})
+	}
 })
 
 router.get("/:id", genericController(User).getOne);
-router.post("/", genericController(User).post);
+// router.post("/", genericController(User).post);
 router.patch("/:id", genericController(User).updateOne);
 router.delete("/:id", genericController(User).deleteOne);
 

@@ -27,7 +27,7 @@ function createCartItem(food) {
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
-			  ><img src="../images/${
+			  ><img src="/images/${
           food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
         }" alt=""
 			/></span>
@@ -59,7 +59,7 @@ function checkCart() {
 		<div class="emptyCart">
 		  <img
 			id="emptyCartImage"
-			src="../images/emptyCart.svg"
+			src="/images/emptyCart.svg"
 			alt="empty cart"
 		  />
 		  <p>Empty Cart is a sign of an empty stomach.</p>
@@ -100,7 +100,7 @@ function checkCart() {
     subtotalButton.id = 'subtotalButton';
     subtotalButton.innerText = 'Checkout';
     subtotalButton.onclick = function () {
-      window.location.href = '../pages/checkOut.html';
+      window.location.href = 'checkOut';
     };
 
     allCartItems.append(h2, cardList, subTotal, subtotalButton);

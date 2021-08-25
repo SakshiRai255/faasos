@@ -117,13 +117,13 @@ function addAddress() {
   openMapPopUp.innerHTML = `
   <div id="popUpMapContainer">
     <div id="popUpMapModal">
-      <img src="../images/leftArrow.svg" alt="" id="backButton" />
-      <img src="../images/map.PNG" alt="" class="mapImage">
+      <img src="/images/leftArrow.svg" alt="" id="backButton" />
+      <img src="/images/map.PNG" alt="" class="mapImage">
     </div>
     <form>
       <div id="locationDiv">
         <div>
-          <img src="../images/location.svg" alt=" ">
+          <img src="/images/location.svg" alt=" ">
           <h3>Gandhi Market Mirdard Road Area</h3>
         </div>
       </div>
@@ -131,11 +131,11 @@ function addAddress() {
       <input type="text" id="landmark" placeholder="Landmark" />
       <ul class="typeOfAddress">
         <input type="radio" name="addressType" id="home" value="Home" checked>
-        <label for="home"> <img src="../images/home.svg" alt=""> Home</label>
+        <label for="home"> <img src="/images/home.svg" alt=""> Home</label>
         <input type="radio" name="addressType" id="work" value="Work">
-        <label for="work"> <img src="../images/work.svg" alt=""> Work</label>
+        <label for="work"> <img src="/images/work.svg" alt=""> Work</label>
         <input type="radio" name="addressType" id="others" value="Others">
-        <label for="others"> <img src="../images/location.svg" alt=""> Others</label>
+        <label for="others"> <img src="/images/location.svg" alt=""> Others</label>
       </ul>
     </form>
     <button id="saveButton" onclick="addUserAddress()">Save</button>
@@ -188,13 +188,13 @@ function addPayment() {
       <li id="selectGPay" >
           <img
             class="paymentLogo"
-            src="../images/paymentLogo.svg"
+            src="/images/paymentLogo.svg"
             alt="" />UPI
       </li>
       <li id="selectCOD" class="activePaymentOption">
         <img
           class="paymentLogo"
-          src="../images/paymentLogo.svg"
+          src="/images/paymentLogo.svg"
           alt=""
         />COD
       </li>
@@ -277,7 +277,7 @@ function createCartItem(food) {
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
-			  ><img src="../images/${
+			  ><img src="/images/${
           food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
         }" alt=""
 			/></span>
@@ -371,5 +371,5 @@ function orderFood() {
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
 
-  window.location.href = './order.html';
+  window.location.href = '/order';
 }
