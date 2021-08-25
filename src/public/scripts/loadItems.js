@@ -50,7 +50,7 @@ function showWholeProduct(food, id) {
   let item = food;
   item.id = id;
   localStorage.setItem('LiveProduct', JSON.stringify(item));
-  window.location.href = '/pages/product.html';
+  window.location.href = '/product';
 }
 
 function createFoodItem(food, id) {
@@ -236,7 +236,7 @@ function displayCategories() {
 
 let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
 if (!loggedUser) {
-  window.location.href = './landingPage.html';
+  window.location.href = 'landingPage';
 }
 
 displayCategories();
