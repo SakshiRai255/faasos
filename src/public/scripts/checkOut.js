@@ -144,24 +144,27 @@ function addAddress() {
   checkoutMain.append(openMapPopUp);
 }
 
-function addUserAddress() {
+async function addUserAddress() {
   let addressType = document.querySelector(`input[type="radio"]:checked`).value;
   let houseNo = document.getElementById(`houseNo`).value;
   let landmark = document.getElementById(`landmark`).value;
 
   let address = { addressType, houseNo, landmark };
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
+  // let allUsers = JSON.parse(localStorage.getItem('users'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].number == loggedUser.number) {
-      allUsers[i].address = address;
-      loggedUser = allUsers[i];
-      break;
+  loggedUser.address = address;
+  console.log('loggedUser:', loggedUser)
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PATCH",
+    body: JSON.stringify({loggedUser}),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
-  }
-
-  localStorage.setItem('users', JSON.stringify(allUsers));
+  });
+  console.log('updatedUser:', updatedUser)
+  
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   let openMapPopUp = document.getElementById('openMapPopUp');
@@ -206,9 +209,8 @@ function addPayment() {
             <h3>Cash On Delivery</h3>
             <p>Online payment recommended for better hand hygiene</p>
           </div>
-          <button id="payButton" onclick="orderFood()">Pay ₹ ${
-            totalAmount + deliveryFees
-          }</button>
+          <button id="payButton" onclick="orderFood()">Pay ₹ ${totalAmount + deliveryFees
+    }</button>
         </div>
       </div>
   </div>
@@ -277,9 +279,8 @@ function createCartItem(food) {
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
-			  ><img src="/images/${
-          food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
-        }" alt=""
+			  ><img src="/images/${food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
+    }" alt=""
 			/></span>
 			<div>
 			  <p class="cartItemName">${food.name}</p>
@@ -325,9 +326,8 @@ function switchPaymentOption() {
                       <input type="text" id="gpayNumber" value="9643011147" />
                       <label for="gpayNumber">Phone Number</label>
                     </form>
-                    <button id="payButton"  onclick="orderFood()">Pay ₹ ${
-                      totalCartAmount + 97
-                    }</button>
+                    <button id="payButton"  onclick="orderFood()">Pay ₹ ${totalCartAmount + 97
+      }</button>
                   </div>`;
   } else if (this.id == 'selectCOD') {
     PaymentMode.innerHTML = `<div id="COD">
@@ -336,9 +336,8 @@ function switchPaymentOption() {
       <h3>Cash On Delivery</h3>
       <p>Online payment recommended for better hand hygiene</p>
     </div>
-    <button id="payButton" onclick="orderFood()">Pay ₹ ${
-      totalCartAmount + 97
-    }</button>
+    <button id="payButton" onclick="orderFood()">Pay ₹ ${totalCartAmount + 97
+      }</button>
   </div>`;
   }
 }

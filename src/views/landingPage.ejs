@@ -50,16 +50,20 @@
 				</div>
 				<form id="signUpForm">
 					<input disabled type="text" id="countryCodeSignUp" placeholder="+91" />
-					<input type="number" pattern="[0-9]{10}" maxlength="10" id="phoneNumberSign" placeholder="Phone Number" />
+					<input type="number" pattern="[0-9]{10}" maxlength="10" name="number" id="phoneNumberSign"
+						placeholder="Phone Number" />
 					<p id="aNumber">Phone should contain minimum 10 digits</p>
-					<input style="display: block; width: 100%" type="text" id="userName" placeholder="Name" /><br />
-					<input style="display: block" type="text" id="email" placeholder="Email Address" /><br />
+					<input style="display: block; width: 100%" type="text" name="name" id="userName" placeholder="Name" /><br />
+					<input style="display: block" type="text" id="email" name="email" placeholder="Email Address" /><br />
 					<p id="checkEmail">Please enter a valid email</p>
+					<!-- <button type="submit" id="continueButtonSign">
+						CREATE ACCOUNT
+					</button> -->
 				</form>
 				<button id="continueButtonSign" onclick="signUp()">
-					<!-- <button type="submit" id="continueButtonSign"> -->
 					CREATE ACCOUNT
 				</button>
+
 				<p style="margin-left: 13px">
 					By creating an account, I accept the <span>Terms & Conditions</span>
 				</p>
@@ -70,7 +74,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="otpVeriy">
+		<div id="otpVerify">
 			<div id="otpContainer">
 				<div id="otpModal">
 					<img src="/images/leftArrow.svg" alt="" class="backButton" onclick="closePopUp()" />

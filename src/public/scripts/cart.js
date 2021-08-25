@@ -27,9 +27,8 @@ function createCartItem(food) {
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
-			  ><img src="/images/${
-          food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
-        }" alt=""
+			  ><img src="/images/${food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
+    }" alt=""
 			/></span>
 			<div>
 			  <p class="cartItemName">${food.name}</p>
@@ -100,7 +99,7 @@ function checkCart() {
     subtotalButton.id = 'subtotalButton';
     subtotalButton.innerText = 'Checkout';
     subtotalButton.onclick = function () {
-      window.location.href = 'checkOut';
+      window.location.href = 'checkout';
     };
 
     allCartItems.append(h2, cardList, subTotal, subtotalButton);

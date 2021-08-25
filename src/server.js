@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path")
 
 const connectDB = require("./configs/db");
@@ -8,8 +7,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -20,7 +17,6 @@ app.set("view engine", "ejs");
 const userController = require("./controllers/user.controller");
 const foodItemController = require("./controllers/foodItem.controller")
 const categoryController = require("./controllers/category.controller")
-
 
 app.use("/users", userController);
 app.use("/foodItems", foodItemController);

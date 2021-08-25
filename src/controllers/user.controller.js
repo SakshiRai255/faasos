@@ -11,18 +11,34 @@ router.get("/", genericController(User).getAll);
 
 router.post("/", async (req, res) => {
 	try {
-		console.log(req.body);
 		const user = await User.create(req.body);
-		window.localStorage.setItem("loggedUser", user);
-		return res.status(200).render("landing");
+		return res.status(200).json({ user });
 	} catch (err) {
-		return res.status(400).json({err: err.message})
+		return res.status(400).json({ err: err.message })
 	}
 })
 
-router.get("/:id", genericController(User).getOne);
-// router.post("/", genericController(User).post);
-router.patch("/:id", genericController(User).updateOne);
+router.get("/:number", async (req, res) => {
+	try {
+		const user = await User.findOne({ number: req.params.number });
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(400).json(null);
+	}
+})
+
+router.patch("/:number", async (req, res) => {
+	try {
+		const user = await User.findOneAndUpdate({ number: req.params.number }, req.body, { new: true });
+		console.log('user:', user)
+
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(400).json(null);
+	}
+})
+
+// router.patch("/:id", genericController(User).updateOne);
 router.delete("/:id", genericController(User).deleteOne);
 
 
