@@ -154,16 +154,14 @@ async function addUserAddress() {
   // let allUsers = JSON.parse(localStorage.getItem('users'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   loggedUser.address = address;
-  console.log('loggedUser:', loggedUser)
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
-    method: "PATCH",
-    body: JSON.stringify({loggedUser}),
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   });
-  console.log('updatedUser:', updatedUser)
   
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
@@ -349,7 +347,7 @@ function chooseOption() {
   }
 }
 
-function orderFood() {
+async function orderFood() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   let currentCart = JSON.parse(localStorage.getItem('cart'));
   if (!loggedUser.orders) {
@@ -358,15 +356,25 @@ function orderFood() {
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
   // console.log('currentOrder:', loggedUser.orders);
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (loggedUser.number == allUsers[i].number) {
-      allUsers[i] = loggedUser;
-      break;
-    }
-  }
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
+
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+      method: "PUT",
+      body: JSON.stringify(loggedUser),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+  // let allUsers = JSON.parse(localStorage.getItem('users'));
+  // for (let i = 0; i < allUsers.length; i++) {
+  //   if (loggedUser.number == allUsers[i].number) {
+  //     allUsers[i] = loggedUser;
+  //     break;
+  //   }
+  // }
+
+  // localStorage.setItem('users', JSON.stringify(allUsers));
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
 
