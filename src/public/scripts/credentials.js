@@ -26,6 +26,16 @@ function closePopUp() {
   button.style.backgroundColor = '#d3d3d6';
 
   const locationPopUp = document.getElementById("locationPopUp");
+  const inputLocation = document.getElementById("inputLocation");
+  const appendLocation = document.getElementById("appendLocation");
+  inputLocation.value = null;
+  appendLocation.innerHTML = `<div>
+  <img src="/images/landingLocation.svg" />
+  <div>
+    <p>Use Current Location</p>
+    <span>Accuracy may vary depending on the strength of gps signal of device</span>
+  </div>
+</div>`;
   locationPopUp.style.display = "none";
 }
 
@@ -123,6 +133,7 @@ async function logout() {
       'Content-Type': 'application/json'
     }
   })
+  console.log('updatedUser:', updatedUser)
 
   localStorage.removeItem('cart');
   localStorage.removeItem('loggedUser');
@@ -132,7 +143,7 @@ async function logout() {
     localStorage.removeItem("token")
   }
 
-  isLoggedUser();
+  // isLoggedUser();
 }
 
 isLoggedUser();
