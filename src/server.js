@@ -74,6 +74,14 @@ app.get("/profile", async (req, res) => {
 	}
 })
 
+app.get("/about", async (req, res) => {
+	try {
+		res.render("about");
+	} catch (err) {
+		res.render("profile");
+	}
+})
+
 
 app.get("/help", async (req, res) => {
 	try {
