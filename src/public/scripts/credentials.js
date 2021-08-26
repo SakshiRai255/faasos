@@ -1,7 +1,11 @@
 const useAPI = async (url, options = {}) => {
-  const res = await fetch(url, options);
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    return err;
+  }
 }
 
 function findUser(number) {
@@ -20,6 +24,9 @@ function closePopUp() {
   popUp.style.display = 'none';
   numberInput.style.backgroundImage = 'unset';
   button.style.backgroundColor = '#d3d3d6';
+
+  const locationPopUp = document.getElementById("locationPopUp");
+  locationPopUp.style.display = "none";
 }
 
 function isLoggedUser() {
@@ -110,7 +117,7 @@ async function logout() {
 
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
     method: "PUT",
-    body: JSON.stringify( loggedUser ),
+    body: JSON.stringify(loggedUser),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -119,6 +126,11 @@ async function logout() {
 
   localStorage.removeItem('cart');
   localStorage.removeItem('loggedUser');
+
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (token) {
+    localStorage.removeItem("token")
+  }
 
   isLoggedUser();
 }
