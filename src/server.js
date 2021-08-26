@@ -42,6 +42,14 @@ app.get("/collections", async (req, res) => {
 	}
 })
 
+app.get("/product", async (req, res) => {
+	try {
+		res.render("product");
+	} catch (err) {
+		res.render("collections");
+	}
+})
+
 app.get("/checkout", async (req, res) => {
 	try {
 		res.render("checkout");
