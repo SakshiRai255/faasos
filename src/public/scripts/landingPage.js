@@ -1,3 +1,4 @@
+
 /*-------------------------------------------Login Pop Function-----------------------------------------*/
 function popUpLogin() {
   let login = document.getElementById('popUp');
@@ -267,8 +268,3 @@ function checkTld(x) {
 
 /* ------------------------------------ Enter Input Location ---------------------------- */
 
-function enterInputLocation() {
-  let locationInput = document.getElementById('locationInput');
-  locationInput.value = `Ghaziabad`;
-  locationInput.style.fontWeight = `bold`;
-}

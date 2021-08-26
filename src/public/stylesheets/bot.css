@@ -177,7 +177,8 @@ Messages
   line-height: 1.4;
   margin-left: 35px;
   position: relative;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  /* text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); */
 }
 .messages .message .timestamp {
   position: absolute;

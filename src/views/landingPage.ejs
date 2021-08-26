@@ -108,8 +108,10 @@
 			<div id="right">
 				<img src="https://assets.faasos.io/faasos_v2/hero-banner.jpg" />
 			</div>
+
 			<div id="location">
-				<input type="text" placeholder="Enter your deliery location" id="locationInput" />
+				<input type="text" placeholder="Enter your delivery location" id="locationInput"
+					onclick="enterInputLocation()" />
 				<p style="background: white; padding: 20px" onclick="enterInputLocation()">
 					<img style="margin-right: 5px" class="floatL" src="/images/landingLocation.svg" />
 					Locate Me
@@ -122,6 +124,27 @@
 					FIND FOOD
 				</p>
 			</div>
+
+
+			<div id="locationPopUp">
+				<div id="locationContainer">
+					<div id="searchLocation">
+						<img src="/images/leftArrow.svg" alt="" class="backButton" onclick="closePopUp()" />
+						<input type="text" oninput="throttleFunction()" placeholder="Search Location" id="inputLocation" />
+						<img src="/images/searchLogo.svg" />
+					</div>
+					<div id="appendLocation">
+						<div>
+							<img src="/images/landingLocation.svg" />
+							<div>
+								<p>Use Current Location</p>
+								<span>Accuracy may vary depending on the strength of gps signal of device</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="center1 clear">
 			<h1>Eat Good, Eat Safe. Always! Now with the EatSure promise.</h1>
@@ -208,7 +231,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer clear">
+
+		<%- include ("partials/footer.partials.ejs") %>
+
+			<!-- <div class="footer clear">
 			<div style="margin: auto">
 				<div>
 					<p>Cities we deliver to</p>
@@ -282,10 +308,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
 </body>
 
 </html>
 
 <script src="/scripts/credentials.js"></script>
 <script src="/scripts/landingPage.js"></script>
+<script src="/scripts/map.js"></script>

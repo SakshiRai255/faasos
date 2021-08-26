@@ -66,6 +66,7 @@ app.get("/profile", async (req, res) => {
 	}
 })
 
+
 app.get("/help", async (req, res) => {
 	try {
 		res.render("help");
