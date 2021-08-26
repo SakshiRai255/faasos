@@ -4,6 +4,9 @@ Mixins
 /*--------------------
 Body
 --------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 *,
 *::before,
 *::after {
@@ -16,9 +19,9 @@ body {
 }
 
 body {
-  /* background: linear-gradient(135deg, #e9ff00, #ff3434); */
   background-size: cover;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   line-height: 1.3;
   overflow: hidden;
@@ -152,6 +155,9 @@ Messages
   position: relative;
   width: 100%;
   background-color: #f7f7f7;
+  min-width: 600px;
+    width: 60%;
+    margin: 0 auto;
 }
 .messages .messages-content {
   position: absolute;
