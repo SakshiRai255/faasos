@@ -156,8 +156,8 @@ Messages
   width: 100%;
   background-color: #f7f7f7;
   min-width: 600px;
-    width: 60%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
 .messages .messages-content {
   position: absolute;
@@ -937,7 +937,7 @@ ul {
 }
 ul li {
   display: inline;
-  background: #1d7745;
+  /* background: #1d7745; */
   padding: 4px;
   border-radius: 10px;
   font-size: 15px;
