@@ -8,7 +8,6 @@ function findUser(number) {
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) return null;
   for (let i = 0; i < allUsers.length; i++) {
-    // console.log(allUsers[i].number);
     if (allUsers[i].number == number) return allUsers[i];
   }
   return null;
@@ -75,10 +74,8 @@ async function signUp() {
     number: data.phoneNumberSign.value,
     email: data.email.value,
   };
-  console.log('user:', user)
 
   const foundUser = await useAPI(`http://localhost:8080/users/${user.number}`);
-  console.log('foundUser:', foundUser)
 
   if (foundUser) {
     popUpLogin();
@@ -91,7 +88,6 @@ async function signUp() {
       },
       body: JSON.stringify(user)
     })
-    console.log('newUser:', newUser)
 
     localStorage.setItem('cart', JSON.stringify([]));
     localStorage.setItem('loggedUser', JSON.stringify(user));
@@ -104,25 +100,22 @@ async function logout() {
   let cart = JSON.parse(localStorage.getItem('cart'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
 
-  const allUsers = await useAPI(`http://localhost:8080/users`);
+  // const allUsers = await useAPI(`http://localhost:8080/users`);
 
   const number = loggedUser.number;
-  console.log('number:', number)
-  const user = await useAPI(`http://localhost:8080/users/${number}`);
-  console.log('user:', user)
+
+  // const user = await useAPI(`http://localhost:8080/users/${number}`);
+
   loggedUser.cart = cart;
-  console.log("loggedUser", loggedUser)
 
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
-    method: "PATCH",
-    body: JSON.stringify({ loggedUser }),
+    method: "PUT",
+    body: JSON.stringify( loggedUser ),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   })
-  console.log('updatedUser:', updatedUser)
-
 
   localStorage.removeItem('cart');
   localStorage.removeItem('loggedUser');
