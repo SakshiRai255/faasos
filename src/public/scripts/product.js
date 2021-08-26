@@ -56,7 +56,7 @@ function displayProduct() {
 		</div>
 	  </div>
 	</div>
-	<a href="/checkOut" id="proceedToCheckout">Proceed to checkout</a>
+	<a href="/checkout" id="proceedToCheckout">Proceed to checkout</a>
   </div>`;
 
   productDetailContact.innerHTML = first + str + last;
