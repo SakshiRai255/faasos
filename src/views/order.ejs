@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="/stylesheets/order.css" />
   </head>
   <body>
+    <!------------------------------------------------ Navbar Starts Here ------------------------->
+  <%- include ("partials/navbar.partials.ejs") %>
+<!--   
     <nav>
       <div id="navContainer">
         <div id="navLeft">
@@ -36,10 +39,12 @@
           </p>
         </div>
       </div>
-    </nav>
+    </nav> -->
+  <!--------------------------------------- Navbar Ends Here ----------------------------------->
 
     <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
-
+    <%- include ("partials/sidebar.partials.ejs") %>
+<!-- 
     <section id="sidebar">
       <div id="sidebarMain">
         <div id="sidebarList">
@@ -112,7 +117,7 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
 
@@ -139,8 +144,9 @@
     </div>
 
     <!------------------------------------- footer area------------------------------------------------------>
+    <%- include ("partials/footer.partials.ejs") %>
 
-    <div class="footer clear">
+    <!-- <div class="footer clear">
       <div style="margin: auto">
         <div>
           <p>Cities we deliver to</p>
@@ -217,7 +223,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
   </body>
 </html>
 <script

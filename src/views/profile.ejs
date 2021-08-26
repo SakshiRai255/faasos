@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="/stylesheets/profile.css" />
   </head>
   <body>
-    <nav>
+    <!-------------------------------------------- Navbar Area Starts Here ------------------------------------->
+    <%- include ("partials/navbar.partials.ejs") %>
+
+    <!-- <nav>
       <div id="navContainer">
         <div id="navLeft">
           <a href="collections">
@@ -36,10 +39,12 @@
           </p>
         </div>
       </div>
-    </nav>
+    </nav> -->
+    <!-------------------------------------------- Navbar Area Ends Here ------------------------------------->
 
     <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
-
+    <%- include ("partials/sidebar.partials.ejs") %>
+<!-- 
     <section id="sidebar">
       <div id="sidebarMain">
         <div id="sidebarList">
@@ -112,7 +117,7 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
     
@@ -180,6 +185,11 @@
         </div>
       </div>
     </div>
+
+    <!------------------------------------- footer starts ends here ------------------------------------------------------>
+
+    <%- include ("partials/footer.partials.ejs") %>
+<!-- 
     <div class="footer clear">
       <div style="margin: auto">
         <div>
@@ -257,7 +267,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <!------------------------------------- footer area ends here ------------------------------------------------------>
+
   </body>
 </html>
 
