@@ -27,7 +27,7 @@
 				</div>
 				<form id="signInForm">
 					<input disabled type="text" id="countryCode" placeholder="+91" />
-					<input type="number" pattern="[0-9]{10}" maxlength="10" id="phoneNumber" placeholder="Phone Number" />
+					<input type="text" pattern="[1-9]{1}[0-9]{9}" maxlength="10" id="phoneNumber" placeholder="Phone Number" />
 				</form>
 				<p id="alertNumber">Phone should contain minimum 10 digits</p>
 				<button id="continueButton" onclick="goToVerifyOTP()">
@@ -50,7 +50,7 @@
 				</div>
 				<form id="signUpForm">
 					<input disabled type="text" id="countryCodeSignUp" placeholder="+91" />
-					<input type="number" pattern="[0-9]{10}" maxlength="10" name="number" id="phoneNumberSign"
+					<input type="text" pattern="[1-9]{1}[0-9]{9}" maxlength="10" name="number" id="phoneNumberSign"
 						placeholder="Phone Number" />
 					<p id="aNumber">Phone should contain minimum 10 digits</p>
 					<input style="display: block; width: 100%" type="text" name="name" id="userName" placeholder="Name" /><br />
@@ -110,8 +110,8 @@
 			</div>
 
 			<div id="location">
-				<input type="text" placeholder="Enter your delivery location" id="locationInput"
-					onclick="enterInputLocation()" />
+				<input type="text" placeholder="Enter your delivery location" id="locationInput" onclick="enterInputLocation()"
+					readonly />
 				<p style="background: white; padding: 20px" onclick="enterInputLocation()">
 					<img style="margin-right: 5px" class="floatL" src="/images/landingLocation.svg" />
 					Locate Me
@@ -136,7 +136,7 @@
 					<div id="appendLocation">
 						<div>
 							<img src="/images/landingLocation.svg" />
-							<div>
+							<div id="useCurrentLocation">
 								<p>Use Current Location</p>
 								<span>Accuracy may vary depending on the strength of gps signal of device</span>
 							</div>

@@ -541,6 +541,17 @@ button[disabled] {
   padding-right: 2rem;
 }
 
+#useCurrentLocation > p {
+  color: rgb(51, 51, 51);
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+#useCurrentLocation > span {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
 .searchResultCity {
   color: rgb(51, 51, 51);
   font-size: 1.5rem;
