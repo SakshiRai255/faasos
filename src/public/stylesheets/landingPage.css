@@ -817,51 +817,6 @@ button[disabled] {
   width: 50px;
 }
 
-/* ----------------------------------------------------Footer------------------------------------------------------------------- */
-
-.footer {
-  background-color: var(--primaryColorDark);
-  height: 550px;
-  padding: 50px 150px;
-}
-.footer1 {
-  float: left;
-  width: 21%;
-  padding: 1% 2%;
-}
-.footer2 {
-  width: 46%;
-  padding: 2%;
-}
-.footer3 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
-.footer3 img {
-  margin: 0px 6px;
-  cursor: pointer;
-}
-.footer1 > span,
-p ~ span {
-  font-size: 15px;
-  line-height: 25px;
-  /* font-weight: 700; */
-  color: rgb(255, 255, 255);
-}
-.footer p {
-  font-size: 20px;
-  line-height: 0px;
-  color: rgb(196, 196, 196);
-}
-p ~ span {
-  cursor: pointer;
-}
-p > span {
-  font-weight: 900;
-  font-size: 17px;
-}
-
 /* Media Queries for medium size screens */
 
 @media (max-width: 1440px) {
@@ -961,14 +916,6 @@ p > span {
     align-items: center;
   }
 
-  .footer {
-    height: fit-content;
-    padding: 1rem;
-  }
-
-  .footer p {
-    line-height: unset;
-  }
 }
 
 @media (max-width: 720px) {

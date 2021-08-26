@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Food Online from Faasos | Zero Contact Delivery</title>
-    <link
-      rel="shortcut icon"
-      href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/profile.css" />
-  </head>
-  <body>
-    <!-------------------------------------------- Navbar Area Starts Here ------------------------------------->
-    <%- include ("partials/navbar.partials.ejs") %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Food Online from Faasos | Zero Contact Delivery</title>
+  <link rel="shortcut icon"
+    href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/main.css">
+
+  <link rel="stylesheet" href="/stylesheets/profile.css" />
+</head>
+
+<body>
+  <!-------------------------------------------- Navbar Area Starts Here ------------------------------------->
+  <%- include ("partials/navbar.partials.ejs") %>
 
     <!-- <nav>
       <div id="navContainer">
@@ -44,7 +43,7 @@
 
     <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
     <%- include ("partials/sidebar.partials.ejs") %>
-<!-- 
+      <!-- 
     <section id="sidebar">
       <div id="sidebarMain">
         <div id="sidebarList">
@@ -119,77 +118,76 @@
       </div>
     </section> -->
 
-    <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
-    
-    <div id="mainhead">
-      <div id="logoBox">
-        <img class="logo" src="/images/logoicon.svg" />
-      </div>
-      <div>
-        <h2 id="theName">Shantanu</h2>
-        <p id="theNumber">7447556344</p>
-        <p id="theEmail">shantanu@gmail.com</p>
-      </div>
-    </div>
-    <div id="profileDetail">
-      <div id="navBar">
-        <div id="bar1" onclick="showProfile()">Profile</div>
-        <div id="bar2" onclick="showOrders()">Orders</div>
-        <div id="bar3" onclick="showPayments()">Payments</div>
-        <div id="bar4" onclick="showAddresses()">Addresses</div>
-      </div>
-      <div id="showBar">
-        <div id="profile">
-          <h2>Manage Profile</h2>
-          <div id="profileLogo">
-            <img src="/images/logoicon.svg" />
-          </div>
-          <div id="userDetail">
-            <div class="userBox">
-              <p>Title</p>
-              <h2 id="name"></h2>
-            </div>
-            <div class="userBox">
-              <p>Phone No.</p>
-              <h2 id="number"></h2>
-            </div>
-            <div class="userBox">
-              <p>Email</p>
-              <h2 id="email"></h2>
-            </div>
-          </div>
-        </div>
-        <div id="order">
-          <img src="/images/orderLogo.svg" />
-          <h2>Looks bland, add some deliciousness</h2>
-          <button onclick="goToCollections()">ORDER NOW</button>
-        </div>
-        <div id="payment">
-          <img src="/images/orderPaymentLogo.svg" />
-          <h2>No linked payments</h2>
-        </div>
-        <div id="address">
-          <h2>Manage Addresses</h2>
-          <div id="add">
-            <div id="box1">
-              <h3>ADD NEW ADDRESS</h3>
-              <button onclick="addAddress()">ADD NEW</button>
-            </div>
-            <div id="box2">
-              <h2 id="addressType">Home</h2>
-              <p id="addAddress">Ahmedabad, Gujarat - 380028</p>
-              <button onclick="addAddress()">EDIT</button
-              ><button onclick="deleteAddress(event)">DELETE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
 
-    <!------------------------------------- footer starts ends here ------------------------------------------------------>
+      <div id="mainhead">
+        <div id="logoBox">
+          <img class="logo" src="/images/logoicon.svg" />
+        </div>
+        <div>
+          <h2 id="theName">Shantanu</h2>
+          <p id="theNumber">7447556344</p>
+          <p id="theEmail">shantanu@gmail.com</p>
+        </div>
+      </div>
+      <div id="profileDetail">
+        <div id="navBar">
+          <div id="bar1" onclick="showProfile()">Profile</div>
+          <div id="bar2" onclick="showOrders()">Orders</div>
+          <div id="bar3" onclick="showPayments()">Payments</div>
+          <div id="bar4" onclick="showAddresses()">Addresses</div>
+        </div>
+        <div id="showBar">
+          <div id="profile">
+            <h2>Manage Profile</h2>
+            <div id="profileLogo">
+              <img src="/images/logoicon.svg" />
+            </div>
+            <div id="userDetail">
+              <div class="userBox">
+                <p>Title</p>
+                <h2 id="name"></h2>
+              </div>
+              <div class="userBox">
+                <p>Phone No.</p>
+                <h2 id="number"></h2>
+              </div>
+              <div class="userBox">
+                <p>Email</p>
+                <h2 id="email"></h2>
+              </div>
+            </div>
+          </div>
+          <div id="order">
+            <img src="/images/orderLogo.svg" />
+            <h2>Looks bland, add some deliciousness</h2>
+            <button onclick="goToCollections()">ORDER NOW</button>
+          </div>
+          <div id="payment">
+            <img src="/images/orderPaymentLogo.svg" />
+            <h2>No linked payments</h2>
+          </div>
+          <div id="address">
+            <h2>Manage Addresses</h2>
+            <div id="add">
+              <div id="box1">
+                <h3>ADD NEW ADDRESS</h3>
+                <button onclick="addAddress()">ADD NEW</button>
+              </div>
+              <div id="box2">
+                <h2 id="addressType">Home</h2>
+                <p id="addAddress">Ahmedabad, Gujarat - 380028</p>
+                <button onclick="addAddress()">EDIT</button><button onclick="deleteAddress(event)">DELETE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <%- include ("partials/footer.partials.ejs") %>
-<!-- 
+      <!------------------------------------- footer starts ends here ------------------------------------------------------>
+
+      <%- include ("partials/footer.partials.ejs") %>
+        <!-- 
     <div class="footer clear">
       <div style="margin: auto">
         <div>
@@ -268,15 +266,13 @@
         </div>
       </div>
     </div> -->
-    <!------------------------------------- footer area ends here ------------------------------------------------------>
+        <!------------------------------------- footer area ends here ------------------------------------------------------>
 
-  </body>
+</body>
+
 </html>
 
-<script
-  src="https://kit.fontawesome.com/7fc87d8fcc.js"
-  crossorigin="anonymous"
-></script>
+<script src="https://kit.fontawesome.com/7fc87d8fcc.js" crossorigin="anonymous"></script>
 
 <script src="/scripts/credentials.js"></script>
 <script src="/scripts/sidebar.js"></script>
