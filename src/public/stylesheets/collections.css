@@ -91,7 +91,6 @@ nav .hamburger {
   top: 0;
   left: 0;
   display: none;
-
 }
 
 #sidebarMain {
@@ -102,7 +101,7 @@ nav .hamburger {
 }
 
 .activeSideBar {
-  transform: translateX(-400px)!important;
+  transform: translateX(-400px) !important;
 }
 
 #sidebarList {
@@ -127,6 +126,7 @@ nav .hamburger {
   display: flex;
   flex-direction: column;
   padding-top: 6rem;
+  overflow: hidden;
 }
 
 #sidebarNavList > li {
