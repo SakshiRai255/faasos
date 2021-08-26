@@ -31,137 +31,6 @@ body {
   color: var(--blackText);
 }
 
-/* ------------------------------------------ Navbar Area ---------------------------------------------- */
-
-nav {
-  background-color: var(--whiteLight);
-  width: 100%;
-  box-shadow: rgb(0 0 0 / 4%) 0px 4px 8px 0px;
-}
-
-#navContainer {
-  max-width: 1170px;
-  margin: 0px auto;
-  padding: 1.6rem 0.5rem;
-  display: flex;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-}
-
-#navLeft > a > img {
-  width: 68px;
-  height: 40px;
-}
-
-#navLeft,
-#navRight {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#navLeft > *,
-#navRight > * {
-  margin-right: 20px;
-}
-
-#navLocation > p:nth-child(1) {
-  font-weight: bold;
-  font-size: 1.8rem;
-}
-
-nav #userName,
-nav .hamburger {
-  color: var(--primaryColorRegular);
-  cursor: pointer;
-}
-
-/* --------------------------------------- Sidebar CSS  ----------------------------------- */
-
-#sidebar {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  height: 100vh;
-  position: fixed;
-  z-index: 111;
-  top: 0;
-  left: 0;
-  display: none;
-}
-
-#sidebarMain {
-  height: 100%;
-  position: relative;
-  margin-right: -400px;
-  transition: transform 0.5s linear;
-}
-
-.activeSideBar {
-  transform: translateX(-400px) !important;
-}
-
-#sidebarList {
-  max-width: 400px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  background-color: var(--whiteLight);
-}
-
-#sidebarList > span {
-  position: absolute;
-  top: 1.5rem;
-  right: 2.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-}
-
-#sidebarNavList {
-  display: flex;
-  flex-direction: column;
-  padding-top: 6rem;
-}
-
-#sidebarNavList > li {
-  width: 100%;
-  cursor: pointer;
-}
-
-#sidebarNavList > li > a {
-  display: flex;
-  align-items: center;
-  padding: 2.1rem 4rem;
-  width: 100%;
-}
-
-#sidebarNavList > li > a > span {
-  flex: 1 1 12.5%;
-  max-width: 12.5%;
-}
-
-#sidebarNavList > li > a > span > img {
-  width: 30px;
-  height: 30px;
-}
-
-#sidebarNavList > li > a > p {
-  flex: 1 1 75%;
-  font-size: 2rem;
-  font-weight: 500;
-  color: rgb(126, 126, 126) !important;
-}
-
-nav #userName,
-nav .hamburger {
-  color: var(--primaryColorRegular);
-  cursor: pointer;
-}
 
 /* ----------------------------------------------------  Product Area ---------------------------------------------------- */
 
@@ -377,48 +246,6 @@ nav .hamburger {
   display: none;
 }
 
-/* ----------------------------------------------------Footer------------------------------------------------------------------- */
-
-.footer {
-  background-color: var(--primaryColorDark);
-  padding: 50px 150px;
-}
-.footer1 {
-  float: left;
-  width: 21%;
-  padding: 1% 2%;
-}
-.footer2 {
-  width: 46%;
-  padding: 2%;
-}
-.footer3 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
-.footer3 img {
-  margin: 0px 6px;
-  cursor: pointer;
-}
-.footer1 > span,
-p ~ span {
-  font-size: 15px;
-  line-height: 25px;
-  /* font-weight: 700; */
-  color: rgb(255, 255, 255);
-}
-.footer p {
-  font-size: 20px;
-  color: rgb(196, 196, 196);
-}
-p ~ span {
-  cursor: pointer;
-}
-p > span {
-  font-weight: 900;
-  font-size: 17px;
-}
 
 /* Media Queries form medium screen sizes */
 @media (max-width: 1220px) {
@@ -428,16 +255,6 @@ p > span {
 }
 
 /* Media Queries for small screen sizes */
-@media (max-width: 960px) {
-  .footer {
-    height: fit-content;
-    padding: 1rem;
-  }
-
-  .footer p {
-    line-height: unset;
-  }
-}
 
 @media (max-width: 770px) {
   #productDetailImage {
