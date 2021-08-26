@@ -143,7 +143,7 @@ async function logout() {
     localStorage.removeItem("token")
   }
 
-  // isLoggedUser();
+  isLoggedUser();
 }
 
 isLoggedUser();
