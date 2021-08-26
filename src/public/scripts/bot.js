@@ -35,7 +35,8 @@ function listendom(no) {
 $(window).load(function () {
   $messages.mCustomScrollbar();
   setTimeout(function () {
-    serverMessage("Welcome to FAASOS, how can I assist you?");
+    const user = JSON.parse(localStorage.getItem("loggedUser")).name;
+    serverMessage(`Hi ${user}, Welcome to FAASOS, how can I assist you?`);
   }, 100);
 
 });

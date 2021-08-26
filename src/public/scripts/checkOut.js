@@ -154,6 +154,7 @@ async function addUserAddress() {
   // let allUsers = JSON.parse(localStorage.getItem('users'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   loggedUser.address = address;
+  
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),

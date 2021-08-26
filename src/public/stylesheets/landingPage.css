@@ -457,6 +457,100 @@ button[disabled] {
 #openLoginUp {
   color: #57409a;
 }
+
+/* ----------------------------------------------------Location Popup-------------------------------------------------------------- */
+
+#locationPopUp {
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  overflow: hidden auto;
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+#locationContainer {
+  width: 50%;
+  max-width: 500px;
+  min-height: 83vh;
+  max-height: 100%;
+  border-radius: 4px;
+  background-color: white;
+  margin: 4rem auto;
+  padding: 1.6rem;
+  position: relative;
+}
+
+#searchLocation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+#searchLocation img:nth-of-type(1) {
+  padding: 2rem;
+}
+#searchLocation img:nth-of-type(2) {
+  width: 1.6rem;
+  padding: 0rem 1rem;
+}
+#searchLocation input {
+  margin: 1rem 3.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  width: 80%;
+}
+
+#appendLocation {
+  background: rgb(255, 255, 255);
+  z-index: 1000;
+  overflow: auto;
+  position: absolute;
+  top: 6rem;
+  left: 0px;
+  right: 0px;
+  max-height: calc(100% - 6rem);
+  opacity: 1;
+  cursor: pointer;
+}
+
+#appendLocation > div {
+  margin-top: 0rem;
+  width: 94%;
+  padding: 3%;
+  border-top: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid rgb(224, 224, 224);
+  display: flex;
+}
+
+#appendLocation span {
+  color: rgb(180, 180, 180);
+}
+
+#appendLocation img {
+  width: 2.5rem;
+  padding-right: 2rem;
+}
+
+.searchResultCity {
+  color: rgb(51, 51, 51);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.searchResultState {
+  margin-right: 5px;
+}
+
 /* ----------------------------------------------------Head Part------------------------------------------------------------------- */
 
 .head {
