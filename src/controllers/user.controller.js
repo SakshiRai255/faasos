@@ -30,8 +30,6 @@ router.get("/:number", async (req, res) => {
 router.put("/:number", async (req, res) => {
 	try {
 		const user = await User.findOneAndUpdate({ number: req.params.number }, req.body, { new: true });
-		console.log('user:', user)
-
 		return res.status(200).json(user);
 	} catch (err) {
 		return res.status(400).json(null);
