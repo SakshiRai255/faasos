@@ -156,16 +156,7 @@ async function addUserAddress() {
       'Content-Type': 'application/json'
     }
   });
-  // let allUsers = JSON.parse(localStorage.getItem('users'));
-  // for (let i = 0; i < allUsers.length; i++) {
-  //   if (allUsers[i].number == loggedUser.number) {
-  //     allUsers[i].address = address;
-  //     loggedUser = allUsers[i];
-  //     break;
-  //   }
-  // }
 
-  // localStorage.setItem('users', JSON.stringify(allUsers));
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   let openMapPopUp = document.getElementById('openMapPopUp');
@@ -177,8 +168,6 @@ async function deleteAddress() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   delete loggedUser.address;
 
-
-
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
@@ -187,15 +176,7 @@ async function deleteAddress() {
       'Content-Type': 'application/json'
     }
   });
-  // let allUsers = JSON.parse(localStorage.getItem('users'));
-  // for (let i = 0; i < allUsers.length; i++) {
-  //   if (allUsers[i].number == loggedUser.number) {
-  //     allUsers[i] = loggedUser;
-  //     break;
-  //   }
-  // }
-
-  // localStorage.setItem('users', JSON.stringify(allUsers));
+  
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   showAddresses();

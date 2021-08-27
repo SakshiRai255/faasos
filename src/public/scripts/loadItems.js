@@ -1,25 +1,5 @@
 // Adding items to cart
 async function addToCart(id) {
-  // let selectedFood = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-  // let selectedFoodPath = e["path"][5];
-  // console.log(selectedFoodPath);
-
-  // let findId = 0;
-  // let food = null;
-  // for (productCategory in foodItems) {
-  //   let found = false;
-  //   let list = foodItems[productCategory];
-  //   for (let i = 0; i < list.length; i++) {
-  //     if (findId == id) {
-  //       food = { ...list[i] };
-  //       found = true;
-  //       break;
-  //     }
-  //     findId++;
-  //   }
-  //   if (found) break;
-  // }
-
   let food = await useAPI(`http://localhost:8080/foodItems/${id}`);
 
   if (food != null) {
@@ -184,67 +164,6 @@ async function displayFood(category) {
         productArea.append(categoryDiv);
     }
   }
-
-
-  // let ids = 0; // keeping id for each card
-  // for (foodCategory in foodItems) {
-  //   let categoryDiv = document.createElement('div');
-  //   switch (foodCategory) {
-  //     case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
-  //       categoryDiv.id = 'dailyValueWrap';
-  //       break;
-  //     case 'Combos for 1 (Save upto 15% Extra)':
-  //       categoryDiv.id = 'combosForOne';
-  //       break;
-  //     case 'Combos for 2 (Save upto 20% Extra)':
-  //       categoryDiv.id = 'combosForTwo';
-  //       break;
-  //     case 'Combos for 4 (Save upto 25% Extra)':
-  //       categoryDiv.id = 'combosForFour';
-  //       break;
-  //     case 'Signature Wraps':
-  //       categoryDiv.id = 'signatureWraps';
-  //       break;
-  //     case 'Classic Wraps':
-  //       categoryDiv.id = 'classicWraps';
-  //       break;
-  //     case 'Rice Bowls':
-  //       categoryDiv.id = 'riceBowls';
-  //       break;
-  //     case 'Sides And Beverages':
-  //       categoryDiv.id = 'sidesAndBeverages';
-  //       break;
-  //     case 'Desserts':
-  //       categoryDiv.id = 'desserts';
-  //       break;
-  //     default:
-  //       break;
-  //   }
-
-  //   categoryDiv.innerHTML = `<div id="productAreaHeading">
-	// 	<p>${foodCategory}</p>
-	//   </div>`;
-
-  //   let allProducts = document.createElement('div');
-  //   allProducts.id = 'allProducts';
-
-  //   let dailyValue = document.createElement('div');
-  //   dailyValue.id = 'dailyValue';
-
-  //   for (let i = 0; i < foodItems[foodCategory].length; i++) {
-  //     let dish = foodItems[foodCategory][i];
-  //     // if both - then show
-  //     // else should match category
-  //     if (category == 'both' || dish['veg_nonVeg'] == category) {
-  //       dailyValue.append(createFoodItem(dish, ids));
-  //     }
-  //     ids++;
-  //   }
-
-  //   allProducts.append(dailyValue);
-  //   categoryDiv.append(allProducts);
-  //   productArea.append(categoryDiv);
-  // }
 }
 
 // Product Category List Loaded
@@ -294,47 +213,6 @@ async function displayCategories() {
       default:
         break;
     }
-
-
-  // for (foodCategory in foodItems) {
-  //   let li = document.createElement('li');
-  //   if (foodCategory == 'Daily Value Wrap Combos (Save Upto 40% Extra)') {
-  //     li.classList.add('active');
-  //   }
-  //   let a = document.createElement('a');
-
-  //   a.classList.add('categoryAnchor');
-  //   switch (foodCategory) {
-  //     case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
-  //       a.href = '#dailyValueWrap';
-  //       break;
-  //     case 'Combos for 1 (Save upto 15% Extra)':
-  //       a.href = '#combosForOne';
-  //       break;
-  //     case 'Combos for 2 (Save upto 20% Extra)':
-  //       a.href = '#combosForTwo';
-  //       break;
-  //     case 'Combos for 4 (Save upto 25% Extra)':
-  //       a.href = '#combosForFour';
-  //       break;
-  //     case 'Signature Wraps':
-  //       a.href = '#signatureWraps';
-  //       break;
-  //     case 'Classic Wraps':
-  //       a.href = '#classicWraps';
-  //       break;
-  //     case 'Rice Bowls':
-  //       a.href = '#riceBowls';
-  //       break;
-  //     case 'Sides And Beverages':
-  //       a.href = '#sidesAndBeverages';
-  //       break;
-  //     case 'Desserts':
-  //       a.href = '#desserts';
-  //       break;
-  //     default:
-  //       break;
-  //   }
 
     a.innerText = foodCategory;
 
