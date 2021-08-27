@@ -17,108 +17,18 @@
 </head>
 
 <body>
-  <!-------------------------------------------- Navbar Area Starts Here ------------------------------------->
+
+  <!------- Navbar Starts Here ----->
+
   <%- include ("partials/navbar.partials.ejs") %>
 
-    <!-- <nav>
-      <div id="navContainer">
-        <div id="navLeft">
-          <a href="/collections">
-            <img src="/images/faasosLogoPurple.svg" alt="faasos logo" />
-          </a>
-          <div id="navLocation">
-            <p>Ghaziabad</p>
-            <p>Ghaziabad Uttar Pradesh</p>
-          </div>
-        </div>
-        <div id="navRight">
-          <p id="userName">Hi Chiranjeev Thapliyal</p>
-          <p class="hamburger" onclick="openSidebar()">
-            <i class="fas fa-bars"></i>
-          </p>
-        </div>
-      </div>
-    </nav> -->
-    <!-------------------------------------------- Navbar Area Ends Here ------------------------------------->
+    <!------- Navbar Ends Here ------->
 
-    <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
+    <!------- Side Bar HTML Starts Here --------->
+
     <%- include ("partials/sidebar.partials.ejs") %>
-      <!-- 
-    <section id="sidebar">
-      <div id="sidebarMain">
-        <div id="sidebarList">
-          <span onclick="closeSidebar()"><i class="fas fa-times"></i></span>
-          <ul id="sidebarNavList">
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarProfile.svg" alt="profile"
-                /></span>
-                <p>Profile</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarOrders.svg" alt="orders"
-                /></span>
-                <p>Manage Orders</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAddress.svg" alt="Addresses"
-                /></span>
-                <p>Manage Addresses</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarPayment.svg" alt="Payments"
-                /></span>
-                <p>Manage Payments</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarHelp.svg" alt="help and support"
-                /></span>
-                <p>Help & Support</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAbout.svg" alt="about us"
-                /></span>
-                <p>About Us</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarParty.svg" alt="party orders"
-                /></span>
-                <p>Party Orders</p>
-              </a>
-            </li>
-            <li>
-              <a onclick="logout()">
-                <span
-                  ><img src="/images/sidebarLogout.svg" alt="logout"
-                /></span>
-                <p>Logout</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
 
-      <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
+      <!------- Side Bar HTML Ends Here ---------->
 
       <div id="productDetailContact">
         <!-- <div id="productDetailContainer">
@@ -174,89 +84,11 @@
       </div> -->
       </div>
 
-      <!------------------------------------- footer area start here ------------------------------------------------------>
-      <%- include ("partials/footer.partials.ejs") %>
-        <!-- 
-    <div class="footer clear">
-      <div style="margin: auto">
-        <div>
-          <p>Cities we deliver to</p>
-          <div>
-            <div class="footer1">
-              <span>Pune</span><br />
-              <span>Gurgaon</span><br />
-              <span>Indore</span><br />
-              <span>Ghaziabad</span><br />
-              <span>Bhopal</span><br />
-              <span>Pondicherry</span><br />
-              <span>Mohali</span><br />
-              <span>Zirakpur</span><br />
-              <span>Tirupati</span><br />
-            </div>
-            <div class="footer1">
-              <span>Mumbai</span><br />
-              <span>New Delhi</span><br />
-              <span>Nagpur</span><br />
-              <span>Coimbatore</span><br />
-              <span>Kolkata</span><br />
-              <span>Nashik</span><br />
-              <span>Chandigarh</span><br />
-              <span>Lucknow</span><br />
-              <span>Tiruppur</span><br />
-            </div>
-            <div class="footer1">
-              <span>Bangalore</span><br />
-              <span>Hyderabad</span><br />
-              <span>Faridabad</span><br />
-              <span>Dubai</span><br />
-              <span>Surat</span><br />
-              <span>Jaipur</span><br />
-              <span>Vijaywada</span><br />
-              <span>Kochi</span><br />
-              <span>Kota</span><br />
-            </div>
-            <div class="footer1">
-              <span>Noida</span><br />
-              <span>Chennai</span><br />
-              <span>Ahmedabad</span><br />
-              <span>Vadodra</span><br />
-              <span>Mysore</span><br />
-              <span>Panchukla</span><br />
-              <span>Vellore</span><br />
-              <span>Vizag</span><br />
-              <span>Many more...</span><br />
-            </div>
-          </div>
-          <div class="clear">
-            <div class="footer2 floatL">
-              <p>Legal</p>
-              <span>Terms & Conditions</span><br />
-              <span>Privacy Policy</span>
-            </div>
-            <div class="footer2 floatR">
-              <p>Contact</p>
-              <img
-                style="height: 30px; width: 20px; margin-right: 10px"
-                src="/images/mail.svg"
-              /><span> crm@faasos.com</span>
-            </div>
-          </div>
-          <div class="clear" style="margin-bottom: 50px"></div>
-          <div style="border: 1px solid var(--primaryColorRegular)"></div>
-          <div class="footer3">
-            <p>2020 @ Faasos. All rights reverved</p>
-            <div style="display: flex; flex-direction: row">
-              <p style="margin-right: 20px">Follow us on</p>
-              <img src="/images/fb.svg" /><img src="/images/tw.svg" /><img
-                src="/images/insta.svg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+      <!----------- Footer Starts Here ----------->
 
-        <!------------------------------------- footer area ends here ------------------------------------------------------>
+      <%- include ("partials/footer.partials.ejs") %>
+
+        <!----------- Footer Ends Here ----------->
 </body>
 
 <script src="https://kit.fontawesome.com/7fc87d8fcc.js" crossorigin="anonymous"></script>
