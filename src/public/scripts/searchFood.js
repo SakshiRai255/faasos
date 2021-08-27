@@ -1,12 +1,14 @@
+let foodItems = null;
+
 // Close SearchFoodInput
 function closeSearchFoodPopUp() {
-  let displayFilterItems = document.getElementById('displayFilterItems');
+  const displayFilterItems = document.getElementById('displayFilterItems');
   displayFilterItems.innerHTML = null;
 
-  let searchFoodPopUp = document.getElementById('searchFoodPopUp');
+  const searchFoodPopUp = document.getElementById('searchFoodPopUp');
   searchFoodPopUp.style.display = 'none';
 
-  let productSearchInput = document.getElementById("productSearchInput");
+  const productSearchInput = document.getElementById("productSearchInput");
   productSearchInput.value = null;
 
 }
@@ -40,7 +42,7 @@ function createSearchFoodCard(food) {
                     <span>Read more</span>
                   </div>
                   <div class="searchFoodAddButton">
-                    <button onclick="addToCart(${food.id})">Add</button>
+                    <button onclick="addToCart('${food._id}')">Add</button>
                   </div>
                 </div>
               `;
@@ -56,16 +58,11 @@ function filterProducts() {
   if (!productSearchInput && productSearchInput.length <= 0) return;
 
   let filteredFoodItems = [];
-  let id = 0;
-  for (category in foodItems) {
-    for (let i = 0; i < foodItems[category].length; i++) {
-      let item = foodItems[category][i];
-      item.id = id++;
-      item.quantity = 0;
+  for (index in foodItems) {
+      let item = foodItems[index];
       let itemName = item.name.toLowerCase();
       if (itemName.includes(productSearchInput)) filteredFoodItems.push(item);
     }
-  }
 
   let displayFilterItems = document.getElementById('displayFilterItems');
   displayFilterItems.innerHTML = ``;
@@ -76,9 +73,14 @@ function filterProducts() {
   }
 }
 
-function openSearchFoodMenu() {
+async function openSearchFoodMenu() {
   let searchFoodPopUp = document.getElementById('searchFoodPopUp');
   searchFoodPopUp.style.display = 'block';
+
+  if (!foodItems) {
+    const result = await useAPI(`http://localhost:8080/foodItems`);
+    foodItems = result["items"]; 
+  }
 
   let productSearchInput = document.getElementById('productSearchInput');
   productSearchInput.addEventListener('input', filterProducts);
