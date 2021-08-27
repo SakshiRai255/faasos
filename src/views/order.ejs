@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Order Food Online from Faasos | Zero Contact Delivery</title>
-    <link
-      rel="shortcut icon"
-      href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/order.css" />
-  </head>
-  <body>
-    <!------------------------------------------------ Navbar Starts Here ------------------------->
+
+<head>
+  <title>Order Food Online from Faasos | Zero Contact Delivery</title>
+  <link rel="shortcut icon"
+    href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/main.css">
+
+  <link rel="stylesheet" href="/stylesheets/order.css" />
+</head>
+
+<body>
+  <!------------------------------------------------ Navbar Starts Here --------------------------->
   <%- include ("partials/navbar.partials.ejs") %>
-<!--   
+    <!--   
     <nav>
       <div id="navContainer">
         <div id="navLeft">
@@ -40,11 +39,11 @@
         </div>
       </div>
     </nav> -->
-  <!--------------------------------------- Navbar Ends Here ----------------------------------->
+    <!--------------------------------------- Navbar Ends Here ----------------------------------->
 
     <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
     <%- include ("partials/sidebar.partials.ejs") %>
-<!-- 
+      <!-- 
     <section id="sidebar">
       <div id="sidebarMain">
         <div id="sidebarList">
@@ -119,34 +118,29 @@
       </div>
     </section> -->
 
-    <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
+      <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
 
-    <!------------------------------------- final order------------------------------------------------------>
+      <!------------------------------------- final order------------------------------------------------------>
 
-    <div id="orderPlaced">
-      <div id="order_img">
-        <img
-          src="https://5.imimg.com/data5/RU/EG/IK/SELLER-64708915/delivery-boy-job-500x500.png"
-          alt=""
-        />
-        <span id="faasosLogo">
-          <img src="/images/faasosLogoPurple.svg" alt="faasos logo" />
-        </span>
+      <div id="orderPlaced">
+        <div id="order_img">
+          <img src="https://5.imimg.com/data5/RU/EG/IK/SELLER-64708915/delivery-boy-job-500x500.png" alt="" />
+          <span id="faasosLogo">
+            <img src="/images/faasosLogoPurple.svg" alt="faasos logo" />
+          </span>
+        </div>
+        <h2>
+          <span class="outer"><i class="fas fa-certificate"><span class="inner"><i
+                  class="fas fa-check"></i></span></i></span>
+          Your Order Has Been Placed, we will deliver soon.
+        </h2>
+        <button id="checkOrders" onclick="goToProfile()">Track Your Order</button>
       </div>
-      <h2>
-        <span class="outer"
-          ><i class="fas fa-certificate"
-            ><span class="inner"><i class="fas fa-check"></i></span></i
-        ></span>
-        Your Order Has Been Placed, we will deliver soon.
-      </h2>
-      <button id="checkOrders" onclick="goToProfile()">Track Your Order</button>
-    </div>
 
-    <!------------------------------------- footer area------------------------------------------------------>
-    <%- include ("partials/footer.partials.ejs") %>
+      <!------------------------------------- footer area------------------------------------------------------>
+      <%- include ("partials/footer.partials.ejs") %>
 
-    <!-- <div class="footer clear">
+        <!-- <div class="footer clear">
       <div style="margin: auto">
         <div>
           <p>Cities we deliver to</p>
@@ -225,12 +219,10 @@
       </div>
     </div> -->
 
-  </body>
+</body>
+
 </html>
-<script
-  src="https://kit.fontawesome.com/7fc87d8fcc.js"
-  crossorigin="anonymous"
-></script>
+<script src="https://kit.fontawesome.com/7fc87d8fcc.js" crossorigin="anonymous"></script>
 <script src="/scripts/credentials.js"></script>
 <script src="/scripts/sidebar.js"></script>
 <script src="/scripts/order.js"></script>
