@@ -255,8 +255,8 @@ function removeCartItem(id) {
   let cartItems = JSON.parse(localStorage.getItem('cart'));
   let newCartItems = [];
   for (let i = 0; i < cartItems.length; i++) {
-    if (cartItems[i].id == id && cartItems[i].quantity <= 1) continue;
-    else if (cartItems[i].id == id) cartItems[i].quantity--;
+    if (cartItems[i]._id == id && cartItems[i].quantity <= 1) continue;
+    else if (cartItems[i]._id == id) cartItems[i].quantity--;
     newCartItems.push(cartItems[i]);
   }
   localStorage.setItem('cart', JSON.stringify(newCartItems));
@@ -266,7 +266,7 @@ function removeCartItem(id) {
 function addCartItem(id) {
   let cartItems = JSON.parse(localStorage.getItem('cart'));
   for (let i = 0; i < cartItems.length; i++) {
-    if (cartItems[i].id == id) cartItems[i].quantity++;
+    if (cartItems[i]._id == id) cartItems[i].quantity++;
   }
   localStorage.setItem('cart', JSON.stringify(cartItems));
   orderSummaryItems();
@@ -290,9 +290,9 @@ function createCartItem(food) {
 			</div>
 		  </div>
 		  <div class="cartItemCount">
-			<button id="decrease" onclick="removeCartItem(${food.id})">-</button>
+			<button id="decrease" onclick="removeCartItem('${food._id}')">-</button>
 			<span>${food.quantity}</span>
-			<button id="increase" onclick="addCartItem(${food.id})">+</button>
+			<button id="increase" onclick="addCartItem('${food._id}')">+</button>
 		  </div>
 		  <div class="cartItemAmount">
 			<span>₹ ${food.price * food.quantity}</span>
