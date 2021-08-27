@@ -249,8 +249,6 @@ function orderSummaryItems() {
 
 orderSummaryItems();
 
-// Dummy
-
 function removeCartItem(id) {
   let cartItems = JSON.parse(localStorage.getItem('cart'));
   let newCartItems = [];
@@ -355,10 +353,7 @@ async function orderFood() {
     loggedUser.orders = [];
   }
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
-  // console.log('currentOrder:', loggedUser.orders);
-
-
-
+ 
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
       method: "PUT",
       body: JSON.stringify(loggedUser),
@@ -366,16 +361,8 @@ async function orderFood() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-    });
-  // let allUsers = JSON.parse(localStorage.getItem('users'));
-  // for (let i = 0; i < allUsers.length; i++) {
-  //   if (loggedUser.number == allUsers[i].number) {
-  //     allUsers[i] = loggedUser;
-  //     break;
-  //   }
-  // }
-
-  // localStorage.setItem('users', JSON.stringify(allUsers));
+  });
+  
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
 
