@@ -56,10 +56,31 @@ function insertMessage() {
     return false;
   }
   $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
-  fetchmsg()
 
-  $('.message-input').val(null);
-  updateScrollbar();
+  const order_msg = ["orders", "my orders", "show all orders"];
+  if (order_msg.indexOf(msg) != -1) {
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    fetch(`http://localhost:8080/users/${user.number}`).then(res => {
+      serverMessage(`Thanks for your query, we are getting your orders 🍔`)
+      return res.json();
+    }).then(data => {
+      setTimeout(() => {
+        if (data.length == 0) {
+          serverMessage(`Oops, you haven't ordered anything!`)
+        } else {
+          serverMessage(`Here are your recent orders:`)
+          setTimeout(() => {
+            data.orders.forEach(item => serverMessage(item.name));
+          }, 1000)
+        }
+      }, 1500);
+    });
+} else {
+  fetchmsg()
+}
+
+$('.message-input').val(null);
+updateScrollbar();
 
 }
 
@@ -92,6 +113,7 @@ function fetchmsg() {
   var url = 'http://localhost:8080/send-msg';
 
   const data = new URLSearchParams();
+
   for (const pair of new FormData(document.getElementById("mymsg"))) {
     data.append(pair[0], pair[1]);
     console.log(pair)
