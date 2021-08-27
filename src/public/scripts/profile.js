@@ -86,17 +86,17 @@ function showAddresses() {
   let addressType = document.getElementById('addressType');
   let addAddress = document.getElementById('addAddress');
 
-    let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    if (loggedUser.address) {
-        let box2 = document.getElementById("box2");
-        box2.style.display = "block";
-        addressType.innerText = loggedUser.address['addressType'];
-        addAddress.innerText =
-          loggedUser.address['houseNo'] + ', ' + loggedUser.address['landmark'];   
-    } else {
-        let box2 = document.getElementById("box2");
-        box2.style.display = "none";
-    }
+  let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  if (loggedUser.address) {
+    let box2 = document.getElementById("box2");
+    box2.style.display = "block";
+    addressType.innerText = loggedUser.address['addressType'];
+    addAddress.innerText =
+      loggedUser.address['houseNo'] + ', ' + loggedUser.address['landmark'];
+  } else {
+    let box2 = document.getElementById("box2");
+    box2.style.display = "none";
+  }
 }
 showProfile();
 
@@ -138,7 +138,7 @@ function addAddress() {
   body.append(openMapPopUp);
 }
 
-function addUserAddress() {
+async function addUserAddress() {
   let addressType = document.querySelector(`input[type="radio"]:checked`).value;
   let houseNo = document.getElementById(`houseNo`).value;
   let landmark = document.getElementById(`landmark`).value;
@@ -146,16 +146,26 @@ function addUserAddress() {
   let address = { addressType, houseNo, landmark };
 
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].number == loggedUser.number) {
-      allUsers[i].address = address;
-      loggedUser = allUsers[i];
-      break;
-    }
-  }
+  loggedUser.address = address;
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+  // let allUsers = JSON.parse(localStorage.getItem('users'));
+  // for (let i = 0; i < allUsers.length; i++) {
+  //   if (allUsers[i].number == loggedUser.number) {
+  //     allUsers[i].address = address;
+  //     loggedUser = allUsers[i];
+  //     break;
+  //   }
+  // }
+
+  // localStorage.setItem('users', JSON.stringify(allUsers));
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   let openMapPopUp = document.getElementById('openMapPopUp');
@@ -163,19 +173,29 @@ function addUserAddress() {
   showAddresses();
 }
 
-function deleteAddress() {
+async function deleteAddress() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   delete loggedUser.address;
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].number == loggedUser.number) {
-      allUsers[i] = loggedUser;
-      break;
-    }
-  }
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
+
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+  // let allUsers = JSON.parse(localStorage.getItem('users'));
+  // for (let i = 0; i < allUsers.length; i++) {
+  //   if (allUsers[i].number == loggedUser.number) {
+  //     allUsers[i] = loggedUser;
+  //     break;
+  //   }
+  // }
+
+  // localStorage.setItem('users', JSON.stringify(allUsers));
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   showAddresses();
