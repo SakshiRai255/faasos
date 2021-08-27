@@ -1,23 +1,29 @@
 // Adding items to cart
-function addToCart(id) {
+async function addToCart(id) {
   // let selectedFood = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
   // let selectedFoodPath = e["path"][5];
   // console.log(selectedFoodPath);
 
-  let findId = 0;
-  let food = null;
-  for (productCategory in foodItems) {
-    let found = false;
-    let list = foodItems[productCategory];
-    for (let i = 0; i < list.length; i++) {
-      if (findId == id) {
-        food = { ...list[i] };
-        found = true;
-        break;
-      }
-      findId++;
-    }
-    if (found) break;
+  // let findId = 0;
+  // let food = null;
+  // for (productCategory in foodItems) {
+  //   let found = false;
+  //   let list = foodItems[productCategory];
+  //   for (let i = 0; i < list.length; i++) {
+  //     if (findId == id) {
+  //       food = { ...list[i] };
+  //       found = true;
+  //       break;
+  //     }
+  //     findId++;
+  //   }
+  //   if (found) break;
+  // }
+
+  let food = await useAPI(`http://localhost:8080/foodItems/${id}`);
+
+  if (food != null) {
+    food = food["item"];
   }
 
   if (food) {
@@ -26,7 +32,6 @@ function addToCart(id) {
     let cartItems = JSON.parse(localStorage.getItem('cart'));
     if (!cartItems || cartItems.length <= 0) {
       cartItems = [food];
-      console.log('not found');
     } else {
       let flag = false;
       for (let i = 0; i < cartItems.length; i++) {
@@ -39,7 +44,6 @@ function addToCart(id) {
       if (!flag) {
         cartItems.push(food);
       }
-      console.log('found');
     }
     localStorage.setItem('cart', JSON.stringify(cartItems));
   } else console.log('Not found');
@@ -54,7 +58,6 @@ function showWholeProduct(food, id) {
 }
 
 function createFoodItem(food, id) {
-  let innerFood = food;
   const card = document.createElement('div');
   card.classList.add('card');
   card.id = id;
@@ -93,7 +96,7 @@ function createFoodItem(food, id) {
 	  </div>
 	  <div class="productWrapper">
 		<div class="addProduct">
-		  <button onclick="addToCart(${id})">Add</button>
+		  <button onclick="addToCart('${id}')">Add</button>
 		</div>
 		<div class="productCustomisable">Customisable</div>
 	  </div>
@@ -105,78 +108,154 @@ function createFoodItem(food, id) {
   return card;
 }
 
-function displayFood(category) {
-  // console.log('category:', category);
+async function displayFood(category) {
 
   let productArea = document.getElementById('productArea');
   productArea.innerHTML = null; // clearing out all food items
 
-  let ids = 0; // keeping id for each card
-  for (foodCategory in foodItems) {
-    let categoryDiv = document.createElement('div');
-    switch (foodCategory) {
-      case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
-        categoryDiv.id = 'dailyValueWrap';
-        break;
-      case 'Combos for 1 (Save upto 15% Extra)':
-        categoryDiv.id = 'combosForOne';
-        break;
-      case 'Combos for 2 (Save upto 20% Extra)':
-        categoryDiv.id = 'combosForTwo';
-        break;
-      case 'Combos for 4 (Save upto 25% Extra)':
-        categoryDiv.id = 'combosForFour';
-        break;
-      case 'Signature Wraps':
-        categoryDiv.id = 'signatureWraps';
-        break;
-      case 'Classic Wraps':
-        categoryDiv.id = 'classicWraps';
-        break;
-      case 'Rice Bowls':
-        categoryDiv.id = 'riceBowls';
-        break;
-      case 'Sides And Beverages':
-        categoryDiv.id = 'sidesAndBeverages';
-        break;
-      case 'Desserts':
-        categoryDiv.id = 'desserts';
-        break;
-      default:
-        break;
-    }
+  // All food categories
+  let res = await useAPI(`http://localhost:8080/categories`);
+  const foodCategories = res.items;
 
-    categoryDiv.innerHTML = `<div id="productAreaHeading">
+
+  res = await useAPI(`http://localhost:8080/foodItems`)
+  
+  const foodItems = res.items;
+
+  for (index in foodCategories) {
+    const foodCategory = foodCategories[index]["name"];
+
+    const categoryDiv = document.createElement('div');
+
+    switch (foodCategory) {
+        case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
+          categoryDiv.id = 'dailyValueWrap';
+          break;
+        case 'Combos for 1 (Save upto 15% Extra)':
+          categoryDiv.id = 'combosForOne';
+          break;
+        case 'Combos for 2 (Save upto 20% Extra)':
+          categoryDiv.id = 'combosForTwo';
+          break;
+        case 'Combos for 4 (Save upto 25% Extra)':
+          categoryDiv.id = 'combosForFour';
+          break;
+        case 'Signature Wraps':
+          categoryDiv.id = 'signatureWraps';
+          break;
+        case 'Classic Wraps':
+          categoryDiv.id = 'classicWraps';
+          break;
+        case 'Rice Bowls':
+          categoryDiv.id = 'riceBowls';
+          break;
+        case 'Sides And Beverages':
+          categoryDiv.id = 'sidesAndBeverages';
+          break;
+        case 'Desserts':
+          categoryDiv.id = 'desserts';
+          break;
+        default:
+          break;
+      }
+
+      categoryDiv.innerHTML = `<div id="productAreaHeading">
 		<p>${foodCategory}</p>
 	  </div>`;
-
-    let allProducts = document.createElement('div');
+    
+      let allProducts = document.createElement('div');
     allProducts.id = 'allProducts';
 
-    let dailyValue = document.createElement('div');
+      let dailyValue = document.createElement('div');
     dailyValue.id = 'dailyValue';
 
-    for (let i = 0; i < foodItems[foodCategory].length; i++) {
-      let dish = foodItems[foodCategory][i];
-      // if both - then show
-      // else should match category
-      if (category == 'both' || dish['veg_nonVeg'] == category) {
-        dailyValue.append(createFoodItem(dish, ids));
-      }
-      ids++;
-    }
+    const sameCategoryFood = foodItems.filter(item => item["category"]["name"] == foodCategory);
+    
+      for (let i = 0; i < sameCategoryFood.length; i++) {
+        const dish = sameCategoryFood[i];
+        // if both - then show
+        // else should match category
+        if (category == 'both' || dish['veg_nonVeg'] == category) {
+          dailyValue.append(createFoodItem(dish, dish["_id"]));
+        }
 
-    allProducts.append(dailyValue);
-    categoryDiv.append(allProducts);
-    productArea.append(categoryDiv);
+        allProducts.append(dailyValue);
+        categoryDiv.append(allProducts);
+        productArea.append(categoryDiv);
+    }
   }
+
+
+  // let ids = 0; // keeping id for each card
+  // for (foodCategory in foodItems) {
+  //   let categoryDiv = document.createElement('div');
+  //   switch (foodCategory) {
+  //     case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
+  //       categoryDiv.id = 'dailyValueWrap';
+  //       break;
+  //     case 'Combos for 1 (Save upto 15% Extra)':
+  //       categoryDiv.id = 'combosForOne';
+  //       break;
+  //     case 'Combos for 2 (Save upto 20% Extra)':
+  //       categoryDiv.id = 'combosForTwo';
+  //       break;
+  //     case 'Combos for 4 (Save upto 25% Extra)':
+  //       categoryDiv.id = 'combosForFour';
+  //       break;
+  //     case 'Signature Wraps':
+  //       categoryDiv.id = 'signatureWraps';
+  //       break;
+  //     case 'Classic Wraps':
+  //       categoryDiv.id = 'classicWraps';
+  //       break;
+  //     case 'Rice Bowls':
+  //       categoryDiv.id = 'riceBowls';
+  //       break;
+  //     case 'Sides And Beverages':
+  //       categoryDiv.id = 'sidesAndBeverages';
+  //       break;
+  //     case 'Desserts':
+  //       categoryDiv.id = 'desserts';
+  //       break;
+  //     default:
+  //       break;
+  //   }
+
+  //   categoryDiv.innerHTML = `<div id="productAreaHeading">
+	// 	<p>${foodCategory}</p>
+	//   </div>`;
+
+  //   let allProducts = document.createElement('div');
+  //   allProducts.id = 'allProducts';
+
+  //   let dailyValue = document.createElement('div');
+  //   dailyValue.id = 'dailyValue';
+
+  //   for (let i = 0; i < foodItems[foodCategory].length; i++) {
+  //     let dish = foodItems[foodCategory][i];
+  //     // if both - then show
+  //     // else should match category
+  //     if (category == 'both' || dish['veg_nonVeg'] == category) {
+  //       dailyValue.append(createFoodItem(dish, ids));
+  //     }
+  //     ids++;
+  //   }
+
+  //   allProducts.append(dailyValue);
+  //   categoryDiv.append(allProducts);
+  //   productArea.append(categoryDiv);
+  // }
 }
 
 // Product Category List Loaded
-function displayCategories() {
+async function displayCategories() {
   let productCategoryList = document.getElementById('productCategoryList');
 
-  for (foodCategory in foodItems) {
+  const allCategory = await useAPI(`http://localhost:8080/categories`);
+
+  for (let i = 0; i < allCategory.items.length; i++) {
+    const foodCategory = allCategory.items[i].name;
+
     let li = document.createElement('li');
     if (foodCategory == 'Daily Value Wrap Combos (Save Upto 40% Extra)') {
       li.classList.add('active');
@@ -215,6 +294,47 @@ function displayCategories() {
       default:
         break;
     }
+
+
+  // for (foodCategory in foodItems) {
+  //   let li = document.createElement('li');
+  //   if (foodCategory == 'Daily Value Wrap Combos (Save Upto 40% Extra)') {
+  //     li.classList.add('active');
+  //   }
+  //   let a = document.createElement('a');
+
+  //   a.classList.add('categoryAnchor');
+  //   switch (foodCategory) {
+  //     case 'Daily Value Wrap Combos (Save Upto 40% Extra)':
+  //       a.href = '#dailyValueWrap';
+  //       break;
+  //     case 'Combos for 1 (Save upto 15% Extra)':
+  //       a.href = '#combosForOne';
+  //       break;
+  //     case 'Combos for 2 (Save upto 20% Extra)':
+  //       a.href = '#combosForTwo';
+  //       break;
+  //     case 'Combos for 4 (Save upto 25% Extra)':
+  //       a.href = '#combosForFour';
+  //       break;
+  //     case 'Signature Wraps':
+  //       a.href = '#signatureWraps';
+  //       break;
+  //     case 'Classic Wraps':
+  //       a.href = '#classicWraps';
+  //       break;
+  //     case 'Rice Bowls':
+  //       a.href = '#riceBowls';
+  //       break;
+  //     case 'Sides And Beverages':
+  //       a.href = '#sidesAndBeverages';
+  //       break;
+  //     case 'Desserts':
+  //       a.href = '#desserts';
+  //       break;
+  //     default:
+  //       break;
+  //   }
 
     a.innerText = foodCategory;
 
