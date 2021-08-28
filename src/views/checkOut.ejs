@@ -1,132 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Food Online from Faasos | Zero Contact Delivery</title>
-    <link
-      rel="shortcut icon"
-      href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/checkOut.css" />
-  </head>
-  <body>
-    <nav>
-      <div id="navContainer">
-        <div id="navLeft">
-          <a href="/collections">
-            <img src="/images/faasosLogoPurple.svg" alt="faasos logo" />
-          </a>
-          <div id="navLocation">
-            <p>Ghaziabad</p>
-            <p>Ghaziabad Uttar Pradesh</p>
-          </div>
-        </div>
-        <div id="navRight">
-          <p id="userName">Hi Chiranjeev Thapliyal</p>
-          <p class="hamburger" onclick="openSidebar()">
-            <i class="fas fa-bars"></i>
-          </p>
-        </div>
-      </div>
-    </nav>
 
-    <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Food Online from Faasos | Zero Contact Delivery</title>
+  <link rel="shortcut icon"
+    href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" href="/stylesheets/checkout.css" />
+</head>
 
-    <section id="sidebar">
-      <div id="sidebarMain">
-        <div id="sidebarList">
-          <span onclick="closeSidebar()"><i class="fas fa-times"></i></span>
-          <ul id="sidebarNavList">
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarProfile.svg" alt="profile"
-                /></span>
-                <p>Profile</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarOrders.svg" alt="orders"
-                /></span>
-                <p>Manage Orders</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAddress.svg" alt="Addresses"
-                /></span>
-                <p>Manage Addresses</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarPayment.svg" alt="Payments"
-                /></span>
-                <p>Manage Payments</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarHelp.svg" alt="help and support"
-                /></span>
-                <p>Help & Support</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAbout.svg" alt="about us"
-                /></span>
-                <p>About Us</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarParty.svg" alt="party orders"
-                /></span>
-                <p>Party Orders</p>
-              </a>
-            </li>
-            <li>
-              <a onclick="logout()">
-                <span
-                  ><img src="/images/sidebarLogout.svg" alt="logout"
-                /></span>
-                <p>Logout</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<body>
+  <!------- Navbar Starts Here ----->
 
-    <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
+  <%- include ("partials/navbar.partials.ejs") %>
 
-    <!-------------------------------------------- Checkout Main --------------------------------------->
-    <div id="checkoutMain">
-      <div id="checkoutMainContainer">
-        <div id="checkoutDetails">
-          <div id="checkoutAccount">
-            <span id="AccountSerial" class="serialNumber"
-              ><i class="fas fa-check"></i
-            ></span>
-            <div id="Account_right">
-              <h3>Account</h3>
-              <!-- <p>To place your order now, log in to your existing account or sign up.</p>
+    <!------- Navbar Ends Here ------->
+
+    <!------- Side Bar HTML Starts Here --------->
+
+    <%- include ("partials/sidebar.partials.ejs") %>
+
+      <!------- Side Bar HTML Ends Here ---------->
+
+      <!-------------------------------------------- checkout Main --------------------------------------->
+      <div id="checkoutMain">
+        <div id="checkoutMainContainer">
+          <div id="checkoutDetails">
+            <div id="checkoutAccount">
+              <span id="AccountSerial" class="serialNumber"><i class="fas fa-check"></i></span>
+              <div id="Account_right">
+                <h3>Account</h3>
+                <!-- <p>To place your order now, log in to your existing account or sign up.</p>
                         <div class="AccountButtons">
                             <button id="login">
                                 <span>Have an account</span>
@@ -137,16 +47,16 @@
                                 Sign Up
                             </button>
                         </div> -->
-              <!-- <h4 id="userDetails">
+                <!-- <h4 id="userDetails">
                 Chiranjeev Thapliyal &nbsp; | &nbsp; 9643011147
               </h4> -->
+              </div>
             </div>
-          </div>
-          <div id="checkoutDelivery">
-            <span id="DeliverySerial" class="serialNumber">2</span>
-            <div id="DeliveryRight">
-              <h3>Delivery Address</h3>
-              <!-- <div class="addresses">
+            <div id="checkoutDelivery">
+              <span id="DeliverySerial" class="serialNumber">2</span>
+              <div id="DeliveryRight">
+                <h3>Delivery Address</h3>
+                <!-- <div class="addresses">
                 <div id="addNewAddress">
                   <h3>Add New Address</h3>
                   <button id="addNew" class="yellowBtn">Add New</button>
@@ -164,7 +74,7 @@
                 </div>
               </div> -->
 
-              <!-- When deliver here is clicked
+                <!-- When deliver here is clicked
               <div id="FinalDeliveryAddress">
                 <strong>Others</strong>
                 <p>Plot No- 949, Top Floor, Shakti Khand 4</p>
@@ -173,31 +83,24 @@
                   Marg Area,New Delhi,Delhi,India New Delhi
                 </p>
               </div> -->
+              </div>
             </div>
-          </div>
-          <div id="checkoutPayment">
-            <span id="PaymentSerial" class="serialNumber">3</span>
-            <div id="PaymentRight">
-              <h3>Payment</h3>
-              <div id="PaymentDetails">
-                <ul id="PaymentOptions">
-                  <li id="selectGPay">
-                      ><img
-                        class="paymentLogo"
-                        src="/images/paymentLogo.svg"
-                        alt="" />
-                    >UPI
-                  </li>
-                  <li id="selectCOD" class="activePaymentOption">
-                    <img
-                      class="paymentLogo"
-                      src="/images/paymentLogo.svg"
-                      alt=""
-                    />COD
-                  </li>
-                </ul>
-                <div id="PaymentMode">
-                  <!-- <div id="GPay">
+            <div id="checkoutPayment">
+              <span id="PaymentSerial" class="serialNumber">3</span>
+              <div id="PaymentRight">
+                <h3>Payment</h3>
+                <div id="PaymentDetails">
+                  <ul id="PaymentOptions">
+                    <li id="selectGPay">
+                      ><img class="paymentLogo" src="/images/paymentLogo.svg" alt="" />
+                      >UPI
+                    </li>
+                    <li id="selectCOD" class="activePaymentOption">
+                      <img class="paymentLogo" src="/images/paymentLogo.svg" alt="" />COD
+                    </li>
+                  </ul>
+                  <div id="PaymentMode">
+                    <!-- <div id="GPay">
                     <div id="GPayImage">
                       <img
                         src="https://assets.faasos.io/faasos_v2/gpayLogo.png"
@@ -212,26 +115,26 @@
                     </form>
                     <button id="payButton">Pay ₹ 319</button>
                   </div> -->
-                  <div id="COD">
-                    <div id="CODInfo">
-                      <img src="https://assets.faasos.io/faasos_v2/COD.svg" alt="">
-                      <h3>Cash On Delivery</h3>
-                      <p>Online payment recommended for better hand hygiene</p>
+                    <div id="COD">
+                      <div id="CODInfo">
+                        <img src="https://assets.faasos.io/faasos_v2/COD.svg" alt="">
+                        <h3>Cash On Delivery</h3>
+                        <p>Online payment recommended for better hand hygiene</p>
+                      </div>
+                      <button id="payButton">Pay ₹ 319</button>
                     </div>
-                    <button id="payButton">Pay ₹ 319</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- CheckoutItems Details -->
-        <div id="checkout">
-          <div id="allCartItems">
-            <h2>Order Summary</h2>
-            <ul id="cartList">
-              <!-- <li>
+          <!-- checkoutItems Details -->
+          <div id="checkout">
+            <div id="allCartItems">
+              <h2>Order Summary</h2>
+              <ul id="cartList">
+                <!-- <li>
                 <div class="cartItem">
                   <div class="cartItemDetails">
                     <span class="category"
@@ -279,123 +182,47 @@
                   </div>
                 </div>
               </li> -->
-            </ul>
-            
+              </ul>
+
+            </div>
+
+            <div id="grandTotalDiv">
+              <div>
+                <span>Cart Amount</span>
+                <span id="cartTotal">₹ 2004</span>
+              </div>
+              <div>
+                <span>Tax</span>
+                <span>₹ 97</span>
+              </div>
+              <div>
+                <span>Delivery</span>
+                <span class="greenText">Free</span>
+              </div>
+              <hr>
+              <div>
+                <span>Grand Total</span>
+                <span id="finalAmount">₹ 2033</span>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div id="grandTotalDiv">
-          <div>
-            <span>Cart Amount</span>
-            <span id="cartTotal">₹ 2004</span>
-          </div>
-          <div>
-            <span>Tax</span>
-            <span>₹ 97</span>
-          </div>
-          <div>
-            <span>Delivery</span>
-            <span class="greenText">Free</span>
-          </div>
-          <hr>
-          <div>
-            <span>Grand Total</span>
-            <span id="finalAmount">₹ 2033</span>
-          </div>
-        </div>
+        <!----------- Footer Starts Here ----------->
 
-      </div>
-    </div>
+        <%- include ("partials/footer.partials.ejs") %>
 
-    <!------------------------------------- footer area------------------------------------------------------>
+          <!----------- Footer Ends Here ----------->
 
-    <div class="footer clear">
-      <div style="margin: auto">
-        <div>
-          <p>Cities we deliver to</p>
-          <div>
-            <div class="footer1">
-              <span>Pune</span><br />
-              <span>Gurgaon</span><br />
-              <span>Indore</span><br />
-              <span>Ghaziabad</span><br />
-              <span>Bhopal</span><br />
-              <span>Pondicherry</span><br />
-              <span>Mohali</span><br />
-              <span>Zirakpur</span><br />
-              <span>Tirupati</span><br />
-            </div>
-            <div class="footer1">
-              <span>Mumbai</span><br />
-              <span>New Delhi</span><br />
-              <span>Nagpur</span><br />
-              <span>Coimbatore</span><br />
-              <span>Kolkata</span><br />
-              <span>Nashik</span><br />
-              <span>Chandigarh</span><br />
-              <span>Lucknow</span><br />
-              <span>Tiruppur</span><br />
-            </div>
-            <div class="footer1">
-              <span>Bangalore</span><br />
-              <span>Hyderabad</span><br />
-              <span>Faridabad</span><br />
-              <span>Dubai</span><br />
-              <span>Surat</span><br />
-              <span>Jaipur</span><br />
-              <span>Vijaywada</span><br />
-              <span>Kochi</span><br />
-              <span>Kota</span><br />
-            </div>
-            <div class="footer1">
-              <span>Noida</span><br />
-              <span>Chennai</span><br />
-              <span>Ahmedabad</span><br />
-              <span>Vadodra</span><br />
-              <span>Mysore</span><br />
-              <span>Panchukla</span><br />
-              <span>Vellore</span><br />
-              <span>Vizag</span><br />
-              <span>Many more...</span><br />
-            </div>
-          </div>
-          <div class="clear">
-            <div class="footer2 floatL">
-              <p>Legal</p>
-              <span>Terms & Conditions</span><br />
-              <span>Privacy Policy</span>
-            </div>
-            <div class="footer2 floatR">
-              <p>Contact</p>
-              <img
-                style="height: 30px; width: 20px; margin-right: 10px"
-                src="/images/mail.svg"
-              /><span> crm@faasos.com</span>
-            </div>
-          </div>
-          <div class="clear" style="margin-bottom: 50px"></div>
-          <div style="border: 1px solid var(--primaryColorRegular)"></div>
-          <div class="footer3">
-            <p>2020 @ Faasos. All rights reverved</p>
-            <div style="display: flex; flex-direction: row">
-              <p style="margin-right: 20px">Follow us on</p>
-              <img src="/images/fb.svg" /><img src="/images/tw.svg" /><img
-                src="/images/insta.svg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+</body>
+
 </html>
 
-<script
-  src="https://kit.fontawesome.com/7fc87d8fcc.js"
-  crossorigin="anonymous"
-></script>
+<script src="https://kit.fontawesome.com/7fc87d8fcc.js" crossorigin="anonymous"></script>
 
 <script src="/scripts/credentials.js"></script>
 <script src="/scripts/sidebar.js"></script>
 <script src="/scripts/navbar.js"></script>
 <script src="/scripts/cart.js"></script>
-<script src="/scripts/checkOut.js"></script>
+<script src="/scripts/checkout.js"></script>

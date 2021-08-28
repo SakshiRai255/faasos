@@ -11,6 +11,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/main.css">
 	<link rel="stylesheet" href="/stylesheets/landingPage.css" />
 </head>
 
@@ -27,7 +28,7 @@
 				</div>
 				<form id="signInForm">
 					<input disabled type="text" id="countryCode" placeholder="+91" />
-					<input type="number" pattern="[0-9]{10}" maxlength="10" id="phoneNumber" placeholder="Phone Number" />
+					<input type="text" pattern="[1-9]{1}[0-9]{9}" maxlength="10" id="phoneNumber" placeholder="Phone Number" />
 				</form>
 				<p id="alertNumber">Phone should contain minimum 10 digits</p>
 				<button id="continueButton" onclick="goToVerifyOTP()">
@@ -50,16 +51,20 @@
 				</div>
 				<form id="signUpForm">
 					<input disabled type="text" id="countryCodeSignUp" placeholder="+91" />
-					<input type="number" pattern="[0-9]{10}" maxlength="10" id="phoneNumberSign" placeholder="Phone Number" />
+					<input type="text" pattern="[1-9]{1}[0-9]{9}" maxlength="10" name="number" id="phoneNumberSign"
+						placeholder="Phone Number" />
 					<p id="aNumber">Phone should contain minimum 10 digits</p>
-					<input style="display: block; width: 100%" type="text" id="userName" placeholder="Name" /><br />
-					<input style="display: block" type="text" id="email" placeholder="Email Address" /><br />
+					<input style="display: block; width: 100%" type="text" name="name" id="userName" placeholder="Name" /><br />
+					<input style="display: block" type="text" id="email" name="email" placeholder="Email Address" /><br />
 					<p id="checkEmail">Please enter a valid email</p>
+					<!-- <button type="submit" id="continueButtonSign">
+						CREATE ACCOUNT
+					</button> -->
 				</form>
 				<button id="continueButtonSign" onclick="signUp()">
-					<!-- <button type="submit" id="continueButtonSign"> -->
 					CREATE ACCOUNT
 				</button>
+
 				<p style="margin-left: 13px">
 					By creating an account, I accept the <span>Terms & Conditions</span>
 				</p>
@@ -70,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="otpVeriy">
+		<div id="otpVerify">
 			<div id="otpContainer">
 				<div id="otpModal">
 					<img src="/images/leftArrow.svg" alt="" class="backButton" onclick="closePopUp()" />
@@ -104,8 +109,10 @@
 			<div id="right">
 				<img src="https://assets.faasos.io/faasos_v2/hero-banner.jpg" />
 			</div>
+
 			<div id="location">
-				<input type="text" placeholder="Enter your deliery location" id="locationInput" />
+				<input type="text" placeholder="Enter your delivery location" id="locationInput" onclick="enterInputLocation()"
+					readonly />
 				<p style="background: white; padding: 20px" onclick="enterInputLocation()">
 					<img style="margin-right: 5px" class="floatL" src="/images/landingLocation.svg" />
 					Locate Me
@@ -118,6 +125,27 @@
 					FIND FOOD
 				</p>
 			</div>
+
+
+			<div id="locationPopUp">
+				<div id="locationContainer">
+					<div id="searchLocation">
+						<img src="/images/leftArrow.svg" alt="" class="backButton" onclick="closePopUp()" />
+						<input type="text" oninput="throttleFunction()" placeholder="Search Location" id="inputLocation" />
+						<img src="/images/searchLogo.svg" />
+					</div>
+					<div id="appendLocation">
+						<div>
+							<img src="/images/landingLocation.svg" />
+							<div id="useCurrentLocation">
+								<p>Use Current Location</p>
+								<span>Accuracy may vary depending on the strength of gps signal of device</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="center1 clear">
 			<h1>Eat Good, Eat Safe. Always! Now with the EatSure promise.</h1>
@@ -204,84 +232,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer clear">
-			<div style="margin: auto">
-				<div>
-					<p>Cities we deliver to</p>
-					<div>
-						<div class="footer1">
-							<span>Pune</span><br />
-							<span>Gurgaon</span><br />
-							<span>Indore</span><br />
-							<span>Ghaziabad</span><br />
-							<span>Bhopal</span><br />
-							<span>Pondicherry</span><br />
-							<span>Mohali</span><br />
-							<span>Zirakpur</span><br />
-							<span>Tirupati</span><br />
-						</div>
-						<div class="footer1">
-							<span>Mumbai</span><br />
-							<span>New Delhi</span><br />
-							<span>Nagpur</span><br />
-							<span>Coimbatore</span><br />
-							<span>Kolkata</span><br />
-							<span>Nashik</span><br />
-							<span>Chandigarh</span><br />
-							<span>Lucknow</span><br />
-							<span>Tiruppur</span><br />
-						</div>
-						<div class="footer1">
-							<span>Bangalore</span><br />
-							<span>Hyderabad</span><br />
-							<span>Faridabad</span><br />
-							<span>Dubai</span><br />
-							<span>Surat</span><br />
-							<span>Jaipur</span><br />
-							<span>Vijaywada</span><br />
-							<span>Kochi</span><br />
-							<span>Kota</span><br />
-						</div>
-						<div class="footer1">
-							<span>Noida</span><br />
-							<span>Chennai</span><br />
-							<span>Ahmedabad</span><br />
-							<span>Vadodra</span><br />
-							<span>Mysore</span><br />
-							<span>Panchukla</span><br />
-							<span>Vellore</span><br />
-							<span>Vizag</span><br />
-							<span>Many more...</span><br />
-						</div>
-					</div>
-					<div class="clear">
-						<div class="footer2 floatL">
-							<p>Legal</p>
-							<span>Terms & Conditions</span><br />
-							<span>Privacy Policy</span>
-						</div>
-						<div class="footer2 floatR">
-							<p>Contact</p>
-							<img style="height: 30px; width: 20px; margin-right: 10px" src="/images/mail.svg" /><span>
-								crm@faasos.com</span>
-						</div>
-					</div>
-					<div class="clear" style="margin-bottom: 50px"></div>
-					<div style="border: 1px solid var(--primaryColorRegular)"></div>
-					<div class="footer3">
-						<p>2020 @ Faasos. All rights reverved</p>
-						<div style="display: flex; flex-direction: row">
-							<p style="margin-right: 20px">Follow us on</p>
-							<img src="/images/fb.svg" /><img src="/images/tw.svg" /><img src="/images/insta.svg" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+		<!----------- Footer Starts Here ----------->
+
+		<%- include ("partials/footer.partials.ejs") %>
+
+		<!----------- Footer Ends Here ----------->
+			
+
 </body>
 
 </html>
 
 <script src="/scripts/credentials.js"></script>
 <script src="/scripts/landingPage.js"></script>
+<script src="/scripts/map.js"></script>

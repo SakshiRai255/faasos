@@ -1,8 +1,17 @@
+const useAPI = async (url, options = {}) => {
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    return err;
+  }
+}
+
 function findUser(number) {
   let allUsers = JSON.parse(localStorage.getItem('users'));
   if (!allUsers) return null;
   for (let i = 0; i < allUsers.length; i++) {
-    // console.log(allUsers[i].number);
     if (allUsers[i].number == number) return allUsers[i];
   }
   return null;
@@ -15,6 +24,19 @@ function closePopUp() {
   popUp.style.display = 'none';
   numberInput.style.backgroundImage = 'unset';
   button.style.backgroundColor = '#d3d3d6';
+
+  const locationPopUp = document.getElementById("locationPopUp");
+  const inputLocation = document.getElementById("inputLocation");
+  const appendLocation = document.getElementById("appendLocation");
+  inputLocation.value = null;
+  appendLocation.innerHTML = `<div>
+  <img src="/images/landingLocation.svg" />
+  <div>
+    <p>Use Current Location</p>
+    <span>Accuracy may vary depending on the strength of gps signal of device</span>
+  </div>
+</div>`;
+  locationPopUp.style.display = "none";
 }
 
 function isLoggedUser() {
@@ -36,31 +58,21 @@ function isLoggedUser() {
   }
 }
 
-function signIn(phoneNumber) {
+async function signIn(phoneNumber) {
   localStorage.removeItem('unverifiedNumber');
-  let allUsers = JSON.parse(localStorage.getItem('users'));
 
-  let number = Number(phoneNumber);
-  let user = findUser(number);
-  if (!user) {
-    popUp.style.display = 'flex';
-    popUp.textContent = `Not a registered user`;
+  const number = Number(phoneNumber);
+  const user = await useAPI(`http://localhost:8080/users/${number}`);
 
-    setTimeout(function () {
-      popUpSignup();
-    }, 2000);
-    return false;
+  localStorage.setItem('loggedUser', JSON.stringify(user));
+  if (user.cart) {
+    localStorage.setItem('cart', JSON.stringify(user.cart));
   } else {
-    localStorage.setItem('loggedUser', JSON.stringify(user));
-    if (user.cart) {
-      localStorage.setItem('cart', JSON.stringify(user.cart));
-    } else {
-      localStorage.setItem('cart', JSON.stringify([]));
-    }
-    closePopUp();
-    isLoggedUser();
-    return true;
+    localStorage.setItem('cart', JSON.stringify([]));
   }
+  closePopUp();
+  isLoggedUser();
+  return true;
 }
 
 async function signUp() {
@@ -74,23 +86,26 @@ async function signUp() {
     return;
   }
 
-  let user = {
+  const user = {
     name: data.userName.value,
     number: data.phoneNumberSign.value,
     email: data.email.value,
   };
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  if (!allUsers) {
-    allUsers = [];
-  }
-  if (findUser(user.number)) {
-    popUpLogin();
-    // signIn(user.number);
-  } else {
-    allUsers.push(user);
+  const foundUser = await useAPI(`http://localhost:8080/users/${user.number}`);
 
-    localStorage.setItem('users', JSON.stringify(allUsers));
+  if (foundUser) {
+    popUpLogin();
+  } else {
+    const newUser = await useAPI(`http://localhost:8080/users`, {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+
     localStorage.setItem('cart', JSON.stringify([]));
     localStorage.setItem('loggedUser', JSON.stringify(user));
     closePopUp();
@@ -98,23 +113,38 @@ async function signUp() {
   }
 }
 
-function logout() {
+async function logout() {
   let cart = JSON.parse(localStorage.getItem('cart'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  let allUsers = JSON.parse(localStorage.getItem('users'));
+
+  // const allUsers = await useAPI(`http://localhost:8080/users`);
+
+  const number = loggedUser.number;
+
+  // const user = await useAPI(`http://localhost:8080/users/${number}`);
 
   loggedUser.cart = cart;
-  for (let i = 0; i < allUsers.length; i++) {
-    if (loggedUser.number == allUsers[i].number) {
-      allUsers[i] = loggedUser;
-      break;
+
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
+  })
+  console.log('updatedUser:', updatedUser)
+
+  localStorage.removeItem('cart');
+  localStorage.removeItem('loggedUser');
+
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (token) {
+    localStorage.removeItem("token")
   }
 
-  localStorage.setItem('users', JSON.stringify(allUsers));
-  localStorage.removeItem('cart');
+  localStorage.clear();
 
-  localStorage.removeItem('loggedUser');
   isLoggedUser();
 }
 

@@ -1,3 +1,4 @@
+
 /*-------------------------------------------Login Pop Function-----------------------------------------*/
 function popUpLogin() {
   let login = document.getElementById('popUp');
@@ -28,14 +29,12 @@ numberInput.addEventListener('input', function () {
 
 /*-------------------------------------------Verify OTP Pop Function-----------------------------------------*/
 
-function goToVerifyOTP() {
+async function goToVerifyOTP() {
   let phoneNumber = document.getElementById('phoneNumber').value;
   localStorage.setItem('unverifiedNumber', JSON.stringify(phoneNumber));
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
+  const user = await useAPI(`http://localhost:8080/users/${phoneNumber}`);
 
-  let number = Number(phoneNumber);
-  let user = findUser(number);
   if (!user) {
     popUp.style.display = 'flex';
     popUp.textContent = `Not a registered user`;
@@ -53,16 +52,18 @@ function goToVerifyOTP() {
   var appendNumber = document.getElementById('detail');
   appendNumber.innerText = `OTP sent to +91 ${getNumber}`;
 
-  let otp = document.getElementById('otpVeriy');
+  let otp = document.getElementById('otpVerify');
+  console.log('otp:', otp)
   if (numberInput.value.length == 10) {
     login.append(otp);
   }
+
 }
 
 var otp = document.getElementById('OTP');
 var alertOTP = document.getElementById('alertOTP');
 var sendOTP = document.getElementById('sendOTP');
-var verfiyButton = document.getElementById('verifyButton');
+var verifyButton = document.getElementById('verifyButton');
 
 otp.addEventListener('input', function () {
   let otpLength = otp.value.length;
@@ -70,10 +71,10 @@ otp.addEventListener('input', function () {
   if (otpLength < 4) {
     alertOTP.style.display = 'flex';
     sendOTP.style.display = 'none';
-    verfiyButton.style.backgroundColor = '#d3d3d6';
+    verifyButton.style.backgroundColor = '#d3d3d6';
     otp.style.backgroundImage = 'unset';
   } else if (otpLength == 4) {
-    verfiyButton.style.backgroundColor = 'rgb(255, 211, 68)';
+    verifyButton.style.backgroundColor = 'rgb(255, 211, 68)';
     alertOTP.style.display = 'none';
     sendOTP.style.display = 'none';
     otp.style.backgroundImage = 'url(/images/greenTick.jpg)';
@@ -121,7 +122,7 @@ userName.addEventListener('input', function () {
   } else if (userName.value.length === 0) {
     userName.style.backgroundImage = 'unset';
   }
-}); 
+});
 
 var eMail = document.getElementById('email');
 var alertEmail = document.getElementById('checkEmail');
@@ -150,7 +151,7 @@ function onclickoutside(e) {
   if (
     e.target.id == 'openPopUp' ||
     e.target.id == 'signUpPopUp' ||
-    e.target.id == 'otpVeriy'
+    e.target.id == 'otpVerify'
   ) {
     let login = document.getElementById('popUp');
     login.style.display = 'none';
@@ -267,8 +268,3 @@ function checkTld(x) {
 
 /* ------------------------------------ Enter Input Location ---------------------------- */
 
-function enterInputLocation() {
-  let locationInput = document.getElementById('locationInput');
-  locationInput.value = `Ghaziabad`;
-  locationInput.style.fontWeight = `bold`;
-}

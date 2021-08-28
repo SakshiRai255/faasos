@@ -144,24 +144,26 @@ function addAddress() {
   checkoutMain.append(openMapPopUp);
 }
 
-function addUserAddress() {
+async function addUserAddress() {
   let addressType = document.querySelector(`input[type="radio"]:checked`).value;
   let houseNo = document.getElementById(`houseNo`).value;
   let landmark = document.getElementById(`landmark`).value;
 
   let address = { addressType, houseNo, landmark };
 
-  let allUsers = JSON.parse(localStorage.getItem('users'));
+  // let allUsers = JSON.parse(localStorage.getItem('users'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].number == loggedUser.number) {
-      allUsers[i].address = address;
-      loggedUser = allUsers[i];
-      break;
+  loggedUser.address = address;
+  
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
-  }
-
-  localStorage.setItem('users', JSON.stringify(allUsers));
+  });
+  
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   let openMapPopUp = document.getElementById('openMapPopUp');
@@ -206,9 +208,8 @@ function addPayment() {
             <h3>Cash On Delivery</h3>
             <p>Online payment recommended for better hand hygiene</p>
           </div>
-          <button id="payButton" onclick="orderFood()">Pay ₹ ${
-            totalAmount + deliveryFees
-          }</button>
+          <button id="payButton" onclick="orderFood()">Pay ₹ ${totalAmount + deliveryFees
+    }</button>
         </div>
       </div>
   </div>
@@ -248,14 +249,12 @@ function orderSummaryItems() {
 
 orderSummaryItems();
 
-// Dummy
-
 function removeCartItem(id) {
   let cartItems = JSON.parse(localStorage.getItem('cart'));
   let newCartItems = [];
   for (let i = 0; i < cartItems.length; i++) {
-    if (cartItems[i].id == id && cartItems[i].quantity <= 1) continue;
-    else if (cartItems[i].id == id) cartItems[i].quantity--;
+    if (cartItems[i]._id == id && cartItems[i].quantity <= 1) continue;
+    else if (cartItems[i]._id == id) cartItems[i].quantity--;
     newCartItems.push(cartItems[i]);
   }
   localStorage.setItem('cart', JSON.stringify(newCartItems));
@@ -265,7 +264,7 @@ function removeCartItem(id) {
 function addCartItem(id) {
   let cartItems = JSON.parse(localStorage.getItem('cart'));
   for (let i = 0; i < cartItems.length; i++) {
-    if (cartItems[i].id == id) cartItems[i].quantity++;
+    if (cartItems[i]._id == id) cartItems[i].quantity++;
   }
   localStorage.setItem('cart', JSON.stringify(cartItems));
   orderSummaryItems();
@@ -277,9 +276,8 @@ function createCartItem(food) {
 		<div class="cartItem">
 		  <div class="cartItemDetails">
 			<span class="category"
-			  ><img src="/images/${
-          food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
-        }" alt=""
+			  ><img src="/images/${food.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
+    }" alt=""
 			/></span>
 			<div>
 			  <p class="cartItemName">${food.name}</p>
@@ -290,9 +288,9 @@ function createCartItem(food) {
 			</div>
 		  </div>
 		  <div class="cartItemCount">
-			<button id="decrease" onclick="removeCartItem(${food.id})">-</button>
+			<button id="decrease" onclick="removeCartItem('${food._id}')">-</button>
 			<span>${food.quantity}</span>
-			<button id="increase" onclick="addCartItem(${food.id})">+</button>
+			<button id="increase" onclick="addCartItem('${food._id}')">+</button>
 		  </div>
 		  <div class="cartItemAmount">
 			<span>₹ ${food.price * food.quantity}</span>
@@ -325,9 +323,8 @@ function switchPaymentOption() {
                       <input type="text" id="gpayNumber" value="9643011147" />
                       <label for="gpayNumber">Phone Number</label>
                     </form>
-                    <button id="payButton"  onclick="orderFood()">Pay ₹ ${
-                      totalCartAmount + 97
-                    }</button>
+                    <button id="payButton"  onclick="orderFood()">Pay ₹ ${totalCartAmount + 97
+      }</button>
                   </div>`;
   } else if (this.id == 'selectCOD') {
     PaymentMode.innerHTML = `<div id="COD">
@@ -336,9 +333,8 @@ function switchPaymentOption() {
       <h3>Cash On Delivery</h3>
       <p>Online payment recommended for better hand hygiene</p>
     </div>
-    <button id="payButton" onclick="orderFood()">Pay ₹ ${
-      totalCartAmount + 97
-    }</button>
+    <button id="payButton" onclick="orderFood()">Pay ₹ ${totalCartAmount + 97
+      }</button>
   </div>`;
   }
 }
@@ -350,24 +346,23 @@ function chooseOption() {
   }
 }
 
-function orderFood() {
+async function orderFood() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   let currentCart = JSON.parse(localStorage.getItem('cart'));
   if (!loggedUser.orders) {
     loggedUser.orders = [];
   }
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
-  // console.log('currentOrder:', loggedUser.orders);
-
-  let allUsers = JSON.parse(localStorage.getItem('users'));
-  for (let i = 0; i < allUsers.length; i++) {
-    if (loggedUser.number == allUsers[i].number) {
-      allUsers[i] = loggedUser;
-      break;
-    }
-  }
-
-  localStorage.setItem('users', JSON.stringify(allUsers));
+ 
+  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+      method: "PUT",
+      body: JSON.stringify(loggedUser),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+  });
+  
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
 

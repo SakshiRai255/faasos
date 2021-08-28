@@ -17,7 +17,7 @@ const foodItemSchema = mongoose.Schema({
 		required: true
 	},
 	boughtTimes: {
-		type: Number,
+		type: String,
 		required: true
 	},
 	description: {

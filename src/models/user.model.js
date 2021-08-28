@@ -9,45 +9,97 @@ const userSchema = mongoose.Schema({
 		type: Number,
 		required: true,
 		min: 1000000000,
-		max: 9999999999
+		max: 9999999999,
+		unique: true
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
-	addresses: [{
+	address: {
 		addressType: {
 			type: String,
-			required: true
 		},
 		houseNo: {
 			type: String,
-			required: true
 		},
 		landmark: {
 			type: String,
-			required: true
 		}
-	}],
+	},
 	cart: [
 		{
-			type: mongoose.Types.ObjectId,
-			ref: "foodItem",
-			quantity: {
+			name: {
+				type: String,
+				required: true
+			},
+			img_src: {
+				type: String,
+				required: true
+			}, price: {
 				type: Number,
-				required: true,
-				default: 0
+				required: true
+			},
+			rating: {
+				type: Number,
+				required: true
+			},
+			boughtTimes: {
+				type: Number,
+				required: true
+			},
+			description: {
+				type: String,
+				required: true
+			},
+			tags: {
+				type: [String],
+				required: true
+			},
+			veg_nonVeg: {
+				type: String,
+				required: true
+			},
+			quantity: {
+				type: String
 			}
 		}
-
 	],
 	orders: [{
-		type: mongoose.Types.ObjectId,
-		ref: "foodItem",
+		name: {
+			type: String,
+			required: true
+		},
 		quantity: {
+			type: Number
+		},
+		img_src: {
+			type: String,
+			required: true
+		}, price: {
 			type: Number,
-			required: true,
-			default: 0
+			required: true
+		},
+		rating: {
+			type: Number,
+			required: true
+		},
+		boughtTimes: {
+			type: Number,
+			required: true
+		},
+		description: {
+			type: String,
+			required: true
+		},
+		tags: {
+			type: [String],
+			required: true
+		},
+		veg_nonVeg: {
+			type: String,
+			required: true
 		}
 	}]
 }, {
