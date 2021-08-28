@@ -57,30 +57,38 @@ function insertMessage() {
   }
   $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
-  const order_msg = ["orders", "my orders", "show all orders"];
+  const order_msg = ["orders", "my orders", "show all orders", "show my orders", "my order"];
+  const userDetails = ["my details", "my registered mobile number", "mobile number", "my mobile number", "registered number"];
   if (order_msg.indexOf(msg) != -1) {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
+
     fetch(`http://localhost:8080/users/${user.number}`).then(res => {
       serverMessage(`Thanks for your query, we are getting your orders 🍔`)
       return res.json();
     }).then(data => {
-      setTimeout(() => {
-        if (data.length == 0) {
-          serverMessage(`Oops, you haven't ordered anything!`)
-        } else {
+      console.log(data)
+      if (!data || data.orders.length == 0) {
+        serverMessage(`Oops, you haven't ordered anything!`)
+      } else {
+        setTimeout(() => {
           serverMessage(`Here are your recent orders:`)
           setTimeout(() => {
-            data.orders.forEach(item => serverMessage(item.name));
-          }, 1000)
-        }
-      }, 1500);
+              data.orders.forEach(item => serverMessage(item.name));
+          }, 2500);
+        }, 1500);
+      }
     });
-} else {
-  fetchmsg()
-}
+  } else if (userDetails.indexOf(msg) != -1) {
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+      serverMessage(`${user.name} your registered mobile number is ${user.number}`);
+    });
+  } else {
+    fetchmsg()
+  }
 
-$('.message-input').val(null);
-updateScrollbar();
+  $('.message-input').val(null);
+  updateScrollbar();
 
 }
 
@@ -127,9 +135,6 @@ function fetchmsg() {
     .then(response => {
       console.log(response);
       serverMessage(response.Reply);
-      // speechSynthesis.speak( new SpeechSynthesisUtterance(response.Reply))
-
-
     })
     .catch(error => console.error('Error h:', error));
 

@@ -163,6 +163,7 @@ async function addUserAddress() {
       'Content-Type': 'application/json'
     }
   });
+  console.log('updatedUser:', updatedUser)
   
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
@@ -355,13 +356,14 @@ async function orderFood() {
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
  
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
-      method: "PUT",
-      body: JSON.stringify(loggedUser),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
+    method: "PUT",
+    body: JSON.stringify(loggedUser),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   });
+  console.log('updatedUser:', updatedUser)
   
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
