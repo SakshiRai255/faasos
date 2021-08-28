@@ -268,3 +268,11 @@ function checkTld(x) {
 
 /* ------------------------------------ Enter Input Location ---------------------------- */
 
+const alreadyLoggedIn = () => {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  if (loggedUser !== null) {
+    window.location.href = '/collections';
+  }
+}
+
+alreadyLoggedIn();
