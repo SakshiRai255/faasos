@@ -93,19 +93,27 @@ function insertMessage() {
         let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
         const currentNumber = loggedUser.number;
         loggedUser.number = Number(inp.pop());
-        const updatedUser = fetch(`http://localhost:8080/users/${currentNumber}`, {
-          method: "PUT",
-          body: JSON.stringify(loggedUser),
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+
+        const res = fetch(`http://localhost:8080/users/${loggedUser.number}`);
+        res.then(data => data.json()).then(user => {
+          console.log("user", user);
+          if (user !== null) {
+            serverMessage(`This is number is already associated with another account, please try another number.`)
+          } else {
+            const updatedUser = fetch(`http://localhost:8080/users/${currentNumber}`, {
+              method: "PATCH",
+              body: JSON.stringify(loggedUser),
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            });
+            localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+            serverMessage(`Your number has been changed to ${loggedUser.number}`)
           }
         });
-        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
-        serverMessage(`Your number has been changed to ${user.number}`)
-      }, 2000)
-    })
-
+      }, 2000);
+    });
   } else {
     fetchmsg()
   }
@@ -134,7 +142,7 @@ function serverMessage(response2) {
     $('.message.loading').remove();
     $('<div class="message new">' + response2 + '</div>').appendTo($('.mCSB_container')).addClass('new');
     updateScrollbar();
-  }, 100 + (Math.random() * 20) * 100);
+  }, 750);
 
 }
 
