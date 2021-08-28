@@ -1,3 +1,15 @@
+// Animations
+const animation = (e) => {
+  var a = document.createElement("div");
+  var b = e.target.parentElement;
+  b.append(a);
+  a.classList = "show"
+  setTimeout(function () {
+    a.remove();
+  }, 1500.9);
+}
+
+
 // Adding items to cart
 async function addToCart(id) {
   let food = await useAPI(`http://localhost:8080/foodItems/${id}`);
@@ -76,7 +88,7 @@ function createFoodItem(food, id) {
 	  </div>
 	  <div class="productWrapper">
 		<div class="addProduct">
-		  <button onclick="addToCart('${id}')">Add</button>
+		  <button onclick="animation(event); addToCart('${id}')">Add</button>
 		</div>
 		<div class="productCustomisable">Customisable</div>
 	  </div>
