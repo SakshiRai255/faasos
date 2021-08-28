@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const connectDB = () => {
-	return mongoose.connect("mongodb+srv://faasos:faasos@123@cluster0.jh0ei.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+	return mongoose.connect(`mongodb+srv://faasos:${process.env.DATABASE_PASS}@cluster0.jh0ei.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useUnifiedTopology: true,

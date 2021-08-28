@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Food Online from Faasos | Zero Contact Delivery</title>
-    <link
-      rel="shortcut icon"
-      href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/collections.css" />
-  </head>
-  <body onload="checkCart()">
-    <!-------------------------------------------- Search Pop Up Area Starts Here ------------------------------------->
 
-    <div id="searchFoodPopUp">
-      <div id="productSearchDiv">
-        <div id="productSearchContainer">
-          <div id="productSearchInputDiv">
-            <span class="backButton" onclick="closeSearchFoodPopUp()"
-              ><i class="fas fa-chevron-left"></i
-            ></span>
-            <input
-              type="text"
-              id="productSearchInput"
-              placeholder="Search for Dishes"
-            />
-          </div>
-          <div id="productSearchResults">
-            <div id="displayFilterItems">
-              <!-- <div class="searchFoodCard">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Food Online from Faasos | Zero Contact Delivery</title>
+  <link rel="shortcut icon"
+    href="https://assets.faasos.io/order.faasos.io/production/app/public/images/faviconFaasos.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" href="/stylesheets/collections.css" />
+
+</head>
+
+<body onload="checkCart()">
+  <!-------------------------------------------- Search Pop Up Area Starts Here ------------------------------------->
+
+  <div id="searchFoodPopUp">
+    <div id="productSearchDiv">
+      <div id="productSearchContainer">
+        <div id="productSearchInputDiv">
+          <span class="backButton" onclick="closeSearchFoodPopUp()"><i class="fas fa-chevron-left"></i></span>
+          <input type="text" id="productSearchInput" placeholder="Search for Dishes" />
+        </div>
+        <div id="productSearchResults">
+          <div id="displayFilterItems">
+            <!-- <div class="searchFoodCard">
                 <img
                   class="searchFoodCardImage"
                   src="https://product-assets.faasos.io/production/product/image_1622813195694_image_es_1618555841315_2%20Signature%20Veg%20Wraps%20%40279.jpg"
@@ -60,237 +53,126 @@
                   </div>
                 </div>
               </div> -->
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-------------------------------------------- Search Pop Up Area Ends Here ------------------------------------->
+  </div>
+  <!-------------------------------------------- Search Pop Up Area Ends Here ------------------------------------->
 
-    
+  <!------- Navbar Starts Here ----->
 
-    <!-------------------------------------------- Navbar Area Starts Here ------------------------------------->
+  <%- include ("partials/navbar.partials.ejs") %>
 
-    <nav>
-      <div id="navContainer">
-        <div id="navLeft">
-          <a href="/collections">
-            <img src="/images/faasosLogoPurple.svg" alt="faasos logo" />
-          </a>
-          <div id="navLocation">
-            <p>Ghaziabad</p>
-            <p>Ghaziabad Uttar Pradesh</p>
+    <!------- Navbar Ends Here ------->
+
+    <!------- Side Bar HTML Starts Here --------->
+
+    <%- include ("partials/sidebar.partials.ejs") %>
+
+      <!------- Side Bar HTML Ends Here ---------->
+
+      <!-------------------------------------------- Slider Section Area Starts Here ------------------------------------->
+
+      <section id="sliderSection">
+        <ul id="menuSlider">
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1620280934986_Faasos%20Combo_3%20May_Signature%20Wraps%20%281%29%20%281%29.jpg"
+                alt="food1" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1620280380694_Banner%201%20%281%29.jpg"
+                alt="food2" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1614756805684_faasos_combo_meal_Serves3.jpg"
+                alt="food4" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1614756516330_faasos_combo_meal_Serves2.jpg"
+                alt="food3" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1614756072234_faasos_combo_meal_Serves1.jpg"
+                alt="food4" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1625660386878_Faasos-SS-%20Web%20banner%208th%20-%2010%20july.jpg"
+                alt="food5" />
+            </div>
+          </li>
+          <li class="menuItem">
+            <div>
+              <img
+                src="https://product-assets.faasos.io/production/product/image_1620280991048_Faasos%20Combo_3%20May_Classic%20Wraps%20%281%29.jpg"
+                alt="food5" />
+            </div>
+          </li>
+        </ul>
+        <button id="leftArrow" class="sliderArrow">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="rightArrow" class="sliderArrow">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </section>
+
+      <!-------------------------------------------- Slider Sections Ends Here ------------------------------------->
+
+      <!-------------------------------------------- Main Products Area Starts Here ------------------------------------->
+
+      <main>
+        <div id="mainContent" class="container">
+          <div id="mainContentHeading">
+            <h1 class="heading">
+              Order Food Online in <span id="headingLocation">Rajnagar FC</span>
+            </h1>
+            <div class="filterOptions">
+              <button onclick="openSearchFoodMenu()">
+                <img src="/images/searchIcon.svg" alt="" />
+                <span>Search for wraps</span>
+              </button>
+              <button>
+                <input type="radio" name="veg_nonVeg" value="nonVeg" id="nonVeg" onclick="handleVegNonVeg(this)" />
+                <label for="nonVeg">Non-Veg Only</label>
+              </button>
+              <button>
+                <input type="radio" name="veg_nonVeg" value="veg" id="veg" onclick="handleVegNonVeg(this)" />
+                <label for="veg">Veg Only</label>
+              </button>
+            </div>
           </div>
-        </div>
-        <div id="navRight">
-          <p id="userName">Hi Chiranjeev Thapliyal</p>
-          <p class="hamburger" onclick="openSidebar()">
-            <i class="fas fa-bars"></i>
-          </p>
-        </div>
-      </div>
-    </nav>
-    <!-------------------------------------------- Navbar Area Ends Here ------------------------------------->
+          <hr />
+          <div id="mainProducts">
+            <!-- This area is for all product categories -->
+            <div id="productCategory">
+              <ul id="productCategoryList">
+                <!-- JS will load li with a tag for food category -->
+              </ul>
+            </div>
 
-    <!------------------------------------------- Side Bar HTML Starts Here ---------------------->
+            <!-- This area is for all products -->
+            <div id="productArea"></div>
 
-    <section id="sidebar">
-      <div id="sidebarMain">
-        <div id="sidebarList">
-          <span onclick="closeSidebar()"><i class="fas fa-times"></i></span>
-          <ul id="sidebarNavList">
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarProfile.svg" alt="profile"
-                /></span>
-                <p>Profile</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarOrders.svg" alt="orders"
-                /></span>
-                <p>Manage Orders</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAddress.svg" alt="Addresses"
-                /></span>
-                <p>Manage Addresses</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarPayment.svg" alt="Payments"
-                /></span>
-                <p>Manage Payments</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarHelp.svg" alt="help and support"
-                /></span>
-                <p>Help & Support</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarAbout.svg" alt="about us"
-                /></span>
-                <p>About Us</p>
-              </a>
-            </li>
-            <li>
-              <a href="/profile">
-                <span
-                  ><img src="/images/sidebarParty.svg" alt="party orders"
-                /></span>
-                <p>Party Orders</p>
-              </a>
-            </li>
-            <li>
-              <a onclick="logout()">
-                <span
-                  ><img src="/images/sidebarLogout.svg" alt="logout"
-                /></span>
-                <p>Logout</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!------------------------------------------- Side Bar HTML Ends Here ------------------------->
-
-
-    <!-------------------------------------------- Slider Section Area Starts Here ------------------------------------->
-
-    <section id="sliderSection">
-      <ul id="menuSlider">
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1620280934986_Faasos%20Combo_3%20May_Signature%20Wraps%20%281%29%20%281%29.jpg"
-              alt="food1"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1620280380694_Banner%201%20%281%29.jpg"
-              alt="food2"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1614756805684_faasos_combo_meal_Serves3.jpg"
-              alt="food4"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1614756516330_faasos_combo_meal_Serves2.jpg"
-              alt="food3"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1614756072234_faasos_combo_meal_Serves1.jpg"
-              alt="food4"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1625660386878_Faasos-SS-%20Web%20banner%208th%20-%2010%20july.jpg"
-              alt="food5"
-            />
-          </div>
-        </li>
-        <li class="menuItem">
-          <div>
-            <img
-              src="https://product-assets.faasos.io/production/product/image_1620280991048_Faasos%20Combo_3%20May_Classic%20Wraps%20%281%29.jpg"
-              alt="food5"
-            />
-          </div>
-        </li>
-      </ul>
-      <button id="leftArrow" class="sliderArrow">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button id="rightArrow" class="sliderArrow">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </section>
-
-    <!-------------------------------------------- Slider Sections Ends Here ------------------------------------->
-
-    <!-------------------------------------------- Main Products Area Starts Here ------------------------------------->
-
-    <main>
-      <div id="mainContent" class="container">
-        <div id="mainContentHeading">
-          <h1 class="heading">
-            Order Food Online in <span id="headingLocation">Rajnagar FC</span>
-          </h1>
-          <div class="filterOptions">
-            <button onclick="openSearchFoodMenu()">
-              <img src="/images/searchIcon.svg" alt="" />
-              <span>Search for wraps</span>
-            </button>
-            <button>
-              <input
-                type="radio"
-                name="veg_nonVeg"
-                value="nonVeg"
-                id="nonVeg"
-                onclick="handleVegNonVeg(this)"
-              />
-              <label for="nonVeg">Non-Veg Only</label>
-            </button>
-            <button>
-              <input
-                type="radio"
-                name="veg_nonVeg"
-                value="veg"
-                id="veg"
-                onclick="handleVegNonVeg(this)"
-              />
-              <label for="veg">Veg Only</label>
-            </button>
-          </div>
-        </div>
-        <hr />
-        <div id="mainProducts">
-          <!-- This area is for all product categories -->
-          <div id="productCategory">
-            <ul id="productCategoryList">
-              <!-- JS will load li with a tag for food category -->
-            </ul>
-          </div>
-
-          <!-- This area is for all products -->
-          <div id="productArea"></div>
-
-          <div id="checkout">
-            <!-- <h2>Empty Cart</h2>
+            <div id="checkout">
+              <!-- <h2>Empty Cart</h2>
             <div class="emptyCart">
               <img
                 id="emptyCartImage"
@@ -299,7 +181,7 @@
               />
               <p>Empty Cart is a sign of an empty stomach.</p>
             </div> -->
-            <!-- <div id="allCartItems">
+              <!-- <div id="allCartItems">
               <h2>Cart <span id="totalItems">1 item</span></h2>
               <ul id="cartList">
                 <li>
@@ -358,110 +240,30 @@
                 </div>
                 <div id="subtotalPrice">₹ 289</div>
               </div>
-              <button id="subtotalButton">Checkout</button>
+              <button id="subtotalButton">checkout</button>
             </div> -->
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-------------------------------------------- Main Products Area Ends Here ------------------------------------->
-
-    <!------------------------------------- footer area start here ------------------------------------------------------>
-
-    <div class="footer clear">
-      <div style="margin: auto">
-        <div>
-          <p>Cities we deliver to</p>
-          <div>
-            <div class="footer1">
-              <span>Pune</span><br />
-              <span>Gurgaon</span><br />
-              <span>Indore</span><br />
-              <span>Ghaziabad</span><br />
-              <span>Bhopal</span><br />
-              <span>Pondicherry</span><br />
-              <span>Mohali</span><br />
-              <span>Zirakpur</span><br />
-              <span>Tirupati</span><br />
-            </div>
-            <div class="footer1">
-              <span>Mumbai</span><br />
-              <span>New Delhi</span><br />
-              <span>Nagpur</span><br />
-              <span>Coimbatore</span><br />
-              <span>Kolkata</span><br />
-              <span>Nashik</span><br />
-              <span>Chandigarh</span><br />
-              <span>Lucknow</span><br />
-              <span>Tiruppur</span><br />
-            </div>
-            <div class="footer1">
-              <span>Bangalore</span><br />
-              <span>Hyderabad</span><br />
-              <span>Faridabad</span><br />
-              <span>Dubai</span><br />
-              <span>Surat</span><br />
-              <span>Jaipur</span><br />
-              <span>Vijaywada</span><br />
-              <span>Kochi</span><br />
-              <span>Kota</span><br />
-            </div>
-            <div class="footer1">
-              <span>Noida</span><br />
-              <span>Chennai</span><br />
-              <span>Ahmedabad</span><br />
-              <span>Vadodra</span><br />
-              <span>Mysore</span><br />
-              <span>Panchukla</span><br />
-              <span>Vellore</span><br />
-              <span>Vizag</span><br />
-              <span>Many more...</span><br />
-            </div>
-          </div>
-          <div class="clear">
-            <div class="footer2 floatL">
-              <p>Legal</p>
-              <span>Terms & Conditions</span><br />
-              <span>Privacy Policy</span>
-            </div>
-            <div class="footer2 floatR">
-              <p>Contact</p>
-              <img
-                style="height: 30px; width: 20px; margin-right: 10px"
-                src="/images/mail.svg"
-              /><span> crm@faasos.com</span>
-            </div>
-          </div>
-          <div class="clear" style="margin-bottom: 50px"></div>
-          <div style="border: 1px solid var(--primaryColorRegular)"></div>
-          <div class="footer3">
-            <p>2020 @ Faasos. All rights reverved</p>
-            <div style="display: flex; flex-direction: row">
-              <p style="margin-right: 20px">Follow us on</p>
-              <img src="/images/fb.svg" /><img src="/images/tw.svg" /><img
-                src="/images/insta.svg"
-              />
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </main>
+      <!-------------------------------------------- Main Products Area Ends Here ------------------------------------->
 
-    <!------------------------------------- footer area ends here ------------------------------------------------------>
-  </body>
+      <!----------- Footer Starts Here ----------->
 
-  <script
-    src="https://kit.fontawesome.com/7fc87d8fcc.js"
-    crossorigin="anonymous"
-  ></script>
-  <script src="/scripts/credentials.js"></script>
-  <script src="/scripts/sidebar.js"></script>
-  <script src="/scripts/navbar.js"></script>
-  <script src="/scripts/foodItems.js"></script>
-  <script src="/scripts/loadItems.js"></script>
-  <script src="/scripts/carousel.js"></script>
-  <script src="/scripts/checkFilters.js"></script>
-  <script src="/scripts/highlightCategory.js"></script>
-  <script src="/scripts/cart.js"></script>
-  <script src="/scripts/searchFood.js"></script>
+      <%- include ("partials/footer.partials.ejs") %>
+
+        <!----------- Footer Ends Here ----------->
+</body>
+
+<script src="https://kit.fontawesome.com/7fc87d8fcc.js" crossorigin="anonymous"></script>
+<script src="/scripts/credentials.js"></script>
+<script src="/scripts/sidebar.js"></script>
+<script src="/scripts/navbar.js"></script>
+<script src="/scripts/loadItems.js"></script>
+<script src="/scripts/carousel.js"></script>
+<script src="/scripts/checkFilters.js"></script>
+<script src="/scripts/highlightCategory.js"></script>
+<script src="/scripts/cart.js"></script>
+<script src="/scripts/searchFood.js"></script>
+
 </html>
