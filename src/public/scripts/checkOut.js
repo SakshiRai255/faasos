@@ -154,7 +154,7 @@ async function addUserAddress() {
   // let allUsers = JSON.parse(localStorage.getItem('users'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   loggedUser.address = address;
-  
+
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
@@ -164,7 +164,7 @@ async function addUserAddress() {
     }
   });
   console.log('updatedUser:', updatedUser)
-  
+
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
   let openMapPopUp = document.getElementById('openMapPopUp');
@@ -223,7 +223,7 @@ function orderSummaryItems() {
   let cartList = JSON.parse(localStorage.getItem('cart'));
 
   if (!cartList || cartList.length <= 0) {
-    window.location.href = '../pages/collections.html';
+    window.location.href = '/collections';
   }
 
   let displayCartList = document.getElementById('cartList');
@@ -354,7 +354,7 @@ async function orderFood() {
     loggedUser.orders = [];
   }
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
- 
+
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
@@ -364,7 +364,7 @@ async function orderFood() {
     }
   });
   console.log('updatedUser:', updatedUser)
-  
+
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
 
