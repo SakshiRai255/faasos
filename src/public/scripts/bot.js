@@ -59,6 +59,7 @@ function insertMessage() {
 
   const order_msg = ["orders", "my orders", "show all orders", "show my orders", "my order"];
   const userDetails = ["my details", "my registered mobile number", "mobile number", "my mobile number", "registered number", "my registered mobile"];
+
   if (order_msg.indexOf(msg) != -1) {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
 
@@ -73,7 +74,7 @@ function insertMessage() {
         setTimeout(() => {
           serverMessage(`Here are your recent orders:`)
           setTimeout(() => {
-              data.orders.forEach(item => serverMessage(item.name));
+            data.orders.forEach(item => serverMessage(item.name));
           }, 2500);
         }, 1500);
       }
@@ -83,6 +84,28 @@ function insertMessage() {
     fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
       serverMessage(`${user.name} your registered mobile number is ${user.number}`);
     });
+  } else if (msg.indexOf("change my number to") != -1) {
+    const inp = msg.trim().split(" ");
+
+    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+      serverMessage(`Please hold on, we are confirming your identity...`)
+      setTimeout(() => {
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+        const currentNumber = loggedUser.number;
+        loggedUser.number = Number(inp.pop());
+        const updatedUser = fetch(`http://localhost:8080/users/${currentNumber}`, {
+          method: "PUT",
+          body: JSON.stringify(loggedUser),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
+        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+        serverMessage(`Your number has been changed to ${user.number}`)
+      }, 2000)
+    })
+
   } else {
     fetchmsg()
   }
