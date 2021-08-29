@@ -57,30 +57,69 @@ function insertMessage() {
   }
   $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
-  const order_msg = ["orders", "my orders", "show all orders"];
+  const order_msg = ["orders", "my orders", "show all orders", "show my orders", "my order"];
+  const userDetails = ["my details", "my registered mobile number", "mobile number", "my mobile number", "registered number", "my registered mobile"];
+
   if (order_msg.indexOf(msg) != -1) {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
+
     fetch(`http://localhost:8080/users/${user.number}`).then(res => {
       serverMessage(`Thanks for your query, we are getting your orders 🍔`)
       return res.json();
     }).then(data => {
-      setTimeout(() => {
-        if (data.length == 0) {
-          serverMessage(`Oops, you haven't ordered anything!`)
-        } else {
+      console.log(data)
+      if (!data || data.orders.length == 0) {
+        serverMessage(`Oops, you haven't ordered anything!`)
+      } else {
+        setTimeout(() => {
           serverMessage(`Here are your recent orders:`)
           setTimeout(() => {
             data.orders.forEach(item => serverMessage(item.name));
-          }, 1000)
-        }
-      }, 1500);
+          }, 2500);
+        }, 1500);
+      }
     });
-} else {
-  fetchmsg()
-}
+  } else if (userDetails.indexOf(msg) != -1) {
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+      serverMessage(`${user.name} your registered mobile number is ${user.number}`);
+    });
+  } else if (msg.indexOf("change my number to") != -1) {
+    const inp = msg.trim().split(" ");
 
-$('.message-input').val(null);
-updateScrollbar();
+    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+      serverMessage(`Please hold on, we are confirming your identity...`)
+      setTimeout(() => {
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+        const currentNumber = loggedUser.number;
+        loggedUser.number = Number(inp.pop());
+
+        const res = fetch(`http://localhost:8080/users/${loggedUser.number}`);
+        res.then(data => data.json()).then(user => {
+          console.log("user", user);
+          if (user !== null) {
+            serverMessage(`This is number is already associated with another account, please try another number.`)
+          } else {
+            const updatedUser = fetch(`http://localhost:8080/users/${currentNumber}`, {
+              method: "PATCH",
+              body: JSON.stringify(loggedUser),
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            });
+            localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+            serverMessage(`Your number has been changed to ${loggedUser.number}`)
+          }
+        });
+      }, 2000);
+    });
+  } else {
+    fetchmsg()
+  }
+
+  $('.message-input').val(null);
+  updateScrollbar();
 
 }
 
@@ -103,7 +142,7 @@ function serverMessage(response2) {
     $('.message.loading').remove();
     $('<div class="message new">' + response2 + '</div>').appendTo($('.mCSB_container')).addClass('new');
     updateScrollbar();
-  }, 100 + (Math.random() * 20) * 100);
+  }, 750);
 
 }
 
@@ -127,9 +166,6 @@ function fetchmsg() {
     .then(response => {
       console.log(response);
       serverMessage(response.Reply);
-      // speechSynthesis.speak( new SpeechSynthesisUtterance(response.Reply))
-
-
     })
     .catch(error => console.error('Error h:', error));
 

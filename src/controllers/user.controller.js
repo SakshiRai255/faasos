@@ -36,6 +36,18 @@ router.put("/:number", async (req, res) => {
 	}
 })
 
+router.patch("/:number", async (req, res) => {
+	try {
+		const user = await User.findOneAndUpdate({ number: req.params.number }, req.body, { new: true });
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(400).json(null);
+	}
+})
+
+
+
+
 // router.patch("/:id", genericController(User).updateOne);
 router.delete("/:id", genericController(User).deleteOne);
 

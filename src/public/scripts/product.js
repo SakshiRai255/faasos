@@ -1,5 +1,10 @@
-function displayProduct() {
+async function displayProduct() {
   let item = JSON.parse(localStorage.getItem('LiveProduct'));
+  // const res = await fetch(`http://localhost:8080/fooditems/${foodItem._id}`);
+  // const itemJSON = await res.json();
+  // const item = itemJSON.item;
+  // console.log('item:', item)
+
   if (!item) {
     window.location.href = '/collections';
   }
@@ -23,9 +28,8 @@ function displayProduct() {
 		<div id="productDetailContent1">
 		  <div>
 			<h2>${item.name}</h2>
-			<span><img src="/images/${
-        item.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
-      }" alt="" /> ₹ ${item.price}</span>
+			<span><img src="/images/${item.veg_nonVeg == 'veg' ? 'vegLogo.svg' : 'nonVegLogo.svg'
+    }" alt="" /> ₹ ${item.price}</span>
 		  </div>
 		  <div>
 			<div id="ratingAndBought">
@@ -33,7 +37,7 @@ function displayProduct() {
 			  <p>${item['boughtTimes']} bought this</p>
 			</div>
 			<div id="addToCart">
-			  <button id="addButton" onclick="addToCart(${item.id})">ADD</button>
+			  <button id="addButton" onclick="addToCart('${item._id}')">ADD</button>
 			  <span>Customizable</span>
 			</div>
 		  </div>
@@ -65,29 +69,12 @@ function displayProduct() {
 displayProduct();
 
 // Adding items to cart
-function addToCart(id) {
-  // let selectedFood = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-  // let selectedFoodPath = e["path"][5];
-  // console.log(selectedFoodPath);
+async function addToCart(id) {
 
-  let findId = 0;
-  let food = null;
-  for (productCategory in foodItems) {
-    let found = false;
-    let list = foodItems[productCategory];
-    for (let i = 0; i < list.length; i++) {
-      if (findId == id) {
-        food = { ...list[i] };
-        found = true;
-        break;
-      }
-      findId++;
-    }
-    if (found) break;
-  }
+  const res = await useAPI(`http://localhost:8080/fooditems/${id}`);
+  const food = res.item;
 
   if (food) {
-    food.id = id;
     food.quantity = 1;
     let cartItems = JSON.parse(localStorage.getItem('cart'));
 

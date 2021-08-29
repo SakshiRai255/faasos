@@ -46,7 +46,7 @@ const userSchema = mongoose.Schema({
 				required: true
 			},
 			boughtTimes: {
-				type: Number,
+				type: String,
 				required: true
 			},
 			description: {
@@ -86,7 +86,7 @@ const userSchema = mongoose.Schema({
 			required: true
 		},
 		boughtTimes: {
-			type: Number,
+			type: String,
 			required: true
 		},
 		description: {

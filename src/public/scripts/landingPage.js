@@ -40,7 +40,7 @@ async function goToVerifyOTP() {
     popUp.textContent = `Not a registered user`;
 
     setTimeout(function () {
-      popUpSignup();
+      popUpSignup(phoneNumber);
     }, 2000);
     return;
   }
@@ -90,17 +90,34 @@ function verify() {
 }
 
 /*-------------------------------------------SignUp Pop Function-----------------------------------------*/
-function popUpSignup() {
+function popUpSignup(inputNumber = undefined) {
+
   let login = document.getElementById('popUp');
   login.style.display = 'flex';
 
   let loginPage = document.getElementById('signUpPopUp');
 
   login.append(loginPage);
+
+  if (inputNumber !== undefined) {
+    const numberInputSign = document.getElementById('phoneNumberSign');
+    numberInputSign.value = inputNumber;
+    (function () {
+      let numberLength = numberInputSign.value.length;
+      if (numberLength <= 9) {
+        popSignUp.style.display = 'flex';
+        numberInputSign.style.backgroundImage = 'unset';
+      } else if (numberLength == 10) {
+        popSignUp.style.display = 'none';
+        numberInputSign.style.backgroundImage = 'url(/images/greenTick.jpg)';
+      }
+    })();
+  }
 }
 var numberInputSign = document.getElementById('phoneNumberSign');
 var popSignUp = document.getElementById('aNumber');
 var buttonSign = document.getElementById('continueButtonSign');
+
 
 numberInputSign.addEventListener('input', function () {
   let numberLength = numberInputSign.value.length;
@@ -268,3 +285,11 @@ function checkTld(x) {
 
 /* ------------------------------------ Enter Input Location ---------------------------- */
 
+const alreadyLoggedIn = () => {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  if (loggedUser !== null) {
+    window.location.href = '/collections';
+  }
+}
+
+alreadyLoggedIn();

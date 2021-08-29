@@ -133,7 +133,6 @@ async function logout() {
       'Content-Type': 'application/json'
     }
   })
-  console.log('updatedUser:', updatedUser)
 
   localStorage.removeItem('cart');
   localStorage.removeItem('loggedUser');
