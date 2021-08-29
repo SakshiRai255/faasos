@@ -53,7 +53,7 @@ function checkDelivery() {
           <div class="AddressCardType">
             <h3>Others</h3>
             <p>
-              ${loggedUser.address['houseNo']} ${loggedUser.address['landmark']}
+              ${loggedUser.address['landmark']} ${loggedUser.address['houseNo']}
             </p>
           </div>
           <button id="addNew" class="yellowBtn" onclick="deliverHere()">Deliver Here</button>
@@ -110,36 +110,80 @@ function checkAccount() {
 
 checkAccount();
 
+var timerId;
+
+function throttleFunction() {
+
+  if (timerId) {
+    return false;
+  }
+  timerId = setTimeout(() => {
+    getImage()
+    timerId = undefined;
+  }, 1000);
+
+}
+
+function getImage() {
+  let search = document.getElementById('houseNo').value;
+  let img = document.getElementById("locationImg");
+
+  if (search.length <= 3) {
+    img.src = "https://open.mapquestapi.com/staticmap/v4/getplacemap?key=IdCSOwo0NruqgLsBiqBI41KizoT0nx8G&location=India&size=600,400&zoom=5&showicon=red_1-1";
+    document.getElementById("name").innerText = " India";
+    return false;
+  }
+
+
+  img.src = `https://open.mapquestapi.com/staticmap/v4/getplacemap?key=IdCSOwo0NruqgLsBiqBI41KizoT0nx8G&location=${search}&size=600,400&zoom=12&showicon=red_1-1`
+
+  document.getElementById("name").innerText = search;
+
+}
+
+const removeAddressPopUp = () => {
+  const popUp = document.getElementById("openMapPopUp");
+  popUp.style.display = "none";
+
+  const houseNo = document.getElementById("houseNo");
+  const landmark = document.getElementById("landmark");
+
+  houseNo.style.display = "none";
+  landmark.style.display = "none";
+
+  popUp.remove();
+}
+
 function addAddress() {
   let checkoutMain = document.getElementById('checkoutMain');
   let openMapPopUp = document.createElement('div');
   openMapPopUp.id = 'openMapPopUp';
   openMapPopUp.innerHTML = `
   <div id="popUpMapContainer">
-    <div id="popUpMapModal">
-      <img src="/images/leftArrow.svg" alt="" id="backButton" />
-      <img src="/images/map.PNG" alt="" class="mapImage">
-    </div>
-    <form>
-      <div id="locationDiv">
-        <div>
-          <img src="/images/location.svg" alt=" ">
-          <h3>Gandhi Market Mirdard Road Area</h3>
-        </div>
-      </div>
-      <input type="text" id="houseNo" placeholder="House / Flat no." />
-      <input type="text" id="landmark" placeholder="Landmark" />
-      <ul class="typeOfAddress">
-        <input type="radio" name="addressType" id="home" value="Home" checked>
-        <label for="home"> <img src="/images/home.svg" alt=""> Home</label>
-        <input type="radio" name="addressType" id="work" value="Work">
-        <label for="work"> <img src="/images/work.svg" alt=""> Work</label>
-        <input type="radio" name="addressType" id="others" value="Others">
-        <label for="others"> <img src="/images/location.svg" alt=""> Others</label>
-      </ul>
-    </form>
-    <button id="saveButton" onclick="addUserAddress()">Save</button>
-  </div>`;
+            <div id="popUpMapModal">
+              <img src="/images/leftArrow.svg" alt="" id="backButton" onclick="removeAddressPopUp()" />
+              <img src="https://open.mapquestapi.com/staticmap/v4/getplacemap?key=IdCSOwo0NruqgLsBiqBI41KizoT0nx8G&location=India&size=600,400&zoom=5&showicon=red_1-1" id="locationImg" alt="" class="mapImage">
+            </div>
+            <form>
+              <div id="locationDiv">
+                <div>
+                  <img src="/images/location.svg" alt=" ">
+                  <h3 id="name"> India</h3>
+                </div>
+              </div>
+              <input type="text" oninput="throttleFunction()" id="houseNo" placeholder="City Name" />
+              <input type="text" id="landmark" placeholder="House / Flat no." />
+              <ul class="typeOfAddress">
+                <input type="radio" name="addressType" id="home" value="Home" checked>
+                <label for="home"> <img src="/images/home.svg" alt=""> Home</label>
+                <input type="radio" name="addressType" id="work" value="Work">
+                <label for="work"> <img src="/images/work.svg" alt=""> Work</label>
+                <input type="radio" name="addressType" id="others" value="Others">
+                <label for="others"> <img src="/images/location.svg" alt=""> Others</label>
+              </ul>
+            </form>
+            <button id="saveButton" onclick="addUserAddress()">Save</button>
+         </div>`;
 
   checkoutMain.append(openMapPopUp);
 }
@@ -163,7 +207,6 @@ async function addUserAddress() {
       'Content-Type': 'application/json'
     }
   });
-  console.log('updatedUser:', updatedUser)
 
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
@@ -356,14 +399,13 @@ async function orderFood() {
   loggedUser.orders = [...currentCart, ...loggedUser.orders];
 
   const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
-    method: "PUT",
+    method: "PATCH",
     body: JSON.stringify(loggedUser),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   });
-  console.log('updatedUser:', updatedUser)
 
   localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   localStorage.setItem('cart', null);
