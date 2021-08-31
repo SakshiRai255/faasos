@@ -813,7 +813,9 @@ input {
   border-radius: 0.4rem;
   width: 30%;
   margin-right: 2rem;
+  align-self: flex-end;
   cursor: pointer;
+  max-height: 30px;
 }
 
 @media (max-width: 800px) {
