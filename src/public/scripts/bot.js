@@ -57,7 +57,7 @@ function insertMessage() {
   }
   $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
-  const order_msg = ["orders", "my orders", "show all orders", "show my orders", "my order"];
+  const order_msg = ["orders", "my orders", "show all orders", "show my orders", "my order", "my recent orders"];
   const userDetails = ["my details", "my registered mobile number", "mobile number", "my mobile number", "registered number", "my registered mobile"];
 
   if (order_msg.indexOf(msg) != -1) {
