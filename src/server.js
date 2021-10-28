@@ -3,6 +3,7 @@ const path = require("path")
 const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
 const bodyParser = require("body-parser")
+require('dotenv').config();
 
 const connectDB = require("./configs/db");
 
@@ -154,9 +155,7 @@ async function runSample(msg, projectId = 'masai-unit3') {
 	return result.fulfillmentText;
 }
 
-
-
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, async () => {
 	try {
 		await connectDB();
