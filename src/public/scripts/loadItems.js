@@ -188,7 +188,7 @@ async function displayCategories() {
     const foodCategory = allCategory.items[i].name;
 
     let li = document.createElement('li');
-    if (foodCategory == 'Daily Value Wrap Combos (Save Upto 40% Extra)') {
+    if (i === 0) {
       li.classList.add('active');
     }
     let a = document.createElement('a');
