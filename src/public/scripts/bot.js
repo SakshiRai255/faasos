@@ -63,7 +63,7 @@ function insertMessage() {
   if (order_msg.indexOf(msg) != -1) {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
 
-    fetch(`http://localhost:8080/users/${user.number}`).then(res => {
+    fetch(`https://faasos-clone.herokuapp.com/users/${user.number}`).then(res => {
       serverMessage(`Thanks for your query, we are getting your orders 🍔`)
       return res.json();
     }).then(data => {
@@ -81,26 +81,26 @@ function insertMessage() {
     });
   } else if (userDetails.indexOf(msg) != -1) {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
-    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+    fetch(`https://faasos-clone.herokuapp.com/users/${user.number}`).then(res => res.json()).then(data => {
       serverMessage(`${user.name} your registered mobile number is ${user.number}`);
     });
   } else if (msg.indexOf("change my number to") != -1) {
     const inp = msg.trim().split(" ");
 
-    fetch(`http://localhost:8080/users/${user.number}`).then(res => res.json()).then(data => {
+    fetch(`https://faasos-clone.herokuapp.com/users/${user.number}`).then(res => res.json()).then(data => {
       serverMessage(`Please hold on, we are confirming your identity...`)
       setTimeout(() => {
         let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
         const currentNumber = loggedUser.number;
         loggedUser.number = Number(inp.pop());
 
-        const res = fetch(`http://localhost:8080/users/${loggedUser.number}`);
+        const res = fetch(`https://faasos-clone.herokuapp.com/users/${loggedUser.number}`);
         res.then(data => data.json()).then(user => {
           console.log("user", user);
           if (user !== null) {
             serverMessage(`This is number is already associated with another account, please try another number.`)
           } else {
-            const updatedUser = fetch(`http://localhost:8080/users/${currentNumber}`, {
+            const updatedUser = fetch(`https://faasos-clone.herokuapp.com/users/${currentNumber}`, {
               method: "PATCH",
               body: JSON.stringify(loggedUser),
               headers: {
@@ -149,7 +149,7 @@ function serverMessage(response2) {
 
 function fetchmsg() {
 
-  var url = 'http://localhost:8080/send-msg';
+  var url = 'https://faasos-clone.herokuapp.com/send-msg';
 
   const data = new URLSearchParams();
 

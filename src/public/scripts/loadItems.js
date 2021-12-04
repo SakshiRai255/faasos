@@ -12,7 +12,7 @@ const animation = (e) => {
 
 // Adding items to cart
 async function addToCart(id) {
-  let food = await useAPI(`http://localhost:8080/foodItems/${id}`);
+  let food = await useAPI(`https://faasos-clone.herokuapp.com/foodItems/${id}`);
 
   if (food != null) {
     food = food["item"];
@@ -101,16 +101,14 @@ function createFoodItem(food, id) {
 }
 
 async function displayFood(category) {
-
   let productArea = document.getElementById('productArea');
   productArea.innerHTML = null; // clearing out all food items
 
   // All food categories
-  let res = await useAPI(`http://localhost:8080/categories`);
+  let res = await useAPI(`https://faasos-clone.herokuapp.com/categories`);
   const foodCategories = res.items;
 
-
-  res = await useAPI(`http://localhost:8080/foodItems`)
+  res = await useAPI(`https://faasos-clone.herokuapp.com/foodItems`)
   
   const foodItems = res.items;
 
@@ -182,7 +180,7 @@ async function displayFood(category) {
 async function displayCategories() {
   let productCategoryList = document.getElementById('productCategoryList');
 
-  const allCategory = await useAPI(`http://localhost:8080/categories`);
+  const allCategory = await useAPI(`https://faasos-clone.herokuapp.com/categories`);
 
   for (let i = 0; i < allCategory.items.length; i++) {
     const foodCategory = allCategory.items[i].name;

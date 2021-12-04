@@ -1,6 +1,6 @@
 async function displayProduct() {
   let item = JSON.parse(localStorage.getItem('LiveProduct'));
-  // const res = await fetch(`http://localhost:8080/fooditems/${foodItem._id}`);
+  // const res = await fetch(`https://faasos-clone.herokuapp.com/fooditems/${foodItem._id}`);
   // const itemJSON = await res.json();
   // const item = itemJSON.item;
   // console.log('item:', item)
@@ -71,7 +71,7 @@ displayProduct();
 // Adding items to cart
 async function addToCart(id) {
 
-  const res = await useAPI(`http://localhost:8080/fooditems/${id}`);
+  const res = await useAPI(`https://faasos-clone.herokuapp.com/fooditems/${id}`);
   const food = res.item;
 
   if (food) {

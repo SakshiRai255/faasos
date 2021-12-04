@@ -78,7 +78,7 @@ async function openSearchFoodMenu() {
   searchFoodPopUp.style.display = 'block';
 
   if (!foodItems) {
-    const result = await useAPI(`http://localhost:8080/foodItems`);
+    const result = await useAPI(`https://faasos-clone.herokuapp.com/foodItems`);
     foodItems = result["items"]; 
   }
 

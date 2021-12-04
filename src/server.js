@@ -3,12 +3,19 @@ const path = require('path');
 const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const connectDB = require('./configs/db');
 
 const app = express();
 
+const corsOptions = {
+  origin: ['*', 'https://faasos-clone.herokuapp.com', 'http://localhost:8080/'],
+  optionsSuccessStatus: 200, // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

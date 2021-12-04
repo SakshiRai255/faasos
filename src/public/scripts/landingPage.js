@@ -33,7 +33,7 @@ async function goToVerifyOTP() {
   let phoneNumber = document.getElementById('phoneNumber').value;
   localStorage.setItem('unverifiedNumber', JSON.stringify(phoneNumber));
 
-  const user = await useAPI(`http://localhost:8080/users/${phoneNumber}`);
+  const user = await useAPI(`https://faasos-clone.herokuapp.com/users/${phoneNumber}`);
 
   if (!user) {
     popUp.style.display = 'flex';

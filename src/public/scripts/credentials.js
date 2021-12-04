@@ -62,7 +62,7 @@ async function signIn(phoneNumber) {
   localStorage.removeItem('unverifiedNumber');
 
   const number = Number(phoneNumber);
-  const user = await useAPI(`http://localhost:8080/users/${number}`);
+  const user = await useAPI(`https://faasos-clone.herokuapp.com/users/${number}`);
 
   localStorage.setItem('loggedUser', JSON.stringify(user));
   if (user.cart) {
@@ -92,12 +92,12 @@ async function signUp() {
     email: data.email.value,
   };
 
-  const foundUser = await useAPI(`http://localhost:8080/users/${user.number}`);
+  const foundUser = await useAPI(`https://faasos-clone.herokuapp.com/users/${user.number}`);
 
   if (foundUser) {
     popUpLogin();
   } else {
-    const newUser = await useAPI(`http://localhost:8080/users`, {
+    const newUser = await useAPI(`https://faasos-clone.herokuapp.com/users`, {
       method: "post",
       headers: {
         'Accept': 'application/json',
@@ -117,15 +117,15 @@ async function logout() {
   let cart = JSON.parse(localStorage.getItem('cart'));
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
 
-  // const allUsers = await useAPI(`http://localhost:8080/users`);
+  // const allUsers = await useAPI(`https://faasos-clone.herokuapp.com/users`);
 
   const number = loggedUser.number;
 
-  // const user = await useAPI(`http://localhost:8080/users/${number}`);
+  // const user = await useAPI(`https://faasos-clone.herokuapp.com/users/${number}`);
 
   loggedUser.cart = cart;
 
-  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+  const updatedUser = await useAPI(`https://faasos-clone.herokuapp.com/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
     headers: {

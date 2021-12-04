@@ -193,7 +193,7 @@ async function addUserAddress() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   loggedUser.address = address;
 
-  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+  const updatedUser = await useAPI(`https://faasos-clone.herokuapp.com/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
     headers: {
@@ -213,7 +213,7 @@ async function deleteAddress() {
   let loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
   delete loggedUser.address;
 
-  const updatedUser = await useAPI(`http://localhost:8080/users/${loggedUser.number}`, {
+  const updatedUser = await useAPI(`https://faasos-clone.herokuapp.com/users/${loggedUser.number}`, {
     method: "PUT",
     body: JSON.stringify(loggedUser),
     headers: {
